@@ -286,9 +286,24 @@ As $\bar{H}\ket{\phi_k} &= E_k\ket{\phi_k}$ and $\bar{H} = \sum_j \abs{\beta_j}^
 = E_k
 \end{equation}
 
-Continuing proof of normality of $\varphi_k^1$ using equation \ref{eqn:1},
+Continuing proof of normality of $\varphi_k^1$ using equation \ref{eqn:1}:
 
-\begin{align}
+
+
+\begin{align*}
+\braket{\varphi_k^1}{\varphi_k^1} &= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (I - 2 E_kV + E_k^2) \ket{\varphi_k^0}\\
+&= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (I - 2 E_k^2 + E_k^2) \ket{\varphi_k^0}\\
+&= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (I -  E_k^2) \ket{\varphi_k^0}\\
+&= \frac{1- E^2_k}{1 - E^2_k} \braket{\varphi_k^0}{\varphi_k^0}\\
+&= 1
+\end{align*}
+
+Proof of orthogonality, using equation \ref{eqn:1}
+\begin{align*}
+\braket{\varphi_k^0}{\varphi_k^1} &= \bra{\varphi_k^0}  \frac{1}{\sqrt{1 - E^2_k}}(V-E_k) \ket{\varphi_k^0}\\
+&= \bra{\varphi_k^0}  \frac{1}{\sqrt{1 - E^2_k}}(E_k-E_k) \ket{\varphi_k^0}\\
+&= 0
+\end{align*}
 What do S and V actually do?
 I is a reflection operator, that
 
