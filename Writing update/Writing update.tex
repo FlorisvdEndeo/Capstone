@@ -1,0 +1,298 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[backend=biber]{biblatex}
+\usepackage{titling}
+\usepackage{titletoc}
+\usepackage{graphicx}
+\usepackage[document]{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{bbold}
+
+\pagestyle{fancy}
+\renewcommand\sectionmark[1]{%}
+  \markboth{\emph{Section}\ $\thesection$\ -\ #1}{}}
+\fancyhead[L,C]{}
+\fancyhead[R]{\leftmark}
+
+\def\bracket#1#2{\langle #1 | #2 \rangle}
+\def\kb#1#2{| #1 \rangle\!\langle #2 |}
+\def\kbtwo#1#2#3#4{|#1 \rangle\!\langle #2 | #3 \rangle\!\langle #4 | }
+
+
+\input{preamble-2}
+\date{\today}
+
+\addbibresource{newproposal.bib}
+
+ \providecommand{\keywords}[1]
+{
+  \small
+  \textbf{\textit{Keywords---}} #1
+}
+
+\providecommand\given{}
+% can be useful to refer to this outside \Set
+\newcommand\SetSymbol[1][]{%
+  \nonscript\:#1\vert
+  \allowbreak
+  \nonscript\:
+  \mathopen{}}
+\DeclarePairedDelimiterX\Set[1]\{\}{%
+  \renewcommand\given{\;\SetSymbol[\delimsize]\;}
+  #1
+}
+
+\renewcommand\S{\Set*}
+
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
+
+
+
+\title{Simulating the Water Molecule using the Spectrum by Quantum Walk Algorithm}
+
+
+\begin{document}
+
+
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+	\center
+
+	\HRule\\ [0.4cm]
+
+	{\huge\bfseries \thetitle\\ [0.4cm]}
+
+	\HRule\\ [1.5cm]
+
+	\begin{minipage}{0.45\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\
+            Floris van den Ende\\
+            {\small Amsterdam University College}\\
+            {\small\email{florisvdende@gmail.com}}
+		\end{flushleft}
+	\end{minipage}
+	~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Supervisor}\\
+            Dhr. Dr. J.van Wezel\\
+            {\small{Faculteit der Natuurwetenschappen en Informatica \& Qusoft}\\
+            {\small{\url{j.vanwezel@uva.nl}}}}
+		\end{flushright}
+    \end{minipage}
+    \\ [1cm]
+    \begin{minipage}[t]{0.45\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Tutor}\\
+            Dr. Forrest Bradbury\\
+            {\small Amsterdam University College}\\
+            {\small\email{f.bradbury@auc.nl}}
+		\end{flushleft}
+	\end{minipage}
+	~
+	\begin{minipage}[t]{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Daily Supervisor}\\
+            Joris Kattemolle\\
+            {\small Qusoft}\\
+            {\small\email{j.j.kattemolle@uva.nl}}
+		\end{flushright}
+	\end{minipage}
+    \vfill\vfill\vfill
+
+    {\large
+        Major: Sciences\\ [0.5cm]
+        \thedate
+
+           }
+           \vfill\vfill
+    \includegraphics[width=0.2\textwidth]{{auc-logo.png}}\\ [1cm]
+
+	\vfill
+
+
+\end{titlepage}
+
+\abstract{This capstone will build towards understanding complex chemical reactions using quantum computing, by examining the efficiency of the Spectrum by Quantum Walk algorithm proposed by \textcite{poulin} applied to the water molecule. This algorithm will be implemented using Google's Cirq package and the ground state energy of the static water molecule will be retrieved. Ultimately, this capstone will compare the efficiency of aforementioned algorithm to several well-established other algorithms, where the conclusion of this comparison might be extrapolated to more complex chemical reactions. Quantum computing can help elucidate processes such as nitrogenase, where a greater understanding might lead to a severely reduced global energy output.}
+
+\section{Intruduction}
+
+\section{Questions}
+
+\begin{itemize}
+  \item The reflection operator applies to some state in the Orthonormal basis defined
+\end{itemize}}
+
+\section{Quantum Computation}
+
+\subsection{Why Quantum Computation}
+
+
+\subsection{Fundamental Principles}
+
+\subsection{Gate Operations}
+
+\subsection{Quantum Circuits}
+
+\subsection{Quantum Algorithms}
+
+\section{Spectrum by Quantum Walk}
+\newpage
+
+\subsection{Bit-string identities}
+
+$\ket{j}$ represents a binary bit string. In this thesis, a four-qubit system is considered, so for consistency's sake, all bit-strings are expressed in the four-bit basis.
+For example, the bit-string of eleven is represented in vector form by the following:
+$$ \ket{11} = \ket{1011} = \ket{1} \otimes \ket{0} \otimes \ket{1} \ket{1} = \colvec{2}{0}{1} \otimes \colvec{2}{1}{0} \otimes \colvec{2}{0}{1} \otimes \colvec{2}{0}{1} =   \colvec{16}{0}{0}{0}{0}{0}{0}{0}{0}{0}{0}{0}{1}{0}{0}{0}{0}.$$
+
+Or generally, some state $\ket{n}$ in $\mathbb{R}^{16}$  can be represented by  \\ $\Set{e_{n+1} \given 1 \leq n + 1 \leq 16}$, where $e_{n+1}$ is a vector with a 1 inserted at the $n+1^{th}$ position, and 0's elsewhere. \\
+
+All bit strings are orthogonal, implying $$\bracket i j = \delta_{i,j}.$$
+
+As for the outer product,
+
+$$\kb i j = \delta_{i,j} \ e_{i+1, j+1}$$
+\\
+
+When summing bit string outer products over the $n$-dimensional space, each basis vector in $\mathbb{R}^{n}$ has a contribution of 1,
+resulting in an $n$ by $n$ matrix with only entries of 1 on the diagonal, which is the identity matrix:
+
+$$ \sum_{j}^{n} \kb jj = I_n
+$$
+
+identities: bra A ket = ....
+tensor product times inner product:
+
+
+We know the Hamiltonian takes the form (REWRITE)
+Multi-qubit pauli operators look like
+
+$$
+X=\left(\begin{array}{cc}
+0 & 1 \\
+1 & 0
+\end{array}\right), \quad \quad Y=\left(\begin{array}{cc}
+0 & -i \\
+i & 0
+\end{array}\right), \quad \quad Z=\left(\begin{array}{cc}
+1 & 0 \\
+0 & -1
+\end{array}\right),\quad \quad I=\left(\begin{array}{cc}
+1 & 0 \\
+0 & 1
+\end{array}\right)
+$$
+
+Lets define $B, S$ and  $V$ as following:
+
+$$
+S = B (I - 2 \ket{0}\bra{0}) B^{\dagger}= (I-2\kb \beta \beta) \otimes I)$$
+\\
+$$
+V=\sum_{j}\ket{j}\bra{j} \otimes P_{j}
+$$
+
+In order for the operators $S$ and $V$ to be unitary operators, the identy $BB^* = SS^* = I$ must hold. Proof:
+
+$$
+SS^* = S^2 = ((I-2\kb \beta \beta) \otimes I)((I-2\kb \beta \beta) \otimes I)
+$$
+
+since $$(A \otimes B)(C \otimes D) = AC \otimes BD,$$
+\begin{align*}
+S^2 &= (I-2\kb \beta \beta)(I-2\kb \beta \beta) \otimes I^2 \\
+&= I^2 - 2I\kb \beta \beta\footnotemark - 2\kb \beta \beta I + 4 \ket{\beta} \bracket \beta \beta \bra \beta\\
+&= I^2 - 4\kb \beta \beta + 4\kb \beta \beta = I^2 = I
+\end{align*}
+\footnotetext{The outer product of a vector only produces elements on the diagonal, so multiplying with identity returns that same outer product}
+
+
+
+For the operator V n:
+
+\begin{align*}
+VV^* = V^2 &= \sum_{j} \kb jj \otimes P_{j} \cdot \sum_{k} \kb kk \otimes P_{k} \\
+&= \sum_j \sum_k \kbtwo j j k k \otimes P_j P_k\\
+&= \sum_j \sum_k \delta_{j,k} | j \rangle \langle k | \otimes \delta_{j,k}
+\end{align*}
+\begin{gather*}
+\text{As}  \sum_{j}^{n} \kb jj = I_n, \\
+V^2 = I
+\end{gather*}
+
+Poulin et al. postulate the following orthonormal basis, in which S and V preserve the substate spanned by those basis:
+
+\begin{align}
+\ket{\varphi_k^0} &= \sum_j\beta_j\ket j\otimes\ket{\phi_k} \\
+\ket{\varphi_k^1} &= \frac 1{\sqrt{1-E_k^2}}(V-E_k)\ket{\varphi_k^0},
+\end{align}
+\newpage
+
+Let us prove that $\varphi_k^0$ and $\varphi_k^1$ are normalized and orthogonal. hij jb
+
+\begin{align*}
+\braket{\varphi_k^0}{\varphi_k^0}  &= (\bra{\beta} \otimes \bra{\phi_k})(\ket{\beta} \otimes \ket{\phi_k})\\
+&= \braket{\beta}{\beta} \otimes \braket{\phi_k}{\phi_k}\\
+&= 1
+\end{align*}
+
+\begin{align*}
+\braket{\varphi_k^1}{\varphi_k^1}  &= \bra{\varphi_k^0} \frac{1}{\sqrt{1 - E^2_k}}(V-E_k) \frac{1}{\sqrt{1 - E^2_k}}(V-E_k) \ket{\varphi_k^0}\\
+&= \bra{\varphi_k^0} \frac{1}{1 - E^2_k} (V-E_k)^2  \ket{\varphi_k^0}\\
+&= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (V^2 - 2 E_kV + E_k^2) \ket{\varphi_k^0}\\
+&= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (I - 2 E_kV + E_k^2) \ket{\varphi_k^0}\\
+\end{align*}
+
+As the following identity will appear often, a seperate definition is made .
+
+\begin{align*}
+\bra{\varphi_k^0} V \ket{\varphi_k^0} &= \bra{\varphi_k^0} (\sum_j \kb j j \otimes P_j) \sum_l \beta_l \ket{l} \otimes \ket{\phi_k^0}\\
+&= \bra{\varphi_k^0}\sum_j \sum_l \beta_l \ket{j} \braket{j}{l} \otimes P_j \ket{\phi_k^0}\\
+&=(\sum_m \beta_m^* \bra{m} \otimes \bra{\phi_k}) \sum_j \sum_l \beta_l \ket{j} \delta_{j,l} \otimes P_j \ket{\phi_k}\\
+&= \sum_m \sum_j \beta_m^* \beta_j \braket{m}{j} \otimes \braket{\phi_k}{P_j \phi_k}\\
+&= \sum_m \sum_j \beta_m^* \beta_j \delta_{m,j} \otimes \braket{\phi_k}{P_j \phi_k}\\
+&= \sum_j \abs{\beta_j}^2 \braket{\phi_k}{P_j \phi_k}\\
+&= \sum_j \braket{\phi_k}{ \abs{\beta_j}^2  P_j \phi_k}
+\end{align*}
+
+As $\bar{H}\ket{\phi_k} &= E_k\ket{\phi_k}$ and $\bar{H} = \sum_j \abs{\beta_j}^2  P_j,$
+\begin{equation} \label{eqn:1}
+\bra{\varphi_k^0} V \ket{\varphi_k^0} &= \braket{\phi_k}{E_k \phi_k}
+= E_k
+\end{equation}
+
+Continuing proof of normality of $\varphi_k^1$ using equation \ref{eqn:1},
+
+\begin{align}
+What do S and V actually do?
+I is a reflection operator, that
+
+
+\printbibliography
+
+\end{document}

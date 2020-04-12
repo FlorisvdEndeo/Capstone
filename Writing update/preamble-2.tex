@@ -1,0 +1,41 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{stmaryrd}
+\usepackage{subcaption}
+\usepackage{titling}
+
+%%%% Title page commands %%%
+\newcommand\email[1]{
+    \href{mailto:#1}{\url{#1}}
+}
+
+% Takes: name, affiliation & email
+\newcommand\authorblock[3]{
+    #1\\
+    \small{#2}\\
+    \small{\email{#3}}
+}
+
+\newcommand\keywords[1]{
+    \vspace{5mm}\noindent
+    \small{\textbf{\textit{Keywords ---}} #1}
+}
+
+%%% Short-hands %%%
+\newcommand\NN{\mathbb{N}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\CC{\mathbb{C}}
+
+%%% Theorem environments %%%
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}

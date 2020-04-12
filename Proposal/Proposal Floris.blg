@@ -1,0 +1,9 @@
+[1] Config.pm:354> INFO - This is Biber 2.7
+[1] Config.pm:357> INFO - Logfile is 'Proposal Floris.blg'
+[75] biber-darwin:303> INFO - === Sat Feb 29, 2020, 15:25:01
+[127] Biber.pm:359> INFO - Reading 'Proposal Floris.bcf'
+[605] Biber.pm:835> INFO - Found 1 citekeys in bib section 0
+[662] Biber.pm:3670> INFO - Processing section 0
+[722] Biber.pm:3840> INFO - Looking for bibtex format file '../bibliography.bib' for section 0
+[943] Utils.pm:180> ERROR - Cannot find '../bibliography.bib'!
+[943] Biber.pm:113> INFO - ERRORS: 1

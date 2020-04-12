@@ -1,0 +1,59 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{pgffor}
+\usepackage{hyperref}
+\usepackage{ifthen}
+\usepackage{biblatex}
+\usepackage{enumitem}
+\usepackage{stmaryrd}
+
+\addbibresource{../bibliography.bib}
+
+%%%% Title page commands %%%
+\newcommand\email[1]{
+    \href{mailto:#1}{\url{#1}}
+}
+
+% Takes: name, affiliation & email
+\newcommand\authorblock[3]{
+    #1\\
+    \small{#2}\\
+    \small{\email{#3}}
+}
+
+\newcommand\keywords[1]{
+    \vspace{5mm}\noindent
+    \small{\textbf{\textit{Keywords ---}} #1}
+}
+
+%%% Shorthands %%%
+\newcommand\NN{\mathbb{N}}
+\newcommand\ZZ{\mathbb{Z}}
+\newcommand\RR{\mathbb{R}}
+\newcommand\CC{\mathbb{C}}
+\newcommand\EE{\mathcal{E}}
+\newcommand\PP{\mathcal{P}}
+
+\newcommand\pre[1]{\prescript{\bullet}{}{#1}}
+\newcommand\post[1]{#1^\bullet}
+\newcommand\init[1]{\prescript{\circ}{}{#1}}
+\newcommand\final[1]{#1^\circ}
+\newcommand\diff{\backslash}
+
+% TODO: Ability to add stars and plusses.
+\newcommand\fire[1]{
+    \foreach \x [count=\xi] in {#1} {
+        \ifthenelse{\isodd{\xi}}{\x}{\xrightarrow{\x}}
+    }
+}
+
+%%% Theorem environments %%%
+\newtheorem{thm}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}

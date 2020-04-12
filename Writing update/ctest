@@ -1,0 +1,7 @@
+#include <stdio.h>
+
+int increment(int n) {
+  return n + 1;
+}
+
+increment(6)

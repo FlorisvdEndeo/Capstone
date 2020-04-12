@@ -1,0 +1,36 @@
+Spectrum by Quantum Walk - To prepare the ground
+state of Hamiltonian \(H\), our approach is to realize a simple quantum circuit \(W\) which does not implement a unitary time evolution \(U(t)\) but some other function of the Hamiltonian. Without loss of generality, we assume that the Hamiltonian is non-negative \(H \geq 0\) and that it can be expressed as \(H=\sum_{j=0}^{N} \alpha_{j} P_{j}\) where the \(P_{j}\) are multiqubit Pauli operators and \(P_{0}=I\). We rescale the Hamiltonian by a factor \(\mathcal{N}=\sum_{j=0}^{N}\left|\alpha_{j}\right| \in \mathcal{O}(N)\) and note
+$$
+\bar{H}=\frac{H}{\mathcal{N}}=\sum_{j}\left|\beta_{j}\right|^{2} P_{j}
+$$
+where \(\beta_{j}=\sqrt{\left|\alpha_{j}\right| / \mathcal{N}}\) and it follows that \(\sum_{j}\left|\beta_{j}\right|^{2}=1\)
+Note that any sign of \(\alpha_{j}\) can be absorbed in the definition of \(P_{j} .\) Obviously this rescaling does not affect the eigenstates, but it does change the spectral gap by a factor \(\mathcal{N}\) and this will be important when comparing this algorithms to ones based on Trotter expansions. The unitary transformation \(W\) we construct acts on \(n+\log (N+1)\) qubits, i.e., the \(n\) system qubits and \(\log (N+\)
+1) control qubits whose basis states \(\bra{j}\) are in one-toone correspondence with the \((N+1)\) terms \(P_{j}\) of the Hamiltonian. There exists an invariant subspace of \(W\) on which the spectrum of \(W\) is a simple function of \(H\)
+By initializing the quantum computer to that subspace,
+we thus obtain the desired effect. Following \([9,21],\) define \(|\beta\rangle, B, S\) and \(V\) as follows \(|\beta\rangle=B|0\rangle=\sum_{j} \beta_{j}|j\rangle\)
+$$
+\begin{aligned}
+S &=B\left(I-2|0\rangle(0 |) B^{\dagger}=(I-2|\beta\rangle(\beta |) \otimes I, \quad\text { and } \right.\\
+V=\sum_{j}|j\rangle|j| \otimes P_{j}
+\end{aligned}
+$$
+The identities \(S^{2}=V^{2}=I\) tell us that \(S\) and \(V\) are reflexions so they can simultaneously be put in blockdiagonal form with blocks of size \(2 .\) Indeed, for any eigenstate \(\bar{H}\left|\phi_{k}\right\rangle=E_{k}\left|\phi_{k}\right\rangle,\) both \(S\) and \(V\) preserve the subspace spanned by the orthonormal states
+$$
+\begin{aligned}
+\left|\varphi_{k}^{0}\right\rangle &=\sum_{j} \beta_{j}|j\rangle \otimes\left|\phi_{k}\right\rangle \text { and } \\
+\left|\varphi_{k}^{1}\right\rangle &=\frac{1}{\sqrt{1-E_{k}^{2}}}\left(V-E_{k}\right)\left|\varphi_{k}^{0}\right\rangle
+\end{aligned}
+$$
+and it is easy to show that in the above basis
+$$
+S=\left(\begin{array}{cc}
+-1 & 0 \\
+0 & 1
+\end{array}\right), \quad V=\left(\begin{array}{cc}
+E_{k} & \sqrt{1-E_{k}^{2}} \\
+\sqrt{1-E_{k}^{2}} & -E_{k}
+\end{array}\right)
+$$
+
+
+We define the unitary walk operator \(W=S V e^{i \pi}\) which has eigenvalues \(e^{\pm i \theta_{k}}\) and eigenstates \(\left|\varphi_{k}^{\pm}\right\rangle=\left(\left|\varphi_{k}^{0}\right\rangle \pm\right.\)
