@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[backend=biber]{biblatex}
+\usepackage{titling}
+\usepackage{titletoc}
+\usepackage{kbordermatrix}
+\usepackage{graphicx}
+\usepackage[document]{ragged2e}
+\usepackage{fancyhdr}
+\usepackage{bbold}
+%\usepackage{babylon}
+\usepackage{tikz}
+\usetikzlibrary{quantikz}
+\usepackage{qcircuit}
+\usepackage{blochsphere}
+
+\input{.../Titlepage/titlepage}
+
+
+
+\newcommand{\Sop}{{(I - 2\dyad{\beta}{\beta}) \otimes I}}
+\newcommand{\Vop}{{\sum_{j}\kb j j  \otimes P_{j}}}
+\newcommand{\fiok}{{\sum_j\beta_j\ket{j }\otimes \ket{\phi_0}}}
+\newcommand{\fiik}{{\frac{1}{\sqrt{1-E_0^2}}(V-E_0)\ket{\varphi_0^0}}}
+\newcommand{\fiob}{{\sum_m \beta_m^* \bra{m} \otimes \bra{phi_0}}}
+\newcommand{\fiib}{{\frac{1}{\sqrt{1-E_0^2}}(V-E_0) \sum_m \beta_m^* \bra{m} \otimes \bra{\phi_0}}}
+\newcommand{\fact}{{\frac{1}{1 - E^2_k} (V - E_k)}}
+\date{\today}
+\newcommand{\facto}{{\frac{1}{\sqrt{1 - E^2_0}} (V- E_0)}}

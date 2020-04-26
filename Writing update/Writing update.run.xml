@@ -79,7 +79,7 @@
       <file>"Writing update".bcf</file>
     </requires>
     <requires type="editable">
-      <file>newproposal.bib</file>
+      <file>Writing update.bib</file>
     </requires>
   </external>
 </requests>

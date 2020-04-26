@@ -1,0 +1,85 @@
+\newcommand\email[1]{
+    \href{mailto:#1}{\url{#1}}
+}
+
+% Takes: name, affiliation & email
+\newcommand\authorblock[3]{
+    #1\\
+    \small{#2}\\
+    \small{\email{#3}}
+}
+
+\newcommand\keywords[1]{
+    \vspace{5mm}\noindent
+    \small{\textbf{\textit{Keywords ---}} #1}
+}
+
+\title{Simulating the Water Molecule using the Spectrum by Quantum Walk Algorithm}
+
+
+
+
+\begin{titlepage}
+    \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+	\center
+
+	\HRule\\[0.4cm]
+
+	{\huge\bfseries \thetitle\\[0.4cm]}
+
+	\HRule\\[1.5cm]
+
+	\begin{minipage}{0.45\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Author}\\
+            Floris van den Ende\\
+            {\small Amsterdam University College}\\
+            {\small\email{florisvdende@gmail.com}}
+		\end{flushleft}
+	\end{minipage}
+	~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Supervisor}\\
+            Dhr. Dr. J.van Wezel\\
+            {\small{Faculteit der Natuurwetenschappen en Informatica \& Qusoft}\\
+            {\small{\url{j.vanwezel@uva.nl}}}}
+		\end{flushright}
+    \end{minipage}
+    \\[1cm]
+    \begin{minipage}[t]{0.45\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Tutor}\\
+            Dr. Forrest Bradbury\\
+            {\small Amsterdam University College}\\
+            {\small\email{f.bradbury@auc.nl}}
+		\end{flushleft}
+	\end{minipage}
+	~
+	\begin{minipage}[t]{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Daily Supervisor}\\
+            Joris Kattemolle\\
+            {\small Qusoft}\\
+            {\small\email{j.j.kattemolle@uva.nl}}
+		\end{flushright}
+	\end{minipage}
+    \vfill\vfill\vfill
+
+    {\large
+        Major: Sciences\\[0.5cm]
+        \thedate
+
+           }
+           \vfill\vfill
+    \includegraphics[width=0.2\textwidth]{{auc-logo.png}}\\[1cm]
+
+	\vfill
+
+
+\end{titlepage}

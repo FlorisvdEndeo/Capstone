@@ -1,10 +1,15 @@
 \BOOKMARK [1][-]{section.1}{Intruduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Questions}{}% 2
-\BOOKMARK [1][-]{section.3}{Quantum Computation}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{Why Quantum Computation}{section.3}% 4
-\BOOKMARK [2][-]{subsection.3.2}{Fundamental Principles}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{Gate Operations}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.4}{Quantum Circuits}{section.3}% 7
-\BOOKMARK [2][-]{subsection.3.5}{Quantum Algorithms}{section.3}% 8
-\BOOKMARK [1][-]{section.4}{Spectrum by Quantum Walk}{}% 9
-\BOOKMARK [2][-]{subsection.4.1}{Bit-string identities}{section.4}% 10
+\BOOKMARK [1][-]{section.2}{Quantum Computation}{}% 2
+\BOOKMARK [1][-]{section.3}{Spectrum by Quantum Walk}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Nomenclature and important identities}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Postulate of Operators}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Orthonormal bases}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.4}{Blockdiagonality}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.5}{Creating the Unitary Walk Operator}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.6}{Details of the Unitary Walk Operator}{section.3}% 9
+\BOOKMARK [1][-]{section.4}{Quantum Phase Estimation}{}% 10
+\BOOKMARK [1][-]{section.5}{Quantum Circuit Implementation}{}% 11
+\BOOKMARK [1][-]{section.6}{Application to the Water Molecule}{}% 12
+\BOOKMARK [1][-]{section.7}{Results}{}% 13
+\BOOKMARK [1][-]{section.8}{Discussion}{}% 14
+\BOOKMARK [1][-]{section.9}{Conclusion}{}% 15

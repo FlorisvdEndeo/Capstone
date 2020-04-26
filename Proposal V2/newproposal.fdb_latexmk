@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1586634395 "newproposal.tex" "newproposal.pdf" "newproposal" 1586634395
+["pdflatex"] 1587903415 "newproposal.tex" "newproposal.pdf" "newproposal" 1587903415
   "/usr/local/texlive/2020/texmf-dist/tex/generic/iftex/iftex.sty" 1583617216 6501 4011d89d9621e0b0901138815ba5ff29 ""
   "/usr/local/texlive/2020/texmf-dist/tex/generic/infwarerr/infwarerr.sty" 1575499628 8356 7bbb2c2373aa810be568c29e333da8ed ""
   "/usr/local/texlive/2020/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty" 1576624944 13807 952b0226d4efca026f0e19dd266dcc22 ""
@@ -107,10 +107,7 @@
   "/usr/local/texlive/2020/texmf-dist/tex/latex/tools/calc.sty" 1580683321 10216 5efd55f2010055e7b7875afd6a75be82 ""
   "/usr/local/texlive/2020/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/local/texlive/2020/texmf-dist/tex/latex/xcolor/xcolor.sty" 1463002160 55589 34128738f682d033422ca125f82e5d62 ""
-  "/usr/local/texlive/2020/texmf-dist/web2c/texmf.cnf" 1583102494 39451 60d7debd9ef8ece44cbe965493576c2d ""
-  "/usr/local/texlive/2020/texmf-var/web2c/pdftex/pdflatex.fmt" 1586631859 2432465 87aa0bf3060614201c9895c8ae51cf80 ""
-  "/usr/local/texlive/2020/texmf.cnf" 1586288231 577 d60164b4589a341208aff7a667fbbdcb ""
-  "newproposal.aux" 1583361693 3937 202684d95c4cd244dbe8dac4b7f244bb "pdflatex"
+  "newproposal.aux" 1583361693 3937 202684d95c4cd244dbe8dac4b7f244bb ""
   "newproposal.tex" 1586621158 13459 7407f7ed0035eeea9c8c9263f7dd4e93 ""
   "preamble-2.tex" 0 -1 0 ""
   (generated)
