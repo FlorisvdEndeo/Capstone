@@ -1,4 +1,3 @@
-\documentclass{article}
 \usepackage{amsmath}
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
@@ -7,7 +6,7 @@
 \usepackage[backend=biber]{biblatex}
 \usepackage{titling}
 \usepackage{titletoc}
-\usepackage{kbordermatrix}
+%\usepackage{kbordermatrix}
 \usepackage{graphicx}
 \usepackage[document]{ragged2e}
 \usepackage{fancyhdr}
@@ -15,10 +14,15 @@
 %\usepackage{babylon}
 \usepackage{tikz}
 \usetikzlibrary{quantikz}
-\usepackage{qcircuit}
+%\usepackage{qcircuit}
 \usepackage{blochsphere}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{stmaryrd}
+\usepackage{subcaption}
+\usepackage{import}
 
-\input{.../Titlepage/titlepage}
+
 
 
 
@@ -31,3 +35,36 @@
 \newcommand{\fact}{{\frac{1}{1 - E^2_k} (V - E_k)}}
 \date{\today}
 \newcommand{\facto}{{\frac{1}{\sqrt{1 - E^2_0}} (V- E_0)}}
+
+\newcommand\chap[1]{\input{./Chapters/#1}}
+
+\providecommand\given{}
+% can be useful to refer to this outside \Set
+\newcommand\SetSymbol[1][]{%
+  \nonscript\:#1\vert
+  \allowbreak
+  \nonscript\:
+  \mathopen{}}
+\DeclarePairedDelimiterX\Set[1]\{\}{%
+  \renewcommand\given{\;\SetSymbol[\delimsize]\;}
+  #1
+}
+
+\renewcommand\S{\Set*}
+
+\newcount\colveccount
+\newcommand*\colvec[1]{
+        \global\colveccount#1
+        \begin{pmatrix}
+        \colvecnext
+}
+\def\colvecnext#1{
+        #1
+        \global\advance\colveccount-1
+        \ifnum\colveccount>0
+                \\
+                \expandafter\colvecnext
+        \else
+                \end{pmatrix}
+        \fi
+}
