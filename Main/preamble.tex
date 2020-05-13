@@ -4,9 +4,10 @@
 \usepackage{tikz}
 \usepackage{physics}
 \usepackage[backend=biber]{biblatex}
+\usepackage{biblatex}
 \usepackage{titling}
 \usepackage{titletoc}
-%\usepackage{kbordermatrix}
+\usepackage{kbordermatrix}
 \usepackage{graphicx}
 \usepackage[document]{ragged2e}
 \usepackage{fancyhdr}
@@ -23,6 +24,10 @@
 \usepackage{import}
 
 
+
+\def\bracket#1#2{\langle #1 | #2 \rangle}
+\def\kb#1#2{| #1 \rangle\!\langle #2 |}
+\def\kbtwo#1#2#3#4{|#1 \rangle\!\langle #2 | #3 \rangle\!\langle #4 | }
 
 
 

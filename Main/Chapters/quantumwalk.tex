@@ -1,0 +1,416 @@
+
+\subsection{Nomenclature and important identities}
+
+In this chapter, the Spectrum by Quantum Walk algorithm, proposed by \textcite{poulin}, is discussed. Before this algorithm is examined in further detail, the following small section is dedicated to remove any confusion about conventions or identities used later on. \\
+Within quantum computing, $j$ represents a binary bit string. In present thesis, a four-qubit system is considered, so for consistency's sake all bit strings are expressed in the four-bit basis.
+For example, the bit-string of eleven is represented in vector form by the following:
+$$ \ket{11} = \ket{1011} = \ket{1} \otimes \ket{0} \otimes \ket{1} \otimes \ket{1} = \colvec{2}{0}{1} \otimes \colvec{2}{1}{0} \otimes \colvec{2}{0}{1} \otimes \colvec{2}{0}{1} =   \colvec{16}{0}{0}{0}{0}{0}{0}{0}{0}{0}{0}{0}{1}{0}{0}{0}{0}.$$
+
+Or generally, some state $\ket{n}$ in $\mathbb{R}^{16}$  can be represented by  \\ $\Set{e_{n+1} \given 1 \leq n + 1 \leq 16}$, where $e_{n+1}$ is a vector with a 1 inserted at the $n+1^{th}$ position, and 0's elsewhere. \\
+
+All bit string states are orthogonal, implying $$\bracket i j = \delta_{i,j} = \begin{cases}
+1& \text{if } i = j\\
+    0              & \text{otherwise}
+\end{cases}.
+$$
+
+As for the outer product,
+
+$$\kb i j = \delta_{i,j} \ e_{i+1, j+1}$$
+\\
+
+When summing bit string outer products over the $n$-dimensional space, each basis vector in $\mathbb{R}^{n}$ has a contribution of 1,
+resulting in an $n$ by $n$ matrix with only entries of 1 on the diagonal, which is the identity matrix:
+
+$$ \sum_{j}^{n} \kb jj = I_n
+$$
+
+The expectation value of some observable $\mathbb{A}$ measured in some basis $\{\varphi, \phi\}$ is:
+$$
+\bra{\varphi} \mathbb{A} \ket{\phi} = \braket{\varphi}{\mathbb{A}\phi} = \langle \mathbb{A^{\dagger}}\varphi|\phi \rangle
+$$
+
+However, if $\mathbb{c}$ is some scalar, then:
+$$
+\bra{\varphi} \mathbb{c} \ket{\phi} = \braket{\varphi}{\mathbb{c}\phi} = \mathbb{c} \braket{\varphi}{\phi}
+$$
+
+An important tensor product identity is the following:
+$$
+(U \otimes V)(|\psi\rangle \otimes|\phi\rangle)=(U|\psi\rangle) \otimes(V|\phi\rangle)
+$$
+
+\subsection{Postulate of Operators}
+The goal of this algorithm, and of many other quantum simulation algorithms, is to obtain expectation values of the eigenstates of the Hamiltonian of the system. However, while many other algorithms aim to reproduce the dynamics of a quantum system by approxing the time evolution operator, this algorithm aims to find a useful initial state, which is often the ground state of the Hamiltonian. As the Hamiltonian is absolutely fundamental to this method, let us define this first. First we have to assume that the Hamiltonian can be written in the form
+
+$$
+H = \sum_{j=0}^N \alpha_j P_j,
+$$
+where $j$ represents some possible state of the sytem. In the case of a simple molecule, this state would align with the occupancy of certain (spin-)orbitals. We sum these states up to $N$, which is the number of possible states (in the case of a molecule, the number of of possible orbital combinations). $P_j$ here is a multi-qubit Pauli operator, a tensor product of the four Pauli operators which are defined as the following \cite{nielsen}:
+
+\begin{align*}
+X&=\left(\begin{array}{cc}
+0 & 1 \\
+1 & 0
+\end{array}\right), \quad \quad Y=\left(\begin{array}{cc}
+0 & -i \\
+i & 0
+\end{array}\right),\\
+ Z&=\left(\begin{array}{cc}
+1 & 0 \\
+0 & -1
+\end{array}\right),\quad \quad I=\left(\begin{array}{cc}
+1 & 0 \\
+0 & 1
+\end{array}\right)
+\end{align*}
+
+Before we move forward, we must ensure that the Hamiltonian we are working with has mathematically desirable properties, such as normalization. We do so by introducing a scaling factor of $\mathcal{N} = \sum_{j=0}^N |\alpha_j|$ \cite{poulin}.
+
+Then our new, rescaled Hamiltonian which we will call $\bar{H}$, takes the following form:
+
+\begin{equation}
+	\bar H = \frac H{\mathcal{N}} = \sum_j|\beta_j|^2 P_j,
+\end{equation}
+
+where $\beta_j = \sqrt{|\alpha_j|/\mathcal{N}}$. Due to the nature of the scaling factor $\mathcal{N}$, $\sum_j \abs{\beta_j}^2 = 1.$
+\\\textcite{poulin} define $\beta, B, S$ and  $V$ as following:
+
+$$
+\ket\beta = B\ket 0 = \sum_j \beta_j \ket j$$
+$$
+S = (B (I - 2 \ket{0}\bra{0}) B^{\dagger}) \otimes I= (I-2\kb \beta \beta) \otimes I)$$
+\\
+$$
+V=\sum_{j}\ket{j}\bra{j} \otimes P_{j}
+$$
+
+It will be useful to check if $S$ and $V$ are unitary, so for $S$ we multiply it with it's complex conjugate, which, since $S$ is not complex, is the same as taking the square:
+
+\begin{align*}
+SS^* = S^2 &= ((I-2\kb \beta \beta) \otimes I)((I-2\kb \beta \beta) \otimes I)\\
+&= (I-2\kb \beta \beta)(I-2\kb \beta \beta) \otimes I^2 \\
+&= I^2 - 2I\kb \beta \beta\footnotemark - 2\kb \beta \beta I + 4 \ket{\beta} \bracket \beta \beta \bra \beta\\
+&= I^2 - 4\kb \beta \beta + 4\kb \beta \beta = I^2 = I
+\end{align*}
+\footnotetext{The outer product of a vector only produces elements on the diagonal, so multiplying with identity returns that same outer product}
+
+
+
+Same process for the operator $ $V :
+
+\begin{align*}
+VV^* = V^2 &= \sum_{j} \kb jj \otimes P_{j} \cdot \sum_{k} \kb kk \otimes P_{k} \\
+&= \sum_j \sum_k \kbtwo j j k k \otimes P_j P_k\\
+&= \sum_j \sum_k \delta_{j,k} | j \rangle \langle k | \otimes P_j P_k\\
+&= \sum_j | j \rangle \langle j | \otimes P_j P_j\\
+\end{align*}
+\begin{gather*}
+\text{As}  \sum_{j}^{n} \kb jj = I_n, \\
+V^2 = I
+\end{gather*}
+
+\subsection{Orthonormal bases}
+This algorithm relies on one fundamental property, namely that ``there exists an invariant subspace of $W$ on which the spectrum of $W$ is the simple function of $H$'' (The operator $W$ will be defined in a later stage). This statement implies that there is such $W$, where because it is a function of the Hamiltonian in a certain subspace, we can retrieve properties of that Hamiltonian from the operator $W$. \textcite{poulin} postulate the following orthonormal basis, in which S and V preserve the substate spanned by those basis, which will be the same substate that $W$ will be initialized to:
+
+\begin{align}
+\ket{\varphi_k^0} &= \sum_j\beta_j\ket j\otimes\ket{\phi_k} \\
+\ket{\varphi_k^1} &= \frac 1{\sqrt{1-E_k^2}}(V-E_k)\ket{\varphi_k^0},
+\end{align}
+
+Here, $k$ is a measure of the state of the eigenfunctions of the hamiltonian. When $k=0$, we are working with the ground-state. the place on the  Let us prove that $\varphi_k^0$ and $\varphi_k^1$ are normalized and orthogonal:
+
+\begin{align*}
+\braket{\varphi_k^0}{\varphi_k^0}  &= (\bra{\beta} \otimes \bra{\phi_k})(\ket{\beta} \otimes \ket{\phi_k})\\
+&= \braket{\beta}{\beta} \otimes \braket{\phi_k}{\phi_k}\\
+&= 1
+\end{align*}
+
+\begin{align*}
+\braket{\varphi_k^1}{\varphi_k^1}  &= \bra{\varphi_k^0} \frac{1}{\sqrt{1 - E^2_k}}(V-E_k) \frac{1}{\sqrt{1 - E^2_k}}(V-E_k) \ket{\varphi_k^0}\\
+&= \bra{\varphi_k^0} \frac{1}{1 - E^2_k} (V-E_k)^2  \ket{\varphi_k^0}\\
+&= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (V^2 - 2 E_kV + E_k^2) \ket{\varphi_k^0}\\
+&= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (I - 2 E_kV + E_k^2) \ket{\varphi_k^0}\\
+\end{align*}
+
+As the following identity will appear often, a seperate definition is made .
+
+\begin{align*}
+\bra{\varphi_k^0} V \ket{\varphi_k^0} &= \bra{\varphi_k^0} (\sum_j \kb j j \otimes P_j) \sum_l \beta_l \ket{l} \otimes \ket{\phi_k^0}\\
+&= \bra{\varphi_k^0}\sum_j \sum_l \beta_l \ket{j} \braket{j}{l} \otimes P_j \ket{\phi_k^0}\\
+&=(\sum_m \beta_m^* \bra{m} \otimes \bra{\phi_k}) \sum_j \sum_l \beta_l \ket{j} \delta_{j,l} \otimes P_j \ket{\phi_k}\\
+&= \sum_m \sum_j \beta_m^* \beta_j \braket{m}{j} \otimes \braket{\phi_k}{P_j \phi_k}\\
+&= \sum_m \sum_j \beta_m^* \beta_j \delta_{m,j} \otimes \braket{\phi_k}{P_j \phi_k}\\
+&= \sum_j \abs{\beta_j}^2 \braket{\phi_k}{P_j \phi_k}\\
+&= \sum_j \braket{\phi_k}{ \abs{\beta_j}^2  P_j \phi_k}
+\end{align*}
+
+As $\bar{H}\ket{\phi_k} = E_k\ket{\phi_k}$ and $\bar{H} = \sum_j \abs{\beta_j}^2  P_j,$
+\begin{equation}
+\bra{\varphi_k^0} V \ket{\varphi_k^0} = \braket{\phi_k}{E_k \phi_k}
+= E_k
+\end{equation}
+
+Continuing proof of normality of $\varphi_k^1$ using equation 4:
+
+
+
+\begin{align*}
+\braket{\varphi_k^1}{\varphi_k^1} &= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (I - 2 E_kV + E_k^2) \ket{\varphi_k^0}\\
+&= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (I - 2 E_k^2 + E_k^2) \ket{\varphi_k^0}\\
+&= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (I -  E_k^2) \ket{\varphi_k^0}\\
+&= \frac{1- E^2_k}{1 - E^2_k} \braket{\varphi_k^0}{\varphi_k^0}\\
+&= 1
+\end{align*}
+
+Proof of orthogonality, using equation 4
+\begin{align*}
+\braket{\varphi_k^0}{\varphi_k^1} &= \bra{\varphi_k^0}  \frac{1}{\sqrt{1 - E^2_k}}(V-E_k) \ket{\varphi_k^0}\\
+&= \bra{\varphi_k^0}  \frac{1}{\sqrt{1 - E^2_k}}(E_k-E_k) \ket{\varphi_k^0}\\
+&= 0
+\end{align*}
+
+\subsection{Blockdiagonality}
+
+Poulin et al \cite{poulin} state that the unitary property of $S$ and $V$ allow them to be put in block diagonal form with $ 2 \times 2$ blocks. A general block diagonal matrix only has nonzero entries in the blocks of size nxn on the diagonal, which for $ n = 2$ looks like the following:
+
+\[
+\left(\begin{array}{@{}c|c@{}}
+  \begin{matrix}
+  a & b \\
+  c & d
+  \end{matrix}
+  & \begin{matrix}
+  0 & 0 \\
+  0 & 0
+  \end{matrix} \\
+\hline
+  \begin{matrix}
+    0 & 0 \\
+    0 & 0
+    \end{matrix} &
+  \begin{matrix}
+  a & b \\
+  c & d
+  \end{matrix}
+\end{array}\right)
+\]
+
+We can put the expectation values of S and V in one of such matrices in the subspace of $\varphi_k^0$ and $\varphi_k^1$. The matrix with placeholder values then looks like the following:
+
+\begin{equation}
+\kbordermatrix{&
+\ket{\varphi_0^0}&\ket{\varphi_0^1}&\vrule&\ket{\varphi_1^0}&\ket{\varphi_1^1}&\vrule&\cdots&\vrule&\ket{\varphi_k^0}&\ket{\varphi_k^1}\\
+\bra{\varphi_0^0}&V_{11}&V_{21}&\vrule&0&0&\vrule&&\vrule&0&0\\
+\bra{\varphi_0^1}&V_{12}&V_{22}&\vrule&0&0&\vrule&&\vrule&0&0\\\hline
+\bra{\varphi_1^0}&0&0&\vrule&V_{33}&V_{43}&\vrule&&\vrule&0&0\\
+\bra{\varphi_1^1}&0&0&\vrule&V_{43}&V_{44}&\vrule&&\vrule&0&0\\\hline
+\vdots&&&\vrule&&&\vrule&\ddots&\vrule\\\hline
+\bra{\varphi_k^0}&0&0&\vrule&0&0&\vrule&&\vrule&a&b\\
+\bra{\varphi_k^1}&0&0&\vrule&0&0&\vrule&&\vrule&c&d\\
+}
+\end{equation}
+
+The off-diagonal elements are zero as $ \braket{\phi_k}{\phi_l} = \delta_{k,l}$. In other words, all the eigenstates of the Hamiltonian are orthogonal. We can find the values of $S$ and  $V$ in the basis by
+
+\begin{align*}
+\bra{\varphi_0^0}S\ket{\varphi_0^0} &= \bra{\varphi_0^0} (I-2\kb \beta \beta) \otimes I \ket{\varphi_0^0}\\
+&= \bra{\varphi^0_0} ((I-2\kb \beta \beta) \otimes I) \sum_j\beta_j\ket{j }\otimes \ket{\phi_0} \\
+&= \bra{\varphi^0_0} \sum_j (I-2\kb \beta \beta) \beta_j\ket{j} \otimes \ket{\phi_0}\\
+&= \bra{\varphi^0_0} - \ket{\beta} \otimes \ket{\phi_0}\\
+&= - (\bra{\beta} \otimes \bra{\phi_0})  \ket{\beta} \otimes \ket{\phi_0}\\
+&= -1
+\end{align*}
+
+
+
+Before we find the value of $\bra{\varphi_0^1}S\ket{\varphi_0^1}$, let us find what applying $S$ and $V$ in succession on a general state results:
+
+\begin{align*}
+SV&= (\Sop) \Vop\\
+&= ((I - 2\kb \beta \beta)\sum_j \kb j j) \otimes I P_j\\
+&= \sum_j ((I - 2 \abs{\beta_j}^2 \kb j j) \kb j j) \otimes P_j\\
+&= \sum_j (\kb j j - 2 \kbtwo j j j j)\otimes P_j\\
+&= - \sum_j \kb jj \otimes P_j\\
+&= - V
+\end{align*}
+
+As $S$ is a reflexion operator, the result makes sense, since $V$ also preserves the subspace spanned by the orthornomal bases. Let us finish filling out the block diagonal matrix of S, by finding the remaining values.
+
+\begin{align*}
+\bra{\varphi_0^1}S\ket{\varphi_0^1} &= \bra{\varphi_0^1} (\Sop) \fiik \\
+&= \bra{\varphi_0^1} \frac{1}{\sqrt{1 - E^2_0}} (-V + E_0) (-\ket{\varphi_0^0})\\
+&= \bra{\varphi_0^0} \frac{1}{\sqrt{1 - E^2_0}} (V - E_0) \frac{1}{\sqrt{1 - E^2_0}} (-V + E_0) -(\ket{\varphi_0^0})\\
+&= - \bra{\varphi_0^0} \frac{1}{1 - E^2_0} (- V^2 +E_0V+E_0V- E_0^2) \ket{\varphi_0^0}\\
+\text{As } \bra{\varphi_k^0} V \ket{\varphi_k^0} &= E_k,\\
+\bra{\varphi_0^1}S\ket{\varphi_0^1} &= - \bra{\varphi_0^0} \frac{1}{1 - E^2_0} (-1+E_0^2) \ket{\varphi_0^0}\\
+&= - \bra{\varphi_0^0} \frac{-(1-E_0^2)}{1 - E^2_0} \ket{\varphi_0^0}\\
+&= - \bra{\varphi_0^0} (- \ket{\varphi_0^0})\\
+&= \braket{\varphi_0^0}{\varphi_0^0}\\
+&= 1\\
+\end{align*}
+
+
+\begin{align*}
+\bra{\varphi_0^0}S\ket{\varphi_0^1} &= \bra{\varphi_0^0} (\Sop) \fiik\\
+&= \bra{\varphi_0^0} \frac{1}{\sqrt{1 - E^2_0}} (-V + E_0) \ket{-\varphi_0^0}\\
+&= - \bra{\varphi_0^1} \frac{1}{\sqrt{1 - E^2_0}} (-E_0 + E_0) \ket{\varphi_0^0}\\
+&= - \bra{\varphi_0^1} 0 \ket{\varphi_0^0}\\
+&= 0
+\end{align*}
+
+As the operator S is symmetric around the diagonal, S is self adjoint and from the identity $$\bra{\psi} A^{\dagger}\ket{\phi}= \bra{\phi} A \ket{\psi}^{*}$$
+we can conclude that $\bra{\varphi_0^0}S\ket{\varphi_0^1} = \bra{\varphi_0^1}S\ket{\varphi_0^0} = 0.$
+
+
+The block of S is now completed, and looks like the following:
+
+\begin{equation}
+S = \
+\kbordermatrix{& \ket{\varphi_0^0}&\ket{\varphi_0^1}\\
+\bra{\varphi_0^0}&-1&0\\
+\bra{\varphi_0^1}&0&1}
+\end{equation}
+
+
+From these values, it is clear that there is no $k$-dependency and therefore above matrix can be generalised for all $k$-values. The entirety of matrix 4 can be condensed into the following:
+
+
+\begin{equation}
+S = \kbordermatrix{& \ket{\varphi_k^0}&\ket{\varphi_k^1}\\
+\bra{\varphi_k^0}& -1&0\\
+\bra{\varphi_k^1}&0&1}
+\end{equation}
+
+
+Let us find the equivalent matrix for the operator $V$. In equation 4, it has been shown that $\bra{\varphi_k^0} V \ket{\varphi_k^0} = E_k$. Moving on,
+
+\begin{align*}
+\bra{\varphi_0^0}V\ket{\varphi_0^1}&= \bra{\varphi_0^0}  \frac{1}{\sqrt{1 - E^2_0}} (V^2 - E_0V) \ket{\varphi_0^0}\\
+&= \bra{\varphi_0^0} \frac{1}{\sqrt{1 - E^2_0}} (1 - E_^2) \ket{\varphi_0^0}\\
+&= \bra{\varphi_0^0} \sqrt{1 - E^2_0} \ket{\varphi_0^0}\\
+&= \sqrt{1 - E^2_0} \braket{\varphi_0^0}{\varphi_0^0}\\
+&= \sqrt{1 - E^2_0}
+\end{align*}
+
+As V is also diagonal and therefore self-adjoint, $$\bra{\psi} A^{\dagger}\ket{\phi}= \bra{\phi} A \ket{\psi}^{*}$$ holds again and thus $$\bra{\varphi_0^0}V\ket{\varphi_0^1} = \bra{\varphi_0^1}V\ket{\varphi_0^0} = \sqrt{1 - E^2_0}$$
+
+Lastly, we need to find $\bra{\varphi_0^1}V\ket{\varphi_0^1}$:
+
+\begin{align*}
+\bra{\varphi_0^1}V\ket{\varphi_0^1} &= \bra{\varphi_0^1}  \frac{1}{\sqrt{1 - E^2_0}} (V^2 - E_0V) \ket{\varphi_0^0}\\
+&= \bra{\varphi_0^0} \frac{1}{1 - E^2_0} (V - E_0)(1 - E_0V)\ket{\varphi_0^0}\\
+&= \bra{\varphi_0^0} \frac{1}{1 - E^2_0} (V - E_0 - E_0 + E_0^2V)\ket{\varphi_0^0}\\
+&= \bra{\varphi_0^0} \frac{1}{1 - E^2_0} (-E_0 + E_0^3)\ket{\varphi_0^0}\\
+&= \bra{\varphi_0^0} (- E_0 \frac{1 - E^2_0}{1 - E^2_0}\ket{\varphi_0^0})\\
+&= \bra{\varphi_0^0} (- E_0 \ket{\varphi_0^0})\\
+&= - E_0
+\end{align*}
+
+Once again, we can compile these value in the block matrix and generalize to any $k$-value in the range of energy states to obtain:
+
+\begin{equation}
+S = \
+\kbordermatrix{& \ket{\varphi_k^0}&\ket{\varphi_k^1}\\
+\bra{\varphi_k^0}& E_k&\sqrt{1 - E^2_0}\\
+\bra{\varphi_k^1}&\sqrt{1 - E^2_0}&-E_k
+}
+\end{equation}
+
+\subsection{Creating the Unitary Walk Operator}
+
+Before we start thinking about constructing an operator from $S$ and $V$, it is paramount to have a clear picture in mind of how $S$ and $V$ precisely act. In chapter 4.2 we have derived these operators in matrix form, in the subspace spanned by $\varphi_k^0$ and $\varphi_k^1$.
+
+Lets consider a general state in this subspace of the form $\ket{\psi} = c_0 \ket{\varphi_k^0} + c_1 \ket{\varphi_k^1}$, which would look like the following:
+
+$$
+\begin{tikzpicture}
+  \draw[thin,gray!40] (-2,-2) grid (2,2);
+  \draw[<->] (-2,0)--(2,0) node[right]{$\varphi_k^0$};
+  \draw[<->] (0,-2)--(0,2) node[above]{$\varphi_k^1$};
+  \draw[line width=1,5pt,cyan,-stealth](0,0)--(1,1) node[anchor=south west]{$\boldsymbol{\psi}$};
+\end{tikzpicture}
+$$
+
+Let us apply $S$ to $\psi$:
+
+$$
+\begin{pmatrix}
+-1 & 0\\
+0& 1
+\end{pmatrix}
+\begin{pmatrix}
+c_0\\
+c_1
+\end{pmatrix}
+=
+\begin{pmatrix}
+- c_0\\
+c_1
+\end{pmatrix}
+\\
+$$
+
+A visual representation of what happens when S is applied to $\psi$:
+
+
+$$
+\begin{tikzpicture}
+  \draw[thin,gray!40] (-2,-2) grid (2,2);
+  \draw[<->] (-2,0)--(2,0) node[right]{$\varphi_k^0$};
+  \draw[<->] (0,-2)--(0,2) node[above]{$\varphi_k^1$};
+  \draw[line width=1,5pt,cyan,-stealth](0,0)--(1,1) node[anchor=south west]{$\boldsymbol{\psi}$};
+  \draw[line width=1,5pt,green,-stealth](0,0)--(-1,1) node[anchor=south west]{$\boldsymbol{S\psi}$};
+\end{tikzpicture}
+$$
+
+As is evident from the graph above, the $S$ operator reflects any state in the subspace around the $\varphi_k^1$ axis.
+To see what effect $V$ has on a state in this subspace, we can simply apply $V$ to some state in the subspace. For efficiency reasons, we pick $c_0 = 1 \wedge c_1 = 0$.
+
+\begin{align*}
+V \ket{\psi} &= V \ket{\varphi_k^0}\\
+&= \Vop \fiok\\
+&= \sum_j \beta_j \ket{j} \otimes P_j \ket{\phi_k}
+\end{align*}
+
+From this result, we conclude that $V$ applies the specific Pauli operator, corresponding to the state of the system of qubits, to the $k_{th}$ eigenstate of the Hamiltonian. \textcite{poulin} define the unitary walk operator as:
+
+$$
+W = SVe^{i\pi}
+$$
+
+\subsection{Details of the Unitary Walk Operator}
+
+\section{Quantum Phase Estimation}
+%As $U$ is unitary, it's eigenvalues are unitary as well and can therefore be written in the form $e^{i\theta_k}$. The eigenstates are $\ket{\varphi_k^\pm} = (\ket{\varphi_k^0} \pm i \ket{\varphi_k^1})/\sqrt 2$.
+
+
+Berry 2015 have a different convention, they refer to the V operator as the Select operator by
+
+$$
+\operatorname{select}(V)|j\rangle|\psi\rangle=|j\rangle V_{j}|\psi\rangle
+$$
+
+We know that B:
+\[
+B|0\rangle=\frac{1}{\sqrt{s}} \sum_{j=0}^{m-1} \sqrt{\beta_{j}}|j\rangle
+\]
+where we define \(s:=\sum_{j=0}^{m-1} \beta_{j} .\)
+
+Definition for multi-qubit pauli operators
+
+
+
+\subsection{Protocol}
+
+
+When implementing the Spectrum by Quantum Walk algorithm, the following general protocol is to be followed:
+
+\begin{enumerate}
+  \item Normalize the Hamiltonian of the system to be simulated.
+  \item Create two registers: an ancillary register and a system register of sizes $log(N)$ and $n$ respectively.
+  \item Prepare an initial state of the form $ B \ket{0} \otimes \tilde{\ket{\phi_0}}$.
+  \item Create an additional ancillary register of size $t$ and perform phase estimation of $W$ to obtain $\abs{\theta_k}$.
+  \item Repeat this process to find the normalized energy, as $cos \theta_k = E_k$
+  \item Multiply $E_k$ with $N$
+\end{enumerate}

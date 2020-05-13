@@ -1,0 +1,33 @@
+
+
+
+\subsection{Quantummechanical foundations}
+
+Before we delve into the specifics of quantummechanics, a basic understanding of the quantummechanical principles governing qubits is needed. The state of some general quantummechanical system is described by its wavefunction, $\phi$. A time-independent wavefunction is often expressed as some linear combination of orthonormal basis states, such that.
+
+
+However, as the natural language of quantum mechanics is linear algebra, it is commonpractice to describe states in bra-ket notation (Source). States are described as vectors, and the simplest arbitratry quantummechanical system can be written:
+$$\ket{\psi} = \alpha \ket{0} + \beta \ket{1},$$
+
+where $\psi$ has to satisfy the normalization condition, implying that $\alpha^2 + \beta^2 = 1$. This system is called the \textit{qubit}, which lives in a two-dimensional Hilbert space. The defining feature of qubits is that they are in quantum superposition. When measuring a qubit, the outcome of the measurement in the so-called computational basis will still be either $\ket{0} \text{or} \ket{1}$, but these outcomes occur with probabilities depending on the superposition of the state, namely $\abs{\alpha} \text{or} \abs{\beta}$. Applying quantum logic gates manipulates both basis states at the same time, resulting in an increased computational potential when compared to classical bits. The orthonormal basis states $\ket{0} \text{and} \ket{1}$ are generally just an abstract representation of a two-level system, but depending on the type of quantum computer, they can be represented physical properties such as spin in quantum dots as well as energy levels in trapped ions \cite{mcardle}.
+
+Whenever there is a system with $n$ qubits, the state of that system is described by taking the tensor product of each individual state of that system.
+
+FOUR POSTULATES, SEE SHOR
+
+%\subsection{qauntum circuits}
+
+\subsection{Simulation}
+
+The core objective of simulation is solving the set of differential equations that describe the physical evolution in time of that system. In the case of quantum simulation, the dynamical behaviour of the system is described by the Schrödinger equation,
+
+$$ i \hbar \frac{d}{dt} \ket{\psi} = H \ket{\psi}.$$
+
+Quantum simulation is ``DIFFICULT'' as the number of differential equation grows exponentially with the number of qubits that are evolving, as one qubit requires two differential equations to b solved.
+
+
+Quantum simulation can be divided into two different sets of problems, the dynamic problem and the static problem. The static problem consists of preparing the (correct) initial state 
+
+%$$
+%H=\sum_{k} \omega_{k} Z_{k}+\sum_{j, k} Z_{j} \otimes Z_{k}+\sum_{k} g_{k}^{x}(t) X_{k}+g_{k}^{y}(t) Y_{k}
+%$$

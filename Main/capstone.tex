@@ -1,10 +1,9 @@
 \documentclass{report}
 
 \input{preamble}
-
+\addbibresource{capstone.bib}
 %\title{Simulating the Water Molecule using the Spectrum by Quantum Walk Algorithm}
 \author{Floris van den Ende}
-
 
 \begin{document}
 
@@ -12,9 +11,31 @@
 
 \tableofcontents
 
-%\chap{abstract}
+\chap{abstract}
+
 \chap{introduction}
-%\chap{quantum_comp}
+
+\chap{quantumcomp.tex}
+
+\chap{quantumwalk.tex}
+
+\newpage
+
+Meeting Joris 8 May agenda:
+
+\begin{itemize}
+  \item Practical details: proposal of Draft deadline (16 May), reader (Christian Majenz), presentation details, Timeline (extension from AUC) -> discuss at the end of Meeting
+  \item I now see my interpretation of the aim of this algorithm was wrong. I'd like to walk you through how I see it now.
+  Specific questions on about it:
+\begin{itemize}
+  \item Second quantized Hamiltonian, okay we simplify that. For physical implementation, Jordan Wigner or not?
+  \item How does this work with $ \tilde{H} = H_0 + gV$
+  \item Hodge Star? Confused about formula.
+\end{itemize}
+  \item Mathematics: We established that the calculation for $SV$ was nonsense, but I don't see how we can find the values without it
+  \item So now scope Capstone: I'll go more in detail of how Zeno effect is manipulated to avoid the need for explicit approximation of time operator.
+\end{itemize}
+
 
 
 \printbibliography
