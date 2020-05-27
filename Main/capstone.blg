@@ -1,5 +1,9 @@
 [0] Config.pm:304> INFO - This is Biber 2.14
 [0] Config.pm:307> INFO - Logfile is 'capstone.blg'
-[138] biber-darwin:322> INFO - === Wed May 13, 2020, 12:55:04
-[171] Utils.pm:320> ERROR - capstone.bcf is malformed, last biblatex run probably failed. Deleted capstone.bbl
-[171] Biber.pm:132> INFO - ERRORS: 1
+[144] biber-darwin:322> INFO - === Wed May 27, 2020, 12:33:26
+[166] Biber.pm:415> INFO - Reading 'capstone.bcf'
+[335] Biber.pm:943> INFO - Found 0 citekeys in bib section 0
+[340] Utils.pm:304> WARN - The file 'capstone.bcf' does not contain any citations!
+[351] bbl.pm:652> INFO - Writing 'capstone.bbl' with encoding 'UTF-8'
+[352] bbl.pm:755> INFO - Output to capstone.bbl
+[353] Biber.pm:128> INFO - WARNINGS: 1

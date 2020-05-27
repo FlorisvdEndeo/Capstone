@@ -11,7 +11,11 @@ $$\ket{\psi} = \alpha \ket{0} + \beta \ket{1},$$
 
 where $\psi$ has to satisfy the normalization condition, implying that $\alpha^2 + \beta^2 = 1$. This system is called the \textit{qubit}, which lives in a two-dimensional Hilbert space. The defining feature of qubits is that they are in quantum superposition. When measuring a qubit, the outcome of the measurement in the so-called computational basis will still be either $\ket{0} \text{or} \ket{1}$, but these outcomes occur with probabilities depending on the superposition of the state, namely $\abs{\alpha} \text{or} \abs{\beta}$. Applying quantum logic gates manipulates both basis states at the same time, resulting in an increased computational potential when compared to classical bits. The orthonormal basis states $\ket{0} \text{and} \ket{1}$ are generally just an abstract representation of a two-level system, but depending on the type of quantum computer, they can be represented physical properties such as spin in quantum dots as well as energy levels in trapped ions \cite{mcardle}.
 
-Whenever there is a system with $n$ qubits, the state of that system is described by taking the tensor product of each individual state of that system.
+Whenever there is a system with $n$ qubits, the joint state of that system is described by taking the tensor product of each individual state of that system. Taking a tensor product of two states is mathematically equivalent to taking the Kronecker product of the vectors of that state. For some arbitrary states $\ket{\phi} = \colvec{2}{\alpha}{\beta}$ and $\ket{\psi} = \colvec{2}{\gamma}{\delta}$, the joint state is given by
+
+$$
+\ket{\phi} \otimes \ket{\psi}= \colvec{2}{\alpha}{\beta} \otimes \colvec{2}{\gamma}{\delta} = \colvec{4}{\alpha\gamma}{\alpha\delta}{\beta\gamma}{\beta\delta}
+$$
 
 FOUR POSTULATES, SEE SHOR
 
@@ -26,8 +30,4 @@ $$ i \hbar \frac{d}{dt} \ket{\psi} = H \ket{\psi}.$$
 Quantum simulation is ``DIFFICULT'' as the number of differential equation grows exponentially with the number of qubits that are evolving, as one qubit requires two differential equations to b solved.
 
 
-Quantum simulation can be divided into two different sets of problems, the dynamic problem and the static problem. The static problem consists of preparing the (correct) initial state 
-
-%$$
-%H=\sum_{k} \omega_{k} Z_{k}+\sum_{j, k} Z_{j} \otimes Z_{k}+\sum_{k} g_{k}^{x}(t) X_{k}+g_{k}^{y}(t) Y_{k}
-%$$
+Quantum simulation can be divided into two different sets of problems, the dynamic problem and the static problem. The static problem consists of preparing the (correct) initial state and the dynamical problem consists of reproducing how the time-evolution unitary operator, $U= \exp{-iHt}$ affects the state of the system.

@@ -22,7 +22,11 @@
 \usepackage{stmaryrd}
 \usepackage{subcaption}
 \usepackage{import}
-
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[top=1in, bottom=1in, left=1.25in, right=1.25in]{geometry}
+%%% Todonotes commands %%%
+\newcommand{\addref}{\todo[color=red!40]{Add reference.}}
+\newcommand{\question}{\todo[color=green!40]}
 
 
 \def\bracket#1#2{\langle #1 | #2 \rangle}
@@ -40,6 +44,12 @@
 \newcommand{\fact}{{\frac{1}{1 - E^2_k} (V - E_k)}}
 \date{\today}
 \newcommand{\facto}{{\frac{1}{\sqrt{1 - E^2_0}} (V- E_0)}}
+
+
+\newcommand{\lefta}{\bra{\beta}\otimes\bra{\phi_k}}
+\newcommand{\leftb}{i\bra{\beta} \otimes \bra{\phi_k} \frac{V-E_k}{\sqrt{1-E_k^2}}}
+\newcommand{\righta}{\ket{\beta}\otimes \ket{\phi_k}}
+\newcommand{\rightb}{i\frac{V-E_k}{\sqrt{1-E_k^2}}\ket{\beta}\otimes  \ket{\phi_k}}
 
 \newcommand\chap[1]{\input{./Chapters/#1}}
 
