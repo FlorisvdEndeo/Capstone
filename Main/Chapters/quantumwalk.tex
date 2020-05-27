@@ -470,31 +470,59 @@ We once again consider each expectation value individually.
 $$ \bra{\varphi_k^0} E_k \sigma E_k \ket{\varphi_k^0} = E_k^2 \bra{\phi_k} \sigma \ket{\phi_k} $$
 
 Using equation 2.7, the following holds. \todo{prove the one, then hermitian so other is fine}
-$$
-\bra{\varphi_k^0} E_k \sigma V \ket{\varphi_k^0} = E_k^2 \bra{\phi_k} \sigma \ket{\phi_k}
-$$
-$$
-\bra{\varphi_k^0} V \sigma E_k\ket{\varphi_k^0} = E_k^2 \bra{\phi_k} \sigma \ket{\phi_k}
-$$
+\begin{align*}
+\bra{\varphi_k^0} E_k \sigma V \ket{\varphi_k^0} &=  E_k\bra{\varphi_k^0} \sigma \ket{\beta} \otimes P_j \ket{\phi_k}\\
+&= E_k \braket{\beta}{\beta} \otimes \bra{\phi_k} \sigma P_j \ket{\phi_k}\\
+&= E_k \sum_j \bra{\phi_k} \sigma \abs{\beta_j}^2 P_j \ket{\phi_k}\\
+&= E_k^2 \bra{\phi_k} \sigma \ket{\phi_k}
+\end{align*}
+
+As $\bra{\varphi_k^0} V \sigma E_k\ket{\varphi_k^0} $ is symmetric to $\bra{\varphi_k^0} E_k \sigma V \ket{\varphi_k^0}$, we can conclude that $\bra{\varphi_k^0} V \sigma E_k\ket{\varphi_k^0} = E_k^2 \bra{\phi_k} \sigma \ket{\phi_k}$
+
 
 \begin{align*}
   \bra{\varphi_k^0} V \sigma V \ket{\varphi_k^0} &= \bra{\beta}\otimes \bra{\phi_k} V \sigma V \ket{\beta} \otimes \ket{\phi_k}\\
   &= \sum_l \bra{l} \beta_l^{\dagger} \otimes \bra{\phi_k} P_l \sigma \sum_j \beta_j \ket{j} \otimes P_j \ket{\phi_k}\\
   &= \sum_j \abs{\beta_j}^2 \braket{j}{j} \otimes \bra{\phi_k} P_j \sigma P_j \ket{\phi_k}\\
   &= \sum_j \abs{\beta_j}^2  \bra{\phi_k} P_j \sigma P_j \ket{\phi_k}\\
-  &= \sum_j \abs{\beta_j}^2 \bra{\phi_k} P_j (P_j \sigma + [\sigma, P_j]) \ket{\phi_k}\\
-  \text{If $\sum_jP_j$ and $\sigma$ commute, then $[\sigma, ] = 0$ and}\\
-  &=  \sum_j \abs{\beta_j}^2 \bra{\phi_k} P_j^2 \sigma \ket{\phi_k}\\
-  &=  \sum_j \abs{\beta_j}^2 \bra{\phi_k} \sigma \ket{\phi_k}\\
-  & \text{If $P_j$ and $\sigma$ anticommute, then $[P_j, \sigma] =  2 P_j \sigma$ and}\\
-  &= \sum_j \abs{\beta_j}^2 \bra{\phi_k} P_j (P_j \sigma - 2 P_j \sigma) \ket{\phi_k}\\
-  &= \sum_j \abs{\beta_j}^2 \bra{\phi_k} - P_j^2 \sigma \ket{\phi_k}\\
-  &=  - \sum_j \abs{\beta_j}^2 \bra{\phi_k} \sigma \ket{\phi_k}.\\
 \end{align*}
+
+We split this sum up into two separate sums, where an extra constraint is placed on the (anti)commutation relation of $\sigma$ and $P_j$.
+
+$$
+&= \sum_{\substack{j \\ [\sigma, P_j = 0]}}\abs{\beta_j}^2  \bra{\phi_k} P_j \sigma P_j \ket{\phi_k} + \sum_{\substack{j \\ \{\sigma, P_j = 0\}}} \abs{\beta_j}^2  \bra{\phi_k} P_j \sigma P_j \ket{\phi_k}
+$$
+
+In the sum where $\sigma$ and $P_j$ commute, we can switch the order of $\sigma$ and $P_j$. We can do the same for the sum where $\sigma$ and $P_j$ commute, but that results in a sign change, as $AB = - BA$ for $ \{A,B\} = 0$. This gives
+
+$$
+&= \sum_{\substack{j \\ [\sigma, P_j = 0]}}\abs{\beta_j}^2  \bra{\phi_k} P_j  P_j \sigma \ket{\phi_k} - \sum_{\substack{j \\ \{\sigma, P_j = 0\}}} \abs{\beta_j}^2  \bra{\phi_k} P_j P_j \sigma \ket{\phi_k}.
+$$
+
+As $P_j$ is unconditionally unitary, $P^2_j = 1$. We can now merge the two sums back together by defining an additional operator \sigma:
+
+$$\sigma \star P_j = 0 \iff [\sigma, P_j] = 0 \wedge \sigma \star P_j = 1 \iff \{\sigma, P_j\} = 0.$$
+
+Then the two sums can be written as
+$$
+\sum_{j}\left|\beta_{j}\right|^{2}(-1)^{\sigma \star P_{j}} \bra{\phi_k} \sigma \ket{\phi_k}
+$$
+
+
+
+%   &= \sum_j \abs{\beta_j}^2 \bra{\phi_k} P_j (P_j \sigma + [\sigma, P_j]) \ket{\phi_k}\\
+%   \text{If $\sum_jP_j$ and $\sigma$ commute, then $[\sigma, ] = 0$ and}\\
+%   &=  \sum_j \abs{\beta_j}^2 \bra{\phi_k} P_j^2 \sigma \ket{\phi_k}\\
+%   &=  \sum_j \abs{\beta_j}^2 \bra{\phi_k} \sigma \ket{\phi_k}\\
+%   & \text{If $P_j$ and $\sigma$ anticommute, then $[P_j, \sigma] =  2 P_j \sigma$ and}\\
+%   &= \sum_j \abs{\beta_j}^2 \bra{\phi_k} P_j (P_j \sigma - 2 P_j \sigma) \ket{\phi_k}\\
+%   &= \sum_j \abs{\beta_j}^2 \bra{\phi_k} - P_j^2 \sigma \ket{\phi_k}\\
+%   &=  - \sum_j \abs{\beta_j}^2 \bra{\phi_k} \sigma \ket{\phi_k}.\\
+% \end{align*}
 
 Following the convention introduced by \textcite{\poulin}, we define another variable $\Gamma$:
 $$ \Gamma_{\sigma}=\sum_{j}\left|\beta_{j}\right|^{2}(-1)^{\sigma \star P_{j}}$$
-where $$\sigma \star P_j = 0 \implies [\sigma, P_j] = 0 \wedge \sigma \star P_j = 1 \implies \{\sigma, P_j\} = 0$$
+
 Then the expectation value can be written as
 
 \begin{equation}
@@ -515,93 +543,3 @@ We can now fill this expression back in equation 2.13 and obtain the value for t
 $$
 \bra{\varphi_k^{\pm}} \sigma \ket{\varphi_k^{\pm}} = \frac{1}{2}(1+\frac{\Gamma_{\sigma} - E_k^2}{1-E_k^2})  \bra{\phi_k} \sigma \ket{\phi_k}
 $$
-
-
-% The last term of above equation is, in its current form, inconvenient to work with. To create a clearer picture of how this term is built up, we slightly rewrite it. For the sake of simplicity of this section, we propose $ \frac{V-E_k}{\sqrt{1-E_k^2}} \equiv A.$ Then the above term has the form of $$ (\bra{\varphi_k^0} A^{\dagger})\sigma(A \: \ket{\varphi_k^0}) = \bra{\varphi_k^0} A^{\dagger} \sigmaA \: \sigma \ket{\varphi_k^0}.$$ Since $A$ is real and symmetric, $A^{\dagger} = A$ and we simplify to $$\bra{\varphi_k^0} A \sigma A  \ket{\varphi_k^0}$$.
-%
-% It is unknown how $ \sigma$ acts on $\ket{\varphi_0}$, but if we can rewrite the expression to the form of $\bra{\varphi_k^0} \sigma A^2 \ket{\varphi_k^0}$, we will obtain an expression in terms of the expectation value of $\sigma$ in the basis of the eigenstates of the Hamiltonian. To flip the order of $\sigma$, we first use the commutation relation:
-%
-% $$
-% [A,B] \equiv AB - BA
-% $$
-% which implies
-% \begin{equation} \label{commident}
-%   AB \equiv BA - [B,A].
-% \end{equation}
-%
-% Then,
-%
-%
-%
-% \begin{equation}
-%   \label{comm}
-%   \bra{\varphi_k^0} A  \sigma A  \ket{\varphi_k^0} = \bra{\varphi_k^0} (\sigma A - [\sigma, A])A \ket{\varphi_k^0}.
-%  \end{equation}
-%
-% \begin{align*}
-% [\sigma, A] &= \sigma \frac{V-E_k}{\sqrt{1-E_k^2}} - \frac{V-E_k}{\sqrt{1-E_k^2}} \sigma\\
-% &= \frac{1}{\sqrt{1-E_k^2}}(\sigma V - \sigma E_k - V \sigma + E_k \sigma)\\
-% &= \frac{[\sigma, V]}{\sqrt{1-E_k^2}}\\
-% &= \frac{[\sigma, \sum_j \kb jj \otimes P_j]}{\sqrt{1-E_k^2}}\\
-% &= \frac{\sum_j \kb jj \otimes[\sigma, P_j]}{\sqrt{1-E_k^2}}
-% \end{align*}
-%
-%
-%
-% Since the multi-qubit Pauli operators either commute or anti-commute, we would like to express formula 2.13 in terms of both the commutation and anti commutation relation. \textcite{nielsen} state the following identity:
-%
-% $$ AB = \frac{[A,B] + \{A,B\}}{2}$$.
-%
-% Rewriting this identity and substituting it into equation \ref{comm}, we obtain
-%
-% $$
-% [A,B] = 2 AB - \{A,B\}
-% $$
-%
-% If $A$ and $B$ anticommute, we're left with $[A,B] = 2 AB.$ Filling in the identities above into equation \ref{comm}, we obtain
-%
-% \begin{equation}
-%   \bra{\varphi_k^0} \sigma AA - [\sigma, A] A \ket{\varphi_k^0}
-% \end{equation}
-%
-% Now we're left with the following two scenarios.
-%
-% \begin{enumerate}
-%   \item $\sigma$ and $V$ commute, meaning $[\sigma,A]$ is zero and the expression we're left with is $$\bra{\varphi_k^0} \sigma AA \ket{\varphi_k^0}.$$ Filling in the original definition of $A$ gives
-%   \begin{align*}
-%     & \bra{\varphi_k^0} \sigma \frac{(V-E_k)^2}{1-E_k^2} \ket{\varphi_k^0}\\
-%     &= \bra{\varphi_k^0} \sigma \frac{I - 2 EkV + E_k^2}{1-E_k^2} \ket{\varphi_k^0}\\
-%     & \text{As } \bra{\varphi_k^0} V \ket{\varphi_k^0} = E_k,\\
-%     &= \bra{\varphi_k^0} \sigma \frac{I-E_k^2}{1-E_k^2} \ket{\varphi_k^0}\\
-%     &= \bra{\beta} \otimes \bra{\phi_0} (\sigma \ket{\beta} \otimes \ket{\phi_0})\\
-%     &=\bra{\beta} \otimes \bra{\phi_0} (\ket{\beta} \otimes \sigma \ket{\phi_0})\\
-%     &= \bracket \beta \beta \otimes \bra{\phi_0} \sigma \ket{\phi_0}\\
-%     &\text{For reasons that will become obvious later, we rewrite to the following}\\
-%     &= \frac{1-E_k^2}{1-E_k^2} \bra{\phi_0} \sigma \ket{\phi_0}\\
-%   \end{align*}
-%   \item $\sigma$ and $V$ anticommute, meaning ${\sigma, A} = 0.$ In equation 2.15, we're left with:
-%   \begin{align*}
-%     & \bra{\varphi_k^0} \sigma AA - [\sigma, A] A\\
-%     &= \bra{\varphi_k^0} \sigma AA - \frac{[\sigma, V]}{\sqrt{1-E_k^2}} A \ket{\varphi_k^0}\\
-%     &= \bra{\varphi_k^0} \sigma AA - \frac{2 \sigma V}{\sqrt{1-E_k^2}} A \ket{\varphi_k^0}\\
-%     &= \bra{\phi_0} \sigma \frac{I - 2 E_k V + E_k^2}{1-E_k^2} - \frac{2 (V^2 - VE_k)}{1-E_k^2}  \ket{\phi_0}\\
-%     &= \bra{\phi_0} \sigma \frac{I - 2 E_kV + E_k^2 - 2 I + 2 E_K V}{1-E_k^2} \ket{\phi_0}\\
-%     &= \bra{\phi_0} \sigma  \frac{- I + E_k^2}{1-E_k^2}\ket{\phi_0}\\
-%     &= - \frac{1-E_k^2}{1-E_k^2} \bra{\phi_0} \sigma \ket{\phi_0}\\
-%   \end{align*}
-% \end{enumerate}
-%
-% With these results, $$ \bra{\varphi_k^{\pm}} \sigma \ket{\varphi_k^{\pm}} = \bra{\phi_0} \sigma \ket{\phi_0}$$ or, if they anticommute $$ \bra{\varphi_k^{\pm}} \sigma \ket{\varphi_k^{\pm}} = 0$$
-% So ultimately its still off. The end factor for anticommutation has to be $ \frac{- 1 - E_k^2}{1-E_k^2}$, but I am rather sure that obtaining that with this setup is impossible. I tried assuming that the dagger of $A$ is not the same as $A$, but a sign change in $A^{\dagger}$ can't give the right result. I also tried expanding $V$ in the eigenstate of the Ham, but that doesn't lead anywhere either...
-%
-% \\
-
-\newpage
-\begin{itemize}
-  \item $S$ is similar operator to the Grover diffusion operator, similar implementation? Reflects around average value of $\ket{\beta}$ and in the specific basis, reflects around $\varphi^1$
-  \item Confusion about $j$ in Hamiltonian and $j$ in $\ket{\beta}$
-  \item Walkthrough last paragraph
-  \item Can i call the state preparation adiabatic?
-  \item general implementation questions. Basis preparation, probably not possible. Found Hamiltonian of $H_2$, couldn't find eigenstates. Should probably start with other, simpler hamiltonians anyway.
-  \item Also, what part of the Algorithm makes it a quantum walk algorithm?
-\end{itemize}

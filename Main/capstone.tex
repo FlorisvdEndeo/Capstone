@@ -5,10 +5,13 @@
 
 \documentclass{report}
 
+
 \input{preamble}
 \addbibresource{capstone.bib}
 %\title{Simulating the Water Molecule using the Spectrum by Quantum Walk Algorithm}
 \author{Floris van den Ende}
+
+\usepackage[braket, qm]{qcircuit} 
 
 \begin{document}
 
@@ -22,6 +25,7 @@
 \todo{size of matrices and computational complexity}
 \question{what is difference between adiabatic and this}
 \todo{prove V is hermitian}
+
 \input{./Chapters/abstract.tex}
 
 \input{./Chapters/introduction.tex}
@@ -32,9 +36,17 @@
 
 \input{./Chapters/quantumwalk.tex}
 
+\input{./Chapters/implement.tex}
 
+
+\[ \Qcircuit @C=1em @R=.7em {
+   & \gate{H} & \gate{Z} & \gate{H} & \qw \\
+   & \qw & \gate{X} & \qw & \qw
+} \]
 
 \newpage
+
+
 
 
 

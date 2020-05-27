@@ -16,5 +16,798 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{bian}{article}{}
+      \name{author}{5}{}{%
+        {{hash=d15ff2bbe49256ad79e0534df2acd7a2}{%
+           family={Bian},
+           familyi={B\bibinitperiod},
+           given={Teng},
+           giveni={T\bibinitperiod}}}%
+        {{hash=53c4da511df568b79b570b4c1f99573f}{%
+           family={Murphy},
+           familyi={M\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=5fa0b1f3649f8680f153aedef0fbcb7a}{%
+           family={Xia},
+           familyi={X\bibinitperiod},
+           given={Rongxin},
+           giveni={R\bibinitperiod}}}%
+        {{hash=a86e5ca55d7d9275e32b3ba3f5b58b8a}{%
+           family={Daskin},
+           familyi={D\bibinitperiod},
+           given={Ammar},
+           giveni={A\bibinitperiod}}}%
+        {{hash=49d525f40ba97c5794ca52ca1b05a4fb}{%
+           family={Kais},
+           familyi={K\bibinitperiod},
+           given={Sabre},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{publisher}{1}{%
+        {Taylor & Francis}%
+      }
+      \strng{namehash}{e260edf57dce6d09b27f5cc6075bba04}
+      \strng{fullhash}{734dd733d0970d0bf867828a062b9669}
+      \strng{bibnamehash}{e260edf57dce6d09b27f5cc6075bba04}
+      \strng{authorbibnamehash}{e260edf57dce6d09b27f5cc6075bba04}
+      \strng{authornamehash}{e260edf57dce6d09b27f5cc6075bba04}
+      \strng{authorfullhash}{734dd733d0970d0bf867828a062b9669}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{<p>We compare recently proposed methods to compute the electronic state energies of the water molecule on a quantum computer. The methods include the phase estimation algorithm based on Trotter decomposition, the phase estimation algorithm based on the direct implementation of the Hamiltonian, direct measurement based on the implementation of the Hamiltonian and a specific variational quantum eigensolver, Pairwise VQE. After deriving the Hamiltonian using STO-3G basis, we first explain how each method works and then compare the simulation results in terms of gate complexity and the number of measurements for the ground state of the water molecule with different O-H bond lengths. Moreover, we present the analytical analyses of the error and the gate-complexity for each method. While the required number of qubits for each method is almost the same, the number of gates and the error vary a lot. In conclusion, among methods based on the phase estimation algorithm, the second-order direct...}
+      \field{issn}{0026-8976}
+      \field{journaltitle}{Molecular Physics}
+      \field{number}{15-16}
+      \field{title}{Quantum computing methods for electronic states of the water molecule}
+      \field{volume}{117}
+      \field{year}{2019}
+      \field{pages}{2069\bibrangedash 2082}
+      \range{pages}{14}
+      \verb{urlraw}
+      \verb http://www.tandfonline.com/doi/abs/10.1080/00268976.2019.1580392
+      \endverb
+      \verb{url}
+      \verb http://www.tandfonline.com/doi/abs/10.1080/00268976.2019.1580392
+      \endverb
+      \keyw{Water Molecule ; Quantum Computing Methods ; Electronic States ; Resonances ; Chemistry ; Physics}
+    \endentry
+    \entry{cao}{misc}{}
+      \name{author}{13}{}{%
+        {{hash=9d14b450758cf26d28129c893c5dbb06}{%
+           family={Cao},
+           familyi={C\bibinitperiod},
+           given={Yudong},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=8c1a9ea5a335989d4957424b7cc2f7b9}{%
+           family={Romero},
+           familyi={R\bibinitperiod},
+           given={Jonathan},
+           giveni={J\bibinitperiod}}}%
+        {{hash=433f3ac7774e65b695d791ef0128cddf}{%
+           family={Olson},
+           familyi={O\bibinitperiod},
+           given={Jonathan\bibnamedelima P.},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=ce554a1b376ee1be7e82f136d4237255}{%
+           family={Degroote},
+           familyi={D\bibinitperiod},
+           given={Matthias},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9831fd95cc14da373cb72142dd856b48}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={Peter\bibnamedelima D.},
+           giveni={P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=db2013636ea18059a1f14d4455a59b58}{%
+           family={Kieferová},
+           familyi={K\bibinitperiod},
+           given={Mária},
+           giveni={M\bibinitperiod}}}%
+        {{hash=96586fe81debb62fa36b7cc6d84cde5e}{%
+           family={Kivlichan},
+           familyi={K\bibinitperiod},
+           given={Ian\bibnamedelima D.},
+           giveni={I\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=7c555b38206c5fb0ccec33164f55a8ff}{%
+           family={Menke},
+           familyi={M\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+        {{hash=153096fdb393cbbf4ecedbaf5839c3b6}{%
+           family={Peropadre},
+           familyi={P\bibinitperiod},
+           given={Borja},
+           giveni={B\bibinitperiod}}}%
+        {{hash=fa5a81edbec820ec863a0acd11b4283b}{%
+           family={Sawaya},
+           familyi={S\bibinitperiod},
+           given={Nicolas\bibnamedelimb P.\bibnamedelimi D.},
+           giveni={N\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=f156a71a758735a1cfc0aab991a121e2}{%
+           family={Sim},
+           familyi={S\bibinitperiod},
+           given={Sukin},
+           giveni={S\bibinitperiod}}}%
+        {{hash=5639fb699a197e299538fab136606a45}{%
+           family={Veis},
+           familyi={V\bibinitperiod},
+           given={Libor},
+           giveni={L\bibinitperiod}}}%
+        {{hash=083dcdd0db2687433b22fabfb2e55c17}{%
+           family={Aspuru-Guzik},
+           familyi={A\bibinithyphendelim G\bibinitperiod},
+           given={Alán},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{ca24edd932063f74122cbb2f3bd24580}
+      \strng{fullhash}{da91d9eb4c8e905c88267cd39ed1efc6}
+      \strng{bibnamehash}{ca24edd932063f74122cbb2f3bd24580}
+      \strng{authorbibnamehash}{ca24edd932063f74122cbb2f3bd24580}
+      \strng{authornamehash}{ca24edd932063f74122cbb2f3bd24580}
+      \strng{authorfullhash}{da91d9eb4c8e905c88267cd39ed1efc6}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{quant-ph}
+      \field{eprinttype}{arXiv}
+      \field{title}{Quantum Chemistry in the Age of Quantum Computing}
+      \field{year}{2018}
+      \verb{eprint}
+      \verb 1812.09976
+      \endverb
+    \endentry
+    \entry{daskin}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a86e5ca55d7d9275e32b3ba3f5b58b8a}{%
+           family={Daskin},
+           familyi={D\bibinitperiod},
+           given={Ammar},
+           giveni={A\bibinitperiod}}}%
+        {{hash=49d525f40ba97c5794ca52ca1b05a4fb}{%
+           family={Kais},
+           familyi={K\bibinitperiod},
+           given={Sabre},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Springer Science}%
+        {Business Media LLC}%
+      }
+      \strng{namehash}{ac93c1ec0fa7da2edabd5e2a86c8a43f}
+      \strng{fullhash}{ac93c1ec0fa7da2edabd5e2a86c8a43f}
+      \strng{bibnamehash}{ac93c1ec0fa7da2edabd5e2a86c8a43f}
+      \strng{authorbibnamehash}{ac93c1ec0fa7da2edabd5e2a86c8a43f}
+      \strng{authornamehash}{ac93c1ec0fa7da2edabd5e2a86c8a43f}
+      \strng{authorfullhash}{ac93c1ec0fa7da2edabd5e2a86c8a43f}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1573-1332}
+      \field{journaltitle}{Quantum Information Processing}
+      \field{month}{10}
+      \field{number}{12}
+      \field{title}{A generalized circuit for the Hamiltonian dynamics through the truncated series}
+      \field{volume}{17}
+      \field{year}{2018}
+      \verb{doi}
+      \verb 10.1007/s11128-018-2099-z
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1007/s11128-018-2099-z
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1007/s11128-018-2099-z
+      \endverb
+    \endentry
+    \entry{Divincenzo}{article}{}
+      \name{author}{1}{}{%
+        {{hash=3f82c3224b7a4ea4261042947fe2f747}{%
+           family={Divincenzo},
+           familyi={D\bibinitperiod},
+           given={David\bibnamedelima P.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{location}{1}{%
+        {Berlin}%
+      }
+      \list{publisher}{1}{%
+        {WILEY‐VCH Verlag Berlin GmbH}%
+      }
+      \strng{namehash}{3f82c3224b7a4ea4261042947fe2f747}
+      \strng{fullhash}{3f82c3224b7a4ea4261042947fe2f747}
+      \strng{bibnamehash}{3f82c3224b7a4ea4261042947fe2f747}
+      \strng{authorbibnamehash}{3f82c3224b7a4ea4261042947fe2f747}
+      \strng{authornamehash}{3f82c3224b7a4ea4261042947fe2f747}
+      \strng{authorfullhash}{3f82c3224b7a4ea4261042947fe2f747}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{After a brief introduction to the principles and promise of quantum information processing, the requirements for the physical implementation of quantum computation are discussed. These five requirements, plus two relating to the communication of quantum information, are extensively explored and related to the many schemes in atomic physics, quantum optics, nuclear and electron magnetic resonance spectroscopy, superconducting electronics, and quantum‐dot physics, for achieving quantum computing.}
+      \field{issn}{0015-8208}
+      \field{journaltitle}{Fortschritte der Physik}
+      \field{number}{9‐11}
+      \field{title}{The Physical Implementation of Quantum Computation}
+      \field{volume}{48}
+      \field{year}{2000}
+      \field{pages}{771\bibrangedash 783}
+      \range{pages}{13}
+      \keyw{Quantum Physics ; Condensed Matter - Mesoscale And Nanoscale Physics;}
+    \endentry
+    \entry{McArdle}{article}{}
+      \name{author}{5}{}{%
+        {{hash=3daf73fd06a4958752298e706cc55a5a}{%
+           family={McArdle},
+           familyi={M\bibinitperiod},
+           given={Sam},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c3acfc5e323c389790b828fbf6955f09}{%
+           family={Endo},
+           familyi={E\bibinitperiod},
+           given={Suguru},
+           giveni={S\bibinitperiod}}}%
+        {{hash=083dcdd0db2687433b22fabfb2e55c17}{%
+           family={Aspuru-Guzik},
+           familyi={A\bibinithyphendelim G\bibinitperiod},
+           given={Alán},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b10a34e16a501939634880eade0cec5e}{%
+           family={Benjamin},
+           familyi={B\bibinitperiod},
+           given={Simon\bibnamedelima C.},
+           giveni={S\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=001b5a60b43cad93e93a32a46ae0c874}{%
+           family={Yuan},
+           familyi={Y\bibinitperiod},
+           given={Xiao},
+           giveni={X\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society (APS)}%
+      }
+      \strng{namehash}{effc795ef39c881daa1ba1650e02594b}
+      \strng{fullhash}{5f29953c0d828b365afbef814aaad6df}
+      \strng{bibnamehash}{effc795ef39c881daa1ba1650e02594b}
+      \strng{authorbibnamehash}{effc795ef39c881daa1ba1650e02594b}
+      \strng{authornamehash}{effc795ef39c881daa1ba1650e02594b}
+      \strng{authorfullhash}{5f29953c0d828b365afbef814aaad6df}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1539-0756}
+      \field{journaltitle}{Reviews of Modern Physics}
+      \field{month}{3}
+      \field{number}{1}
+      \field{title}{Quantum computational chemistry}
+      \field{volume}{92}
+      \field{year}{2020}
+      \verb{doi}
+      \verb 10.1103/revmodphys.92.015003
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1103/RevModPhys.92.015003
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1103/RevModPhys.92.015003
+      \endverb
+    \endentry
+    \entry{nielsen}{book}{}
+      \name{author}{2}{}{%
+        {{hash=afe17482fc813e497188aee3b3783879}{%
+           family={Nielsen},
+           familyi={N\bibinitperiod},
+           given={Michael\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=415ddff2f58b25977b1a2dedf18f4501}{%
+           family={Chuang},
+           familyi={C\bibinitperiod},
+           given={Isaac\bibnamedelima L.},
+           giveni={I\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {USA}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \strng{fullhash}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \strng{bibnamehash}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \strng{authorbibnamehash}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \strng{authornamehash}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \strng{authorfullhash}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \field{sortinit}{N}
+      \field{sortinithash}{98cf339a479c0454fe09153a08675a15}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{10th}
+      \field{isbn}{1107002176}
+      \field{title}{Quantum Computation and Quantum Information: 10th Anniversary Edition}
+      \field{year}{2011}
+    \endentry
+    \entry{malley}{article}{}
+      \name{author}{32}{}{%
+        {{hash=96fcb68450f28a59913f918bcce52221}{%
+           family={O'Malley},
+           familyi={O\bibinitperiod},
+           given={P.\bibnamedelimi J.\bibnamedelimi J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=4e67bac7fd395624e97c4fe39bcdbd31}{%
+           family={Babbush},
+           familyi={B\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=8acc314b5ff6f87246c4c13456462f00}{%
+           family={Kivlichan},
+           familyi={K\bibinitperiod},
+           given={I.\bibnamedelimi D.},
+           giveni={I\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=de78d00bb2937ab040c7e2899b33d582}{%
+           family={Romero},
+           familyi={R\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=142bddd5acf22d1335b8e8327c6523d6}{%
+           family={McClean},
+           familyi={M\bibinitperiod},
+           given={J.\bibnamedelimi R.},
+           giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+        {{hash=ff7bbdd7f761aa7d9ca7fb671835ab9b}{%
+           family={Barends},
+           familyi={B\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=52ce271eaf95f32dd23df21155d474bd}{%
+           family={Kelly},
+           familyi={K\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=1da87e45f27c6d9d57192ddcc39536eb}{%
+           family={Roushan},
+           familyi={R\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=f0948a3244046a0c6136ec4356032c47}{%
+           family={Tranter},
+           familyi={T\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=196bda6d2488a378d32fcee11fe46bbc}{%
+           family={Ding},
+           familyi={D\bibinitperiod},
+           given={N.},
+           giveni={N\bibinitperiod}}}%
+        {{hash=7186d1868d3f045c9620cda709fbac9f}{%
+           family={Campbell},
+           familyi={C\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=ff38b98d2dc65002f66d028a85b9d58d}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Y.},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=d90f53b6c47cfea3540b0fb9da23dbd7}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Z.},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=8da373af8ff3d58997c2ed6f4993faca}{%
+           family={Chiaro},
+           familyi={C\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=41e3b7df214ae8e20258fc5d1eb197eb}{%
+           family={Dunsworth},
+           familyi={D\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=b947d26f864b16e4fda8d887ef910d86}{%
+           family={Fowler},
+           familyi={F\bibinitperiod},
+           given={A.\bibnamedelimi G.},
+           giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=c100c55f6ebe8b06bf6ac7fe84162405}{%
+           family={Jeffrey},
+           familyi={J\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=eff4026eb032033e709bde6174d3be9f}{%
+           family={Lucero},
+           familyi={L\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+        {{hash=2ee914f9dca607e0f4e833bf3e2b845d}{%
+           family={Megrant},
+           familyi={M\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=5a77e82e7902840db5b1f11ad325b7aa}{%
+           family={Mutus},
+           familyi={M\bibinitperiod},
+           given={J.\bibnamedelimi Y.},
+           giveni={J\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+        {{hash=75f3d78a932ed86386a2ef2bafd63f44}{%
+           family={Neeley},
+           familyi={N\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=055121e953a2e053bab0c98fa64b82a0}{%
+           family={Neill},
+           familyi={N\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=6bbdfeb8cf2208c5732783731b39da6e}{%
+           family={Quintana},
+           familyi={Q\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=f04446b18aa4081121989c7b3a557778}{%
+           family={Sank},
+           familyi={S\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=7ea58a08978a1363797b293339adad82}{%
+           family={Vainsencher},
+           familyi={V\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a168067f5e198f743b38d92fd0b74c4b}{%
+           family={Wenner},
+           familyi={W\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=d8e06b7053d365f509f13349d35954d0}{%
+           family={White},
+           familyi={W\bibinitperiod},
+           given={T.\bibnamedelimi C.},
+           giveni={T\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=40becd89b597526dc522074782597c29}{%
+           family={Coveney},
+           familyi={C\bibinitperiod},
+           given={P.\bibnamedelimi V.},
+           giveni={P\bibinitperiod\bibinitdelim V\bibinitperiod}}}%
+        {{hash=a864239d2b66f9f655dc359a2682377b}{%
+           family={Love},
+           familyi={L\bibinitperiod},
+           given={P.\bibnamedelimi J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=805e7a7a2621962b09d3ad6eb37f3ae0}{%
+           family={Neven},
+           familyi={N\bibinitperiod},
+           given={H.},
+           giveni={H\bibinitperiod}}}%
+        {{hash=3fdaf79732994670bf11569f17d4e12d}{%
+           family={Aspuru-Guzik},
+           familyi={A\bibinithyphendelim G\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=9f2ac509b63af11f2f6e3ccb91b0fd50}{%
+           family={Martinis},
+           familyi={M\bibinitperiod},
+           given={J.\bibnamedelimi M.},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society}%
+      }
+      \strng{namehash}{072055abd7a4851ad74bb2c95f07a338}
+      \strng{fullhash}{ef1aa9bac3a47b7dc61a6fcefddb3834}
+      \strng{bibnamehash}{072055abd7a4851ad74bb2c95f07a338}
+      \strng{authorbibnamehash}{072055abd7a4851ad74bb2c95f07a338}
+      \strng{authornamehash}{072055abd7a4851ad74bb2c95f07a338}
+      \strng{authorfullhash}{ef1aa9bac3a47b7dc61a6fcefddb3834}
+      \field{sortinit}{O}
+      \field{sortinithash}{ff8d4eeb5101e3cf3809959b3592d942}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issue}{3}
+      \field{journaltitle}{Phys. Rev. X}
+      \field{month}{7}
+      \field{title}{Scalable Quantum Simulation of Molecular Energies}
+      \field{volume}{6}
+      \field{year}{2016}
+      \field{pages}{031007}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevX.6.031007
+      \endverb
+      \verb{urlraw}
+      \verb https://link.aps.org/doi/10.1103/PhysRevX.6.031007
+      \endverb
+      \verb{url}
+      \verb https://link.aps.org/doi/10.1103/PhysRevX.6.031007
+      \endverb
+    \endentry
+    \entry{poulin}{article}{}
+      \name{author}{5}{}{%
+        {{hash=7575941816e4f25600383f3d6cf5051f}{%
+           family={Poulin},
+           familyi={P\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=59949d44a3903dfabb88bff3220ff2e0}{%
+           family={Kitaev},
+           familyi={K\bibinitperiod},
+           given={Alexei},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ea2588005b5d0d198a044b90c3b819ea}{%
+           family={Steiger},
+           familyi={S\bibinitperiod},
+           given={Damian\bibnamedelima S.},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=2b6ced7ad9a68118cdd8e4199aabebae}{%
+           family={Hastings},
+           familyi={H\bibinitperiod},
+           given={Matthew\bibnamedelima B.},
+           giveni={M\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=8c95c0b716ad4a10a2ab4370aca0d0ca}{%
+           family={Troyer},
+           familyi={T\bibinitperiod},
+           given={Matthias},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society (APS)}%
+      }
+      \strng{namehash}{0d866ac8909acce82664a13ee2f670ad}
+      \strng{fullhash}{090abc52689356faa271fba2f9d48477}
+      \strng{bibnamehash}{0d866ac8909acce82664a13ee2f670ad}
+      \strng{authorbibnamehash}{0d866ac8909acce82664a13ee2f670ad}
+      \strng{authornamehash}{0d866ac8909acce82664a13ee2f670ad}
+      \strng{authorfullhash}{090abc52689356faa271fba2f9d48477}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1079-7114}
+      \field{journaltitle}{Physical Review Letters}
+      \field{month}{7}
+      \field{number}{1}
+      \field{title}{Quantum Algorithm for Spectral Measurement with a Lower Gate Count}
+      \field{volume}{121}
+      \field{year}{2018}
+      \verb{doi}
+      \verb 10.1103/physrevlett.121.010501
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1103/PhysRevLett.121.010501
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1103/PhysRevLett.121.010501
+      \endverb
+    \endentry
+    \entry{reiher}{article}{}
+      \name{author}{5}{}{%
+        {{hash=101a884703c155ac5ca9bc3f658bcc99}{%
+           family={Reiher},
+           familyi={R\bibinitperiod},
+           given={Markus},
+           giveni={M\bibinitperiod}}}%
+        {{hash=9906b78ec80183f9ac5008ae54ce7088}{%
+           family={Wiebe},
+           familyi={W\bibinitperiod},
+           given={Nathan},
+           giveni={N\bibinitperiod}}}%
+        {{hash=1e0b27cffef483b809894bbe98096b26}{%
+           family={Svore},
+           familyi={S\bibinitperiod},
+           given={Krysta\bibnamedelima M.},
+           giveni={K\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=efcf6e85ae6db8576299902ff937b539}{%
+           family={Wecker},
+           familyi={W\bibinitperiod},
+           given={Dave},
+           giveni={D\bibinitperiod}}}%
+        {{hash=8c95c0b716ad4a10a2ab4370aca0d0ca}{%
+           family={Troyer},
+           familyi={T\bibinitperiod},
+           given={Matthias},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {National Academy of Sciences}%
+      }
+      \strng{namehash}{5eab1aeb0480339d0a43d14eb269c3aa}
+      \strng{fullhash}{40236c007f2f78ad404d9a71ddc13f51}
+      \strng{bibnamehash}{5eab1aeb0480339d0a43d14eb269c3aa}
+      \strng{authorbibnamehash}{5eab1aeb0480339d0a43d14eb269c3aa}
+      \strng{authornamehash}{5eab1aeb0480339d0a43d14eb269c3aa}
+      \strng{authorfullhash}{40236c007f2f78ad404d9a71ddc13f51}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Our work addresses the question of compelling killer applications for quantum computers. Although quantum chemistry is a strong candidate, the lack of details of how quantum computers can be used for specific applications makes it difficult to assess whether they will be able to deliver on the promises. Here, we show how quantum computers can be used to elucidate the reaction mechanism for biological nitrogen fixation in nitrogenase, by augmenting classical calculation of reaction mechanisms with reliable estimates for relative and activation energies that are beyond the reach of traditional methods. We also show that, taking into account overheads of quantum error correction and gate synthesis, a modular architecture for parallel quantum computers can perform such calculations with components of reasonable complexity.With rapid recent advances in quantum technology, we are close to the threshold of quantum devices whose computational powers can exceed those of classical supercomputers. Here, we show that a quantum computer can be used to elucidate reaction mechanisms in complex chemical systems, using the open problem of biological nitrogen fixation in nitrogenase as an example. We discuss how quantum computers can augment classical computer simulations used to probe these reaction mechanisms, to significantly increase their accuracy and enable hitherto intractable simulations. Our resource estimates show that, even when taking into account the substantial overhead of quantum error correction, and the need to compile into discrete gate sets, the necessary computations can be performed in reasonable time on small quantum computers. Our results demonstrate that quantum computers will be able to tackle important problems in chemistry without requiring exorbitant resources.}
+      \field{issn}{0027-8424}
+      \field{journaltitle}{Proceedings of the National Academy of Sciences}
+      \field{title}{Elucidating reaction mechanisms on quantum computers}
+      \field{year}{2017}
+      \verb{doi}
+      \verb 10.1073/pnas.1619152114
+      \endverb
+      \verb{eprint}
+      \verb https://www.pnas.org/content/early/2017/06/30/1619152114.full.pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.pnas.org/content/early/2017/06/30/1619152114
+      \endverb
+      \verb{url}
+      \verb https://www.pnas.org/content/early/2017/06/30/1619152114
+      \endverb
+    \endentry
+    \entry{seeley}{article}{}
+      \name{author}{3}{}{%
+        {{hash=27b1dc249916174931b8db4c16a4b788}{%
+           family={Seeley},
+           familyi={S\bibinitperiod},
+           given={Jacob\bibnamedelima T.},
+           giveni={J\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+        {{hash=215130e674b83860f71703a7f041c415}{%
+           family={Richard},
+           familyi={R\bibinitperiod},
+           given={Martin\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=2d8133b5eb867e28af9ca9ea41105b5c}{%
+           family={Love},
+           familyi={L\bibinitperiod},
+           given={Peter\bibnamedelima J.},
+           giveni={P\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {AIP Publishing}%
+      }
+      \strng{namehash}{ddffcb998f30d67fc879a7af0904dfbc}
+      \strng{fullhash}{ddffcb998f30d67fc879a7af0904dfbc}
+      \strng{bibnamehash}{ddffcb998f30d67fc879a7af0904dfbc}
+      \strng{authorbibnamehash}{ddffcb998f30d67fc879a7af0904dfbc}
+      \strng{authornamehash}{ddffcb998f30d67fc879a7af0904dfbc}
+      \strng{authorfullhash}{ddffcb998f30d67fc879a7af0904dfbc}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1089-7690}
+      \field{journaltitle}{The Journal of Chemical Physics}
+      \field{month}{12}
+      \field{number}{22}
+      \field{title}{The Bravyi-Kitaev transformation for quantum computation of electronic structure}
+      \field{volume}{137}
+      \field{year}{2012}
+      \field{pages}{224109}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1063/1.4768229
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1063/1.4768229
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1063/1.4768229
+      \endverb
+    \endentry
+    \entry{shor}{article}{}
+      \name{author}{1}{}{%
+        {{hash=7082a9c99d5d51479d4cfba6bbac2d30}{%
+           family={Shor},
+           familyi={S\bibinitperiod},
+           given={Peter\bibnamedelima W.},
+           giveni={P\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{2}{%
+        {Society for Industrial}%
+        {Applied Mathematics}%
+      }
+      \strng{namehash}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \strng{fullhash}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \strng{bibnamehash}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \strng{authorbibnamehash}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \strng{authornamehash}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \strng{authorfullhash}{7082a9c99d5d51479d4cfba6bbac2d30}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{A digital computer is generally believed to be an efficient universal computing device; that is, it is believed to be able to simulate any physical computing device with an increase in computation time by at most a polynomial factor. This may not be true when quantum mechanics is taken into consideration. This paper considers factoring integers and finding discrete logarithms, two problems that are generally thought to be hard on classical computers and that have been used as the basis of several proposed cryptosystems. Efficient randomized algorithms are given for these two problems on a hypothetical quantum computer. These algorithms take a number of steps polynomial in the input size, for example, the number of digits of the integer to be factored.}
+      \field{issn}{00361445}
+      \field{journaltitle}{SIAM Review}
+      \field{number}{2}
+      \field{title}{Polynomial-Time Algorithms for Prime Factorization and Discrete Logarithms on a Quantum Computer}
+      \field{volume}{41}
+      \field{year}{1999}
+      \field{pages}{303\bibrangedash 332}
+      \range{pages}{30}
+      \verb{urlraw}
+      \verb http://www.jstor.org/stable/2653075
+      \endverb
+      \verb{url}
+      \verb http://www.jstor.org/stable/2653075
+      \endverb
+    \endentry
+    \entry{smith}{article}{}
+      \name{author}{1}{}{%
+        {{hash=e44f09a2d84db823a77079697cf1a851}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={M},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{e44f09a2d84db823a77079697cf1a851}
+      \strng{fullhash}{e44f09a2d84db823a77079697cf1a851}
+      \strng{bibnamehash}{e44f09a2d84db823a77079697cf1a851}
+      \strng{authorbibnamehash}{e44f09a2d84db823a77079697cf1a851}
+      \strng{authornamehash}{e44f09a2d84db823a77079697cf1a851}
+      \strng{authorfullhash}{e44f09a2d84db823a77079697cf1a851}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Quantum Mechanical Description of H-O-H Bond Angle}
+      \verb{urlraw}
+      \verb http://www.physics.drexel.edu/~bob/TermPapers/MSmith_QuantumPaper.pdf
+      \endverb
+      \verb{url}
+      \verb http://www.physics.drexel.edu/~bob/TermPapers/MSmith_QuantumPaper.pdf
+      \endverb
+    \endentry
+    \entry{steane}{article}{}
+      \name{author}{1}{}{%
+        {{hash=709ec85ca103787bef16fbddaff31cb6}{%
+           family={Steane},
+           familyi={S\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {{IOP} Publishing}%
+      }
+      \strng{namehash}{709ec85ca103787bef16fbddaff31cb6}
+      \strng{fullhash}{709ec85ca103787bef16fbddaff31cb6}
+      \strng{bibnamehash}{709ec85ca103787bef16fbddaff31cb6}
+      \strng{authorbibnamehash}{709ec85ca103787bef16fbddaff31cb6}
+      \strng{authornamehash}{709ec85ca103787bef16fbddaff31cb6}
+      \strng{authorfullhash}{709ec85ca103787bef16fbddaff31cb6}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{The subject of quantum computing brings together ideas from classical information theory, computer science, and quantum physics. This review aims to summarize not just quantum computing, but the whole subject of quantum information theory. Information can be identified as the most general thing which must propagate from a cause to an effect. It therefore has a fundamentally important role in the science of physics. However, the mathematical treatment of information, especially information processing, is quite recent, dating from the mid-20th century. This has meant that the full significance of information as a basic concept in physics is only now being discovered. This is especially true in quantum mechanics. The theory of quantum information and computing puts this significance on a firm footing, and has led to some profound and exciting new insights into the natural world. Among these are the use of quantum states to permit the secure transmission of classical information (quantum cryptography), the use of quantum entanglement to permit reliable transmission of quantum states (teleportation), the possibility of preserving quantum coherence in the presence of irreversible noise processes (quantum error correction), and the use of controlled quantum evolution for efficient computation (quantum computation). The common theme of all these insights is the use of quantum entanglement as a computational resource. It turns out that information theory and quantum mechanics fit together very well. In order to explain their relationship, this review begins with an introduction to classical information theory and computer science, including Shannon's theorem, error correcting codes, Turing machines and computational complexity. The principles of quantum mechanics are then outlined, and the Einstein, Podolsky and Rosen (EPR) experiment described. The EPR-Bell correlations, and quantum entanglement in general, form the essential new ingredient which distinguishes quantum from classical information theory and, arguably, quantum from classical physics. Basic quantum information ideas are next outlined, including qubits and data compression, quantum gates, the `no cloning' property and teleportation. Quantum cryptography is briefly sketched. The universal quantum computer (QC) is described, based on the Church-Turing principle and a network model of computation. Algorithms for such a computer are discussed, especially those for finding the period of a function, and searching a random list. Such algorithms prove that a QC of sufficiently precise construction is not only fundamentally different from any computer which can only manipulate classical information, but can compute a small class of functions with greater efficiency. This implies that some important computational tasks are impossible for any device apart from a QC. To build a universal QC is well beyond the abilities of current technology. However, the principles of quantum information physics can be tested on smaller devices. The current experimental situation is reviewed, with emphasis on the linear ion trap, high-Q optical cavities, and nuclear magnetic resonance methods. These allow coherent control in a Hilbert space of eight dimensions (three qubits) and should be extendable up to a thousand or more dimensions (10 qubits). Among other things, these systems will allow the feasibility of quantum computing to be assessed. In fact such experiments are so difficult that it seemed likely until recently that a practically useful QC (requiring, say, 1000 qubits) was actually ruled out by considerations of experimental imprecision and the unavoidable coupling between any system and its environment. However, a further fundamental part of quantum information physics provides a solution to this impasse. This is quantum error correction (QEC). An introduction to QEC is provided. The evolution of the QC is restricted to a carefully chosen subspace of its Hilbert space. Errors are almost certain to cause a departure from this subspace. QEC provides a means to detect and undo such departures without upsetting the quantum computation. This achieves the apparently impossible, since the computation preserves quantum coherence even though during its course all the qubits in the computer will have relaxed spontaneously many times. The review concludes with an outline of the main features of quantum information physics and avenues for future research.}
+      \field{journaltitle}{Reports on Progress in Physics}
+      \field{month}{2}
+      \field{number}{2}
+      \field{title}{Quantum computing}
+      \field{volume}{61}
+      \field{year}{1998}
+      \field{pages}{117\bibrangedash 173}
+      \range{pages}{57}
+      \verb{doi}
+      \verb 10.1088/0034-4885/61/2/002
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1088%2F0034-4885%2F61%2F2%2F002
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1088%2F0034-4885%2F61%2F2%2F002
+      \endverb
+    \endentry
+  \enddatalist
+  \missing{Poulin}
+  \missing{mcardle}
+\endrefsection
 \endinput
 
