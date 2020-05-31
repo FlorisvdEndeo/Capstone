@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.11)  20 APR 2020 16:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.4.11)  29 APR 2020 16:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1492,15 +1492,26 @@ LaTeX Info: Redefining \nameref on input line 90.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-<auc-logo.png, id=98, 963.6pt x 963.6pt>
-File: auc-logo.png Graphic file (type png)
-<use auc-logo.png>
-Package pdftex.def Info: auc-logo.png  used on input line 151.
-(pdftex.def)             Requested size: 68.99895pt x 68.98804pt.
- [1
 
-{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./auc-l
-ogo.png>]
+
+LaTeX Warning: File `{auc-logo.png}' not found on input line 151.
+
+
+! Package pdftex.def Error: File `auc-logo.png' not found: using draft setting.
+
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.151 ...hics[width=0.2\textwidth]{{auc-logo.png}}
+                                                  \\ [1cm]
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[1
+
+{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Trying to load font information for U+bbold on input line 1
 73.
 
@@ -1813,19 +1824,6 @@ l.527   \draw[line width=1,5pt,green,-stealth]
 (That was another \errmessage.)
 
 [9]
-
-! LaTeX Error: Environment image undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.551 \begin{image}
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 \pgf@layerbox@back=\box72
 \pgf@layerboxsaved@back=\box73
 \pgf@layerbox@front=\box74
@@ -1835,6 +1833,7 @@ Missing character: There is no 0 in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
+
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.26773> not available
 (Font)              size <5> substituted on input line 570.
@@ -1899,51 +1898,32 @@ LaTeX Font Warning: Font shape `U/stmry/m/n' in size <2.13387> not available
 
 Missing character: There is no ; in font nullfont!
 
-! LaTeX Error: \begin{document} ended by \end{image}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.575 \end{image}
-                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (12.04723pt too wide) in paragraph at lines 550--576
-\OT1/cmr/m/n/9 the form $\OML/cmm/m/it/9 e[]$\OT1/cmr/m/n/9 . The eigen-states 
-are $[] = ([] \OMS/cmsy/m/n/9 ^^F \OML/cmm/m/it/9 i []\OT1/cmr/m/n/9 )\OML/cmm/
-m/it/9 =[]$\OT1/cmr/m/n/9 .   [] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 550--576
- 
- []
-
-
 ! Package biblatex Error: '\bibliographystyle' invalid.
 
 See the biblatex package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.582 \bibliographystyle{unsrt}
+l.589 \bibliographystyle{unsrt}
                                
 Use the package option 'style' instead.
 I'm ignoring this command.
 
 [10] [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 585.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 585.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 592.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 592.
  (./Writing update.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 585.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 585.
-Package rerunfilecheck Info: File `"Writing update".out' has not changed.
-(rerunfilecheck)             Checksum: 9411AE26C85D782FDDC8789250014318;946.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 592.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 592.
 
+
+Package rerunfilecheck Warning: File `"Writing update".out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `"Writing update".out':
+(rerunfilecheck)             Before: 9411AE26C85D782FDDC8789250014318;946
+(rerunfilecheck)             After:  F79C33B805F2D5B44472BF4810CE3C40;990.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 2.86613pt have occurred.
@@ -1956,10 +1936,10 @@ Package logreq Info: Writing requests to '"Writing update".run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 33927 strings out of 480608
- 646182 string characters out of 5903630
+ 33949 strings out of 480608
+ 646397 string characters out of 5903630
  1336411 words of memory out of 5000000
- 49140 multiletter control sequences out of 15000+600000
+ 49149 multiletter control sequences out of 15000+600000
  549733 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  65i,15n,102p,1435b,1405s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1985,10 +1965,10 @@ e/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/
 0/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2020
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2020/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on "Writing update.pdf" (12 pages, 313514 bytes).
+Output written on "Writing update.pdf" (12 pages, 279810 bytes).
 PDF statistics:
  280 PDF objects out of 1000 (max. 8388607)
- 222 compressed objects within 3 object streams
- 39 named destinations out of 1000 (max. 500000)
- 240 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 223 compressed objects within 3 object streams
+ 40 named destinations out of 1000 (max. 500000)
+ 235 words of extra memory for PDF output out of 10000 (max. 10000000)
 

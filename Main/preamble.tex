@@ -1,9 +1,10 @@
+\usepackage{qcircuit}
+
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{physics}
 \usepackage[backend=biber]{biblatex}
-\usepackage{biblatex}
 \usepackage{titling}
 \usepackage{titletoc}
 \usepackage{kbordermatrix}
@@ -11,9 +12,8 @@
 \usepackage[document]{ragged2e}
 \usepackage{fancyhdr}
 \usepackage{bbold}
-%\usepackage{babylon}
 \usepackage{tikz}
-\usetikzlibrary{quantikz}
+%\usetikzlibrary{quantikz}
 %\usepackage{blochsphere}
 \usepackage{hyperref}
 \usepackage{enumitem}
@@ -44,14 +44,16 @@
 \newcommand{\fact}{{\frac{1}{1 - E^2_k} (V - E_k)}}
 \date{\today}
 \newcommand{\facto}{{\frac{1}{\sqrt{1 - E^2_0}} (V- E_0)}}
-
-
+\newcommand{\fr}{\frac{1}{\sqrt{1-E_0^2}}
+%\newcommand{\fk}{\frac{1}{\sqrt{1-E_k^2}}
 \newcommand{\lefta}{\bra{\beta}\otimes\bra{\phi_k}}
 \newcommand{\leftb}{i\bra{\beta} \otimes \bra{\phi_k} \frac{V-E_k}{\sqrt{1-E_k^2}}}
 \newcommand{\righta}{\ket{\beta}\otimes \ket{\phi_k}}
 \newcommand{\rightb}{i\frac{V-E_k}{\sqrt{1-E_k^2}}\ket{\beta}\otimes  \ket{\phi_k}}
 
-\newcommand\chap[1]{\input{./Chapters/#1}}
+
+
+
 
 \providecommand\given{}
 % can be useful to refer to this outside \Set
@@ -64,6 +66,27 @@
   \renewcommand\given{\;\SetSymbol[\delimsize]\;}
   #1
 }
+
+\pagestyle{fancy}
+\renewcommand\chaptermark[1]{%
+  \markboth{Chapter\ $\thechapter$\ -\ #1}{}%
+}
+\renewcommand\sectionmark[1]{%
+  \markright{Section\ $\thesection$\ -\ #1}%
+}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\rightmark}
+\renewcommand\footrulewidth{0.4pt}
+\fancyfoot[C]{}
+\fancyfoot[L]{\thetitle\ --- \theauthor}
+\fancyfoot[R]{\thepage}
+
+\fancypagestyle{plain}{%
+  \fancyhead[L,C,R]{}
+  \fancyfoot[L]{\thetitle\ --- \theauthor}
+  \fancyfoot[R]{\thepage}
+}
+
 
 \renewcommand\S{\Set*}
 

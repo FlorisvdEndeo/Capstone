@@ -47,8 +47,10 @@ $$
 H = \sum_{j=0}^N \alpha_j P_j,
 $$
 where $j$ represents some possible state of the sytem. In the case of a simple molecule, this state would align with the occupancy of certain (spin-)orbitals. We sum these states up to $N$, which is the number of possible states (in the case of a molecule, the number of of possible orbital combinations). $P_j$ here is a multi-qubit Pauli operator, a tensor product of the four Pauli operators which are defined as the following \cite{nielsen}:
+\todo{add back in}
 
-\begin{align*}
+\begin{align}
+\begin{split}
 X&=\left(\begin{array}{cc}
 0 & 1 \\
 1 & 0
@@ -63,7 +65,7 @@ i & 0
 1 & 0 \\
 0 & 1
 \end{array}\right)
-\end{align*}
+\end{split} \end{align}
 
 Before we move forward, we must ensure that the Hamiltonian we are working with has mathematically desirable properties, such as normalization. We do so by introducing a scaling factor of $\mathcal{N} = \sum_{j=0}^N |\alpha_j|$ \cite{poulin}.
 
@@ -87,24 +89,24 @@ $$
 
 It will be useful to check if $S$ and $V$ are unitary, so for $S$ we multiply it with it's complex conjugate, which, since $S$ is not complex, is the same as taking the square:
 
-\begin{align*}
+\begin{align} \begin{split}
 SS^* = S^2 &= ((I-2\kb \beta \beta) \otimes I)((I-2\kb \beta \beta) \otimes I)\\
 &= (I-2\kb \beta \beta)(I-2\kb \beta \beta) \otimes I^2 \\
 &= I^2 - 2I\kb \beta \beta\footnotemark - 2\kb \beta \beta I + 4 \ket{\beta} \bracket \beta \beta \bra \beta\\
 &= I^2 - 4\kb \beta \beta + 4\kb \beta \beta = I^2 = I
-\end{align*}
+\end{split} \end{align}
 \footnotetext{The outer product of a vector only produces elements on the diagonal, so multiplying with identity returns that same outer product}
 
 
 
 Same process for the operator $ V$ \todo{prove they're Hermitian} :
 
-\begin{align*}
+\begin{align} \begin{split}
 VV^* = V^2 &= \sum_{j} \kb jj \otimes P_{j} \cdot \sum_{k} \kb kk \otimes P_{k} \\
 &= \sum_j \sum_k \kbtwo j j k k \otimes P_j P_k\\
 &= \sum_j \sum_k \delta_{j,k} | j \rangle \langle k | \otimes P_j P_k\\
 &= \sum_j | j \rangle \langle j | \otimes P_j P_j\\
-\end{align*}
+\end{split} \end{align}
 \begin{gather*}
 \text{As}  \sum_{j}^{n} \kb jj = I_n, \\
 V^2 = I
@@ -113,29 +115,29 @@ V^2 = I
 \subsection{Orthonormal bases}
 This algorithm relies on one fundamental property, namely that ``there exists an invariant subspace of $W$ on which the spectrum of $W$ is the simple function of $H$'' (The operator $W$ will be defined in a later stage). This statement implies that there is such $W$, where because it is a function of the Hamiltonian in a certain subspace, we can retrieve properties of that Hamiltonian from the operator $W$. \textcite{poulin} postulate the following orthonormal basis, in which S and V preserve the substate spanned by those basis, which will be the same substate that $W$ will be initialized to:
 
-\begin{align}
+\begin{align} \begin{split}
 \ket{\varphi_k^0} &= \sum_j\beta_j\ket j\otimes\ket{\phi_k} \\
 \ket{\varphi_k^1} &= \frac 1{\sqrt{1-E_k^2}}(V-E_k)\ket{\varphi_k^0},
-\end{align}
+\end{split} \end{align}
 
 Here, $k$ is a measure of the state of the eigenfunctions of the hamiltonian. When $k=0$, we are working with the ground-state. the place on the  Let us prove that $\varphi_k^0$ and $\varphi_k^1$ are normalized and orthogonal:
 
-\begin{align}
+\begin{align} \begin{split}
 \braket{\varphi_k^0}{\varphi_k^0}  &= (\bra{\beta} \otimes \bra{\phi_k})(\ket{\beta} \otimes \ket{\phi_k})\\
 &= \braket{\beta}{\beta} \otimes \braket{\phi_k}{\phi_k}\\
 &= 1
-\end{align}
+\end{split} \end{align}
 
-\begin{align*}
+\begin{align} \begin{split}
 \braket{\varphi_k^1}{\varphi_k^1}  &= \bra{\varphi_k^0} \frac{1}{\sqrt{1 - E^2_k}}(V-E_k) \frac{1}{\sqrt{1 - E^2_k}}(V-E_k) \ket{\varphi_k^0}\\
 &= \bra{\varphi_k^0} \frac{1}{1 - E^2_k} (V-E_k)^2  \ket{\varphi_k^0}\\
 &= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (V^2 - 2 E_kV + E_k^2) \ket{\varphi_k^0}\\
 &= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (I - 2 E_kV + E_k^2) \ket{\varphi_k^0}\\
-\end{align*}
+\end{split} \end{align}
 
 As the following identity will appear often, a seperate definition is made .
 
-\begin{align*}
+\begin{align} \begin{split}
 \bra{\varphi_k^0} V \ket{\varphi_k^0} &= \bra{\varphi_k^0} (\sum_j \kb j j \otimes P_j) \sum_l \beta_l \ket{l} \otimes \ket{\phi_k^0}\\
 &= \bra{\varphi_k^0}\sum_j \sum_l \beta_l \ket{j} \braket{j}{l} \otimes P_j \ket{\phi_k^0}\\
 &=(\sum_m \beta_m^* \bra{m} \otimes \bra{\phi_k}) \sum_j \sum_l \beta_l \ket{j} \delta_{j,l} \otimes P_j \ket{\phi_k}\\
@@ -143,10 +145,10 @@ As the following identity will appear often, a seperate definition is made .
 &= \sum_m \sum_j \beta_m^* \beta_j \delta_{m,j} \otimes \braket{\phi_k}{P_j \phi_k}\\
 &= \sum_j \abs{\beta_j}^2 \braket{\phi_k}{P_j \phi_k}\\
 &= \sum_j \braket{\phi_k}{ \abs{\beta_j}^2  P_j \phi_k}
-\end{align*}
+\end{split} \end{align}
 
 As $\bar{H}\ket{\phi_k} = E_k\ket{\phi_k}$ and $\bar{H} = \sum_j \abs{\beta_j}^2  P_j,$
-\begin{equation}
+\begin{equation} \label{0V0}
 \bra{\varphi_k^0} V \ket{\varphi_k^0} = \braket{\phi_k}{E_k \phi_k}
 = E_k
 \end{equation}
@@ -155,20 +157,20 @@ Continuing proof of orthonormality of $\varphi_k^1$ using equation 4:
 
 
 
-\begin{align*}
+\begin{align} \begin{split}
 \braket{\varphi_k^1}{\varphi_k^1} &= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (I - 2 E_kV + E_k^2) \ket{\varphi_k^0}\\
 &= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (I - 2 E_k^2 + E_k^2) \ket{\varphi_k^0}\\
 &= \frac{1}{1 - E^2_k} \bra{\varphi_k^0} (I -  E_k^2) \ket{\varphi_k^0}\\
 &= \frac{1- E^2_k}{1 - E^2_k} \braket{\varphi_k^0}{\varphi_k^0}\\
 &= 1
-\end{align*}
+\end{split} \end{align}
 
 Proof of orthogonality, using equation 4
-\begin{align*}
+\begin{align} \begin{split}
 \braket{\varphi_k^0}{\varphi_k^1} &= \bra{\varphi_k^0}  \frac{1}{\sqrt{1 - E^2_k}}(V-E_k) \ket{\varphi_k^0}\\
 &= \bra{\varphi_k^0}  \frac{1}{\sqrt{1 - E^2_k}}(E_k-E_k) \ket{\varphi_k^0}\\
 &= 0
-\end{align*}
+\end{split} \end{align}
 
 \subsection{Blockdiagonality}
 
@@ -206,61 +208,53 @@ We can put the expectation values of S and V in one of such matrices in the subs
 \bra{\varphi_1^0}&0&0&\vrule&V_{33}&V_{43}&\vrule&&\vrule&0&0\\
 \bra{\varphi_1^1}&0&0&\vrule&V_{43}&V_{44}&\vrule&&\vrule&0&0\\\hline
 \vdots&&&\vrule&&&\vrule&\ddots&\vrule\\\hline
-\bra{\varphi_k^0}&0&0&\vrule&0&0&\vrule&&\vrule&a&b\\
-\bra{\varphi_k^1}&0&0&\vrule&0&0&\vrule&&\vrule&c&d\\
+\bra{\varphi_k^0}&0&0&\vrule&0&0&\vrule&&\vrule&V_{ii}&V_{ij}\\
+\bra{\varphi_k^1}&0&0&\vrule&0&0&\vrule&&\vrule&V_{ji}&V_{jj}\\
 }
 \end{equation}
 
 The off-diagonal elements are zero as $ \braket{\phi_k}{\phi_l} = \delta_{k,l}$. In other words, all the eigenstates of the Hamiltonian are orthogonal. We can find the values of $S$ and  $V$ in the basis by
 
-\begin{align*}
+\begin{align} \begin{split}
 \bra{\varphi_0^0}S\ket{\varphi_0^0} &= \bra{\varphi_0^0} (I-2\kb \beta \beta) \otimes I \ket{\varphi_0^0}\\
 &= \bra{\varphi^0_0} ((I-2\kb \beta \beta) \otimes I) \sum_j\beta_j\ket{j }\otimes \ket{\phi_0} \\
 &= \bra{\varphi^0_0} \sum_j (I-2\kb \beta \beta) \beta_j\ket{j} \otimes \ket{\phi_0}\\
 &= \bra{\varphi^0_0} - \ket{\beta} \otimes \ket{\phi_0}\\
 &= - (\bra{\beta} \otimes \bra{\phi_0})  \ket{\beta} \otimes \ket{\phi_0}\\
 &= -1
-\end{align*}
+\end{split} \end{align}
 
+Let us finish filling out the block diagonal matrix of S, by finding the remaining values. For the following proofs, it will be convenient to first find the result of $S$ applied to $\ket{\varphi_k^0}$:
 
+\begin{align} \begin{split} \label{Sket}
+  \sop \ket{\varphi_k^0} &= (\sop) \ket{\beta} \otimes \ket{\phi_k}\\
+  &= \ket{\beta} \otimes \ket{\phi_k} - 2 \ket{\beta} \otimes \ket{\phi_k}\\
+  &= - \ket{\varphi_k^0}
+\end{split} \end{align}
 
-Before we find the value of $\bra{\varphi_0^1}S\ket{\varphi_0^1}$, let us find what applying $S$ and $V$ in succession on a general state results:
-
-\begin{align*}
-SV&= (\Sop) \Vop\\
-&= ((I - 2\kb \beta \beta)\sum_j \kb j j) \otimes I P_j\\
-&= \sum_j ((I - 2 \abs{\beta_j}^2 \kb j j) \kb j j) \otimes P_j\\
-&= \sum_j (\kb j j - 2 \kbtwo j j j j)\otimes P_j\\
-&= - \sum_j \kb jj \otimes P_j\\
-&= - V
-\end{align*}
-
-As $S$ is a reflexion operator, the result makes sense, since $V$ also preserves the subspace spanned by the orthornomal bases. Let us finish filling out the block diagonal matrix of S, by finding the remaining values.
-
-\begin{align*}
-\bra{\varphi_0^1}S\ket{\varphi_0^1} &= \bra{\varphi_0^1} (\Sop) \fiik \\
-&= \bra{\varphi_0^1} \frac{1}{\sqrt{1 - E^2_0}} (-V + E_0) (-\ket{\varphi_0^0})\\
-&= \bra{\varphi_0^0} \frac{1}{\sqrt{1 - E^2_0}} (V - E_0) \frac{1}{\sqrt{1 - E^2_0}} (-V + E_0) -(\ket{\varphi_0^0})\\
-&= - \bra{\varphi_0^0} \frac{1}{1 - E^2_0} (- V^2 +E_0V+E_0V- E_0^2) \ket{\varphi_0^0}\\
-\text{As } \bra{\varphi_k^0} V \ket{\varphi_k^0} &= E_k,\\
-\bra{\varphi_0^1}S\ket{\varphi_0^1} &= - \bra{\varphi_0^0} \frac{1}{1 - E^2_0} (-1+E_0^2) \ket{\varphi_0^0}\\
-&= - \bra{\varphi_0^0} \frac{-(1-E_0^2)}{1 - E^2_0} \ket{\varphi_0^0}\\
-&= - \bra{\varphi_0^0} (- \ket{\varphi_0^0})\\
-&= \braket{\varphi_0^0}{\varphi_0^0}\\
-&= 1\\
-\end{align*}
-
-
-\begin{align*}
-\bra{\varphi_0^0}S\ket{\varphi_0^1} &= \bra{\varphi_0^0} (\Sop) \fiik\\
-&= \bra{\varphi_0^0} \frac{1}{\sqrt{1 - E^2_0}} (-V + E_0) \ket{-\varphi_0^0}\\
-&= - \bra{\varphi_0^1} \frac{1}{\sqrt{1 - E^2_0}} (-E_0 + E_0) \ket{\varphi_0^0}\\
-&= - \bra{\varphi_0^1} 0 \ket{\varphi_0^0}\\
+\begin{align} \begin{split}
+\bra{\varphi_0^0}S\ket{\varphi_0^1} &= \bra{\varphi_0^0} - \ket{\varphi_0^1} \text{using \ref{sket}}\\
+&= - \bra{\varphi_0^0} \ket{\varphi_0^1}\\
 &= 0
-\end{align*}
+\end{split} \end{align}
 
 As the operator S is symmetric around the diagonal, S is self adjoint and from the identity $$\bra{\psi} A^{\dagger}\ket{\phi}= \bra{\phi} A \ket{\psi}^{*}$$
 we can conclude that $\bra{\varphi_0^0}S\ket{\varphi_0^1} = \bra{\varphi_0^1}S\ket{\varphi_0^0} = 0.$
+
+\begin{align} \begin{split}
+\bra{\varphi_0^1}S\ket{\varphi_0^1} &= \fr \bra{\varphi_0^1} S(V-E_k) \ket{\varphi_0^0} \\
+&= \fr \bra{\varphi_0^1} SV - S E_0 \ket{\varphi_0^0})\\
+&= \fr ( \bra{\varphi_0^1} SV \ket{\varphi_0^0} + E_k \bra{\varphi_0^1} S \ket{\varphi_0^0})\\
+&= \fr \bra{\varphi_0^1} SV \ket{\varphi_0^0} \\
+&= \fr \bra{\varphi_0^1} (I - 2 \kb \beta \beta) V \ket{\varphi_0^0}\\
+&= \fr ( \bra{\varphi_0^1} V \ket{\varphi_0^0} - 2  \bra{\varphi_0^1} \kb \beta \beta V \ket{\varphi_0^0})\\
+&= \frac{\sqrt{1-E_0^2}}{\sqrt{1-E_0^2}} - 2 \fr \bra{\varphi_0^1} \sum_j \abs{\beta_j}^2 \ket{\beta} \otimes P_j \ket{\phi_0}\\
+&= 1 - \frac{2}{\sqrt{1-E_0^2}} \bra{\varphi_0^1} \ket{\beta} \otimes H \ket{\phi_0}\\
+&= 1 - \frac{2E_k}{\sqrt{1-E_0^2}} \bra{\varphi_0^1} \ket{\beta} \otimes \ket{\phi_0}\\
+&= 1 - \frac{2E_k}{\sqrt{1-E_0^2}} \bra{\varphi_0^1} \ket{\varphi_0^0}\\
+&= 1
+\end{split} \end{align}
+
 
 
 The block of S is now completed, and looks like the following:
@@ -287,27 +281,27 @@ S = \
 
 Let us find the equivalent matrix for the operator $V$. In equation 4, it has been shown that $\bra{\varphi_k^0} V \ket{\varphi_k^0} = E_k$. Moving on,
 
-\begin{align*}
+\begin{align} \begin{split}
 \bra{\varphi_0^0}V\ket{\varphi_0^1}&= \bra{\varphi_0^0}  \frac{1}{\sqrt{1 - E^2_0}} (V^2 - E_0V) \ket{\varphi_0^0}\\
 &= \bra{\varphi_0^0} \frac{1}{\sqrt{1 - E^2_0}} (1 - E_^2) \ket{\varphi_0^0}\\
 &= \bra{\varphi_0^0} \sqrt{1 - E^2_0} \ket{\varphi_0^0}\\
 &= \sqrt{1 - E^2_0} \braket{\varphi_0^0}{\varphi_0^0}\\
 &= \sqrt{1 - E^2_0}
-\end{align*}
+\end{split} \end{align}
 
 As V is also symmetric and therefore self-adjoint, $$\bra{\psi} A^{\dagger}\ket{\phi}= \bra{\phi} A \ket{\psi}^{*}$$ holds again and thus $$\bra{\varphi_0^0}V\ket{\varphi_0^1} = \bra{\varphi_0^1}V\ket{\varphi_0^0} = \sqrt{1 - E^2_0}$$
 
 Lastly, we need to find $\bra{\varphi_0^1}V\ket{\varphi_0^1}$:
 
-\begin{align*}
-\bra{\varphi_0^1}V\ket{\varphi_0^1} &= \bra{\varphi_0^1}  \frac{1}{\sqrt{1 - E^2_0}} (V^2 - E_0V) \ket{\varphi_0^0}\\
+\begin{align} \begin{split}
+\bra{\varphi_0^1}V\ket{\varphi_0^1} &= \bra{\varphi_0^1}  V\frac{V- E_0}{\sqrt{1 - E^2_0}} \ket{\varphi_0^0}\\
 &= \bra{\varphi_0^0} \frac{1}{1 - E^2_0} (V - E_0)(1 - E_0V)\ket{\varphi_0^0}\\
-&= \bra{\varphi_0^0} \frac{1}{1 - E^2_0} (V - E_0 - E_0 + E_0^2V)\ket{\varphi_0^0}\\
+&= \bra{\varphi_0^0} \frac{1}{1 - E^2_0} (V - E_0 - E_0 + E_0^2V)\ket{\varphi_0^0} \intertext{using equation \ref{0V0}}\\
 &= \bra{\varphi_0^0} \frac{1}{1 - E^2_0} (-E_0 + E_0^3)\ket{\varphi_0^0}\\
 &= \bra{\varphi_0^0} (- E_0 \frac{1 - E^2_0}{1 - E^2_0}\ket{\varphi_0^0})\\
 &= \bra{\varphi_0^0} (- E_0 \ket{\varphi_0^0})\\
 &= - E_0
-\end{align*}
+\end{split} \end{align}
 
 Once again, we can compile these value in the block matrix and generalize to any $k$-value in the range of energy states to obtain:
 
@@ -321,60 +315,14 @@ S = \
 
 \subsection{Creating the Unitary Walk Operator}
 
-\todo{Questionable section}
-Before we start thinking about constructing an operator from $S$ and $V$, it is paramount to have a clear picture in mind of how $S$ and $V$ precisely act. In chapter 4.2 we have derived these operators in matrix form, in the subspace spanned by $\varphi_k^0$ and $\varphi_k^1$.
 
-Lets consider a general state in this subspace of the form $\ket{\psi} = c_0 \ket{\varphi_k^0} + c_1 \ket{\varphi_k^1}$, which would look like the following:
-
-$$
-\begin{tikzpicture}
-  \draw[thin,gray!40] (-2,-2) grid (2,2);
-  \draw[<->] (-2,0)--(2,0) node[right]{$\varphi_k^0$};
-  \draw[<->] (0,-2)--(0,2) node[above]{$\varphi_k^1$};
-  \draw[line width=1,5pt,cyan,-stealth](0,0)--(1,1) node[anchor=south west]{$\boldsymbol{\psi}$};
-\end{tikzpicture}
-$$
-
-Let us apply $S$ to $\psi$:
-
-$$
-\begin{pmatrix}
--1 & 0\\
-0& 1
-\end{pmatrix}
-\begin{pmatrix}
-c_0\\
-c_1
-\end{pmatrix}
-=
-\begin{pmatrix}
-- c_0\\
-c_1
-\end{pmatrix}
-\\
-$$
-
-A visual representation of what happens when S is applied to $\psi$:
-
-
-$$
-\begin{tikzpicture}
-  \draw[thin,gray!40] (-2,-2) grid (2,2);
-  \draw[<->] (-2,0)--(2,0) node[right]{$\varphi_k^0$};
-  \draw[<->] (0,-2)--(0,2) node[above]{$\varphi_k^1$};
-  \draw[line width=1,5pt,cyan,-stealth](0,0)--(1,1) node[anchor=south west]{$\boldsymbol{\psi}$};
-  \draw[line width=1,5pt,green,-stealth](0,0)--(-1,1) node[anchor=south west]{$\boldsymbol{S\psi}$};
-\end{tikzpicture}
-$$
-
-As is evident from the graph above, the $S$ operator reflects any state in the subspace around the $\varphi_k^1$ axis.
 To see what effect $V$ has on a state in this subspace, we can simply apply $V$ to some state in the subspace. For efficiency reasons, we pick $c_0 = 1 \wedge c_1 = 0$.
 
-\begin{align*}
+\begin{align} \begin{split}
 V \ket{\psi} &= V \ket{\varphi_k^0}\\
 &= \Vop \fiok\\
 &= \sum_j \beta_j \ket{j} \otimes P_j \ket{\phi_k}
-\end{align*}
+\end{split} \end{align}
 
 From this result, we conclude that $V$ applies the specific Pauli operator, corresponding to the state of the system of qubits, to the $k_{th}$ eigenstate of the Hamiltonian. \textcite{poulin} define the unitary walk operator as:
 
@@ -382,13 +330,73 @@ $$
 W = SVe^{i\pi}
 $$
 
+in the $\{\ket{\varphi_k^0}, \ket{\varphi^1_k}\}$-basis, $W$ takes the form \todo{matrix multiply the shit}
+\begin{align} \begin{split}
+  W \ket{\varphi^+_k} &= \frac{1}{\sqrt{2}}(W \ket{\varphi^0_k} + W i \ket{\varphi^1_k})
+  & \intertext{For convenience, we shall for now omit the normalization term.}
+  &= SV \ket{\varphi^0_k} + i SV (V-E_k) \ket{\varphi^0_k}\\
+  &= SV \ket{\varphi^0_k} + \frac{iS}{\sqrt{1-E_k^2}} I \ket{\varphi^0_k} - \frac{i E_k}{\sqrt{1-E_k^2}} SV \ket{\varphi^0_k}\\
+  &= \tm{\sqrt{1-E_k^2}S - i E_k S}V\ket{\varphi^0_k} + \tm{iS} \ket{\varphi^0_k}
+  \intertext{We want to obtain a factor of $ \ket{\varphi_k^1}$. To do so, we add and subtract a factor of $E_k \left(\tm{\sqrt{1-E_k^2}S - i E_k S}\ket{\varphi^0_k}\right)$, to obtain the desired $(V-E_k)$ factor in the left term of the equation above.}
+  &= \tm{\sqrt{1-E_k^2}S - i E_k S}(V-E_k)\ket{\varphi^0_k} + \tm{iS} \ket{\varphi^0_k} + E_k \tm{\sqrt{1-E_k^2} - i E_k } S\ket{\varphi^0_k}
+  \intertext{Given $\tm{V-E_k} \ket{\varphi^0_k} = \ket{\varphi^1_k}$ we obtain the following.}
+  &= \left(\sqrt{1-E_k^2} - i E_k \right) S \ket{\varphi^1_k} + \tm{i + E_k(\sqrt{1-E_k^2} - i E_k)}S \ket{\varphi^0_k}
+  \intertext{Since $S \ket{\varphi^1_k} = \ket{\varphi^1_k}$ and $S\ket{\varphi^0_k} = -\ket{\varphi^0_k}$, our expression becomes}
+  &= \left(\sqrt{1-E_k^2} - i E_k \right) \ket{\varphi^1_k} - \left(E_k \frac{\sqrt{1-E_k^2}}{\sqrt{1-E_k^2}} + i\tm{1-E_k^2}\right) \ket{\varphi^0_k}.\\
+  &=  \left(\sqrt{1-E_k^2} - i E_k \right) \ket{\varphi^1_k} - \left( E_k + i \sqrt{1-E_k^2} \right)  \ket{\varphi^0_k}
+  \intertext{We now add back in the normalisation factors we omitted earlier and incorporate the minus of the second term.}
+  &=  \frac{1}{\sqrt{2}}\left(\sqrt{1-E_k^2} - i E_k \right) \ket{\varphi^1_k} + \frac{1}{\sqrt{2}} \left(- E_k - i \sqrt{1-E_k^2} \right) \ket{\varphi^0_k}
+  \intertext{Following cite, we can factor the coefficients of the basis state into $-E_k - i\sqrt{1-E_k2}$ and obtain}
+  &= \left(-E_k - i \sqrt{1-E_k2} \right) \frac{1}{\sqrt{2}} (\ket{\varphi_k^0} + i \ket{\varphi_k^1}).\\
+  &= \left(-E_k - i\sqrt{1-E_k2} \right) \ket{\varphi_k^+}
+  \intertext{As $E_k = \cos(\theta_k)$ and $sin(\theta_k) = \sqrt{1-\cos^2(\theta_k)}$, we can write this as}
+  &= \left(- \cos \left(\theta_{k}\right)-i \sin \left(\theta_{k}\right)\right) \ket{\varphi^+_k}\\
+  &= e^{i\left(\pi+\theta_{k}\right)} \ket{\varphi^+_k}
+\end{split} \end{align}
+%\text{ using } S\ket{\varphi^0_k} = -\ket{\varphi^0_k}
+\todo{newchapter}
+
 As $W$ acts on the $n$ system qubits and the $\log(N + 1)$ \todo{why the + 1} ancillary registers, $W$ is a $ 2^{n+ \log(N+1)} \times 2^{n + \log(N+1)}$ matrix.
-
-
-
 \section{Quantum Phase Estimation}
 
-The eigenvalues of all unitary operators, such as the unitary operator $W$, are unitary too and can be wriitten in the form $\exp{2\pi i \theta}$.
+The eigenvalues of all unitary operators, such as the unitary operator $W$, are unitary too and can be written in the form $\exp{2\pi i \theta}$. This algorithm prepares the physical register in the $\{\ket{\varphi_k^0}, \ket{\varphi_k^1\}}$ subspace, as the set of eigenvalues of $W$ in this specific subspace is a function of the Hamiltonian \cite{Poulin}. As the eigenstates of $W$ are $e^{\pm i \theta_k}$, we can conclude that the eigenstate of the Hamiltonian, which is $E_k$, is encoded in the phase of $W$. The exact relation between the two spectra is given by \textcite{Babbush_2018}, who describe the same method of spectral encoding of the Hamiltonian
+
+\begin{equation}
+\label{spectrum}
+\text { spectrum }(H)=\lambda \cos (\arg (\operatorname{spectrum}(\mathcal{W}))).
+\end{equation}
+
+Here $\arg$ represents the argument function $\arg(e^{i\theta})$, and $\lambda$ is the rescaling factor, similar to $\mathbb{N}$ introduced earlier. We follow the convention introduced by \textcite{poulin}, where $E_k$ refers to the rescaled energy. Consequently, we can rewrite \ref{spectrum} as
+
+\begin{equation}
+\cos(\theta_k) = E_k
+\end{equation}
+We can thus perform an energy measurement by performing phase estimation on $W$. In this section, we briefly outline the canonical quantum Phase Estimation Algorithm (PEA) as introduced by \textcite{nielsen}.\\
+
+Phase estimation makes use of two registers: an ancillary register of size $t$ and a system register, prepared in the state $\ket{u}$. First, the qubits of the ancillary register is brought to an equal superposition through a Hadamard transform. Then, a series of controlled-U operations are performed on the system register, where U is raised to successive powers of two. The schematic circuit of this procedure can be seen below.
+
+\missing{circuit}
+
+The state of the ancillary register after this procedure is:
+
+\begin{equation} \label{pea}
+\frac{1}{2^{t / 2}} \sum_{k=0}^{2^{t}-1} e^{2 \pi i \varphi k}|k\rangle.
+\end{equation}
+
+This first part of the phase estimation algorithm iteratively projects the phase of the unitary operator $U$ onto the state of the ancillary register. In order to retrieve the phase from the ancillary state, we must use the Fourier transform. The quantum Fourier transform is defined as \cite{nielsen}
+
+\begin{equation}
+|j\rangle \longrightarrow \frac{1}{\sqrt{N}} \sum_{k=0}^{N-1} e^{2 \pi i j k / N}|k\rangle,
+\end{equation}
+
+where $\ket{j}$ is a bit-string state and the sum is over an orthonormal basis $\ket{0},...,\ket{N-1}.$ From above definition and \hyperref{pea}, tt is clear that the ancillary state is the Fourier transform of the phase $\ket{\varphi_k}$. The next step of the phase estimation algorithm is to apply the inverse Fourier Transform ($FT^{\dagger}$ to the ancillary state:
+
+\begin{equation}
+\frac{1}{2^{t / 2}} \sum_{j=0}^{2^{t}-1} e^{2 \pi i \varphi j}|j\rangle|u\rangle \rightarrow|\tilde{\varphi}\rangle|u\rangle
+\end{equation}
+
+By applying a measurement in the computational basis, we now retrieve a good approximation of the phase, $\tilde{\varphi}$.
+
 %As $U$ is unitary, it's eigenvalues are unitary as well and can therefore be written in the form $e^{i\theta_k}$. The eigenstates are $\ket{\varphi_k^\pm} = (\ket{\varphi_k^0} \pm i \ket{\varphi_k^1})/\sqrt 2$.
 
 
@@ -427,65 +435,65 @@ identities:
 
 \newpage
 
-\begin{align}
+\begin{align} \begin{split}
 \bra{\varphi_k^{\pm}} \sigma \ket{\varphi_k^{\pm}} &= (\frac{1}{\sqrt{2}}\bra{\varphi_k^0} \mp i \bra{\varphi_k^1}) \sigma (\frac{1}{\sqrt{2}} \ket{\varphi_k^0} \pm i \ket{\varphi_k^1})\\
 &= \frac{1}{2}(\bra{\varphi_k^0} \sigma \ket{\varphi_k^0} \pm i \bra{\varphi_k^0} \sigma \ket{\varphi_k^1} \mp i \bra{\varphi_k^1} \sigma \ket{\varphi_k^0} + \bra{\varphi_k^1} \sigma \ket{\varphi_k^1})\\
-\end{align}
+\end{split}\end{align}
 
 We now consider each term individually.
 
 \todo{brackets fix}
-\begin{align*}
+\begin{align} \begin{split}
   \bra{\varphi_k^0} \sigma \ket{\varphi_k^0} &= \bra{\beta} \otimes \bra{\phi_k} \sigma \ket{\beta} \otimes \ket{\phi_k}\\
   &= \braket{\beta}{\beta} \otimes \bra{\phi_k} \sigma \ket{\phi_k}\\
   &= \bra{\phi_k} \sigma \ket{\phi_k}
-\end{align*}
+\end{split} \end{align}
 
 
 \todo{hamiltoniaan toevoegen}
-\begin{align*}
+\begin{align} \begin{split}
   \bra{\varphi_k^0} \sigma \ket{\varphi_k^1} &=
   \frac{1}{\sqrt{1-E_k^2}} \bra{\beta} \otimes \bra{\varphi_k} \sigma (V - E_k) \ket{\beta} \otimes \ket{\phi_k}\\
   &=\frac{1}{\sqrt{1-E_k^2}} \bra{\beta} \otimes \bra{\varphi_k} \sigma ( \sum_j\beta_j \ket{j} \otimes P_j \ket{\phi_k} - E_k \ket{\beta} \otimes \ket{\phi_k})\\
   &= \frac{1}{\sqrt{1-E_k^2}}(\sum_j \abs{\beta_j^2} \bra{\phi_k} \sigma P_j\ket{\phi_k} - E_k \bra{\phi_k} \sigma \ket{\phi_k})\\
   &= \frac{1}{\sqrt{1-E_k^2}}( E_k \bra{\phi_k} \sigma \ket{\phi_k} - E_k \bra{\phi_k} \sigma \ket{\phi_k})\\
   &= 0
-\end{align*}
+\end{split} \end{align}
 
-\begin{align*}
+\begin{align} \begin{split}
   \bra{\varphi_k^1} \sigma \ket{\varphi_k^0} &= (\bra{\varphi_k^0} \sigma \ket{\varphi_k^1})^*\\
   &= 0
-\end{align*}
+\end{split} \end{align}
 
-\begin{align}
+\begin{align} \begin{split}
   \bra{\varphi_k^1} \sigma \ket{\varphi_k^1}) &=
   \frac{1}{1-E_k^2} \bra{\varphi_k^0} (V-E_k) \sigma (V-E_k) \ket{\varphi_k^0}\\
   &= \frac{1}{1-E_k^2} \bra{\varphi_k^0} (V \sigma V - V\sigma E_k - E_k \sigma V + E_k \sigma E_k )\ket{\varphi_k^0}\\
   &= \frac{1}{1-E_k^2} \bra{\varphi_k^0} V \sigma V \ket{\varphi_k^0} - \bra{\varphi_k^0} V\sigma E_k \ket{\varphi_k^0}\\
     &- \bra{\varphi_k^0} E_k \sigma V \ket{\varphi_k^0} + \bra{\varphi_k^0} E_k \sigma E_k \ket{\varphi_k^0})
-\end{align}
+\end{split} \end{align}
 
 We once again consider each expectation value individually.
 
 $$ \bra{\varphi_k^0} E_k \sigma E_k \ket{\varphi_k^0} = E_k^2 \bra{\phi_k} \sigma \ket{\phi_k} $$
 
 Using equation 2.7, the following holds. \todo{prove the one, then hermitian so other is fine}
-\begin{align*}
+\begin{align} \begin{split}
 \bra{\varphi_k^0} E_k \sigma V \ket{\varphi_k^0} &=  E_k\bra{\varphi_k^0} \sigma \ket{\beta} \otimes P_j \ket{\phi_k}\\
 &= E_k \braket{\beta}{\beta} \otimes \bra{\phi_k} \sigma P_j \ket{\phi_k}\\
 &= E_k \sum_j \bra{\phi_k} \sigma \abs{\beta_j}^2 P_j \ket{\phi_k}\\
 &= E_k^2 \bra{\phi_k} \sigma \ket{\phi_k}
-\end{align*}
+\end{split} \end{align}
 
 As $\bra{\varphi_k^0} V \sigma E_k\ket{\varphi_k^0} $ is symmetric to $\bra{\varphi_k^0} E_k \sigma V \ket{\varphi_k^0}$, we can conclude that $\bra{\varphi_k^0} V \sigma E_k\ket{\varphi_k^0} = E_k^2 \bra{\phi_k} \sigma \ket{\phi_k}$
 
 
-\begin{align*}
+\begin{align} \begin{split}
   \bra{\varphi_k^0} V \sigma V \ket{\varphi_k^0} &= \bra{\beta}\otimes \bra{\phi_k} V \sigma V \ket{\beta} \otimes \ket{\phi_k}\\
   &= \sum_l \bra{l} \beta_l^{\dagger} \otimes \bra{\phi_k} P_l \sigma \sum_j \beta_j \ket{j} \otimes P_j \ket{\phi_k}\\
   &= \sum_j \abs{\beta_j}^2 \braket{j}{j} \otimes \bra{\phi_k} P_j \sigma P_j \ket{\phi_k}\\
   &= \sum_j \abs{\beta_j}^2  \bra{\phi_k} P_j \sigma P_j \ket{\phi_k}\\
-\end{align*}
+\end{split} \end{align}
 
 We split this sum up into two separate sums, where an extra constraint is placed on the (anti)commutation relation of $\sigma$ and $P_j$.
 
@@ -518,10 +526,10 @@ $$
 %   &= \sum_j \abs{\beta_j}^2 \bra{\phi_k} P_j (P_j \sigma - 2 P_j \sigma) \ket{\phi_k}\\
 %   &= \sum_j \abs{\beta_j}^2 \bra{\phi_k} - P_j^2 \sigma \ket{\phi_k}\\
 %   &=  - \sum_j \abs{\beta_j}^2 \bra{\phi_k} \sigma \ket{\phi_k}.\\
-% \end{align*}
+% \end{split} \end{align}
 
 Following the convention introduced by \textcite{\poulin}, we define another variable $\Gamma$:
-$$ \Gamma_{\sigma}=\sum_{j}\left|\beta_{j}\right|^{2}(-1)^{\sigma \star P_{j}}$$
+\begin{equation} \Gamma_{\sigma}=\sum_{j}\left|\beta_{j}\right|^{2}(-1)^{\sigma \star P_{j}}\end{equation}
 
 Then the expectation value can be written as
 
@@ -530,14 +538,14 @@ Then the expectation value can be written as
 \end{equation}
 
 Filling in the individual expecation values in equation 2.17, we obtain
-\begin{align*}
+\begin{align} \begin{split}
   \bra{\varphi_k^1} \sigma \ket{\varphi_k^1}) &= \frac{1}{1-E_k^2} (\bra{\varphi_k^0} V \sigma V \ket{\varphi_k^0} - \bra{\varphi_k^0} V\sigma E_k \ket{\varphi_k^0}\\
   &- \bra{\varphi_k^0} E_k \sigma V \ket{\varphi_k^0} + \bra{\varphi_k^0} E_k \sigma E_k \ket{\varphi_k^0})\\
   &= \frac{\Gamma_{\sigma} - 2 E_k^2 + E_k^2}{1-E_k^2} \bra{\phi_k} \sigma \ket{\phi_k}\\
   &=  \frac{\Gamma_{\sigma} - E_k^2}{1-E_k^2} \bra{\phi_k} \sigma \ket{\phi_k}.
-\end{align*}
+\end{split} \end{align}
 
-We can now fill this expression back in equation 2.13 and obtain the value for the expectation value of some multi-qubit Pauli operator in the $\phi^{\pm}_k$-basis.
+We can now fill this expression back in equation 2.13 and obtain the value for the expectation value of some multi-qubit Pauli operator in the $\varphi^{\pm}_k$-basis.
 
 
 $$

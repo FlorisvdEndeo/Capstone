@@ -1,11 +1,10 @@
 # Fdb version 3
-["biber Writing update"] 1587391735 "Writing update.bcf" "Writing update.bbl" "Writing update" 1587551287
-  "Writing update.bcf" 1587391740 102116 6b8d211ef271e9fca7b3e486981113b8 "pdflatex"
-  "Writing update.bib" 1586812743 12934 191e221c8fe0e037ac295c1e4c87e398 ""
+["biber Writing update"] 1587391735 "Writing update.bcf" "Writing update.bbl" "Writing update" 1588255671
+  "Writing update.bcf" 1588170445 102116 6b8d211ef271e9fca7b3e486981113b8 ""
   (generated)
-  "Writing update.blg"
   "Writing update.bbl"
-["pdflatex"] 1587551287 "Writing update.tex" "Writing update.pdf" "Writing update" 1587551287
+  "Writing update.blg"
+["pdflatex"] 1588255660 "Writing update.tex" "Writing update.pdf" "Writing update" 1588255671
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb" 1248133631 32298 c6d25bb16d1eac01ebdc6d7084126a1e ""
   "/usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb" 1248133631 32001 6aeea3afe875097b1eb0da29acd61e28 ""
@@ -221,16 +220,16 @@
   "/usr/local/texlive/2020/texmf-dist/tex/latex/xargs/xargs.sty" 1206401857 12403 a11204384274e5980f17ec9564088fa4 ""
   "/usr/local/texlive/2020/texmf-dist/tex/latex/xcolor/xcolor.sty" 1463002160 55589 34128738f682d033422ca125f82e5d62 ""
   "/usr/local/texlive/2020/texmf-dist/tex/latex/xkeyval/xkeyval.sty" 1417732693 4962 9c1069474ff71dbc47d5006555e352d3 ""
-  "Writing update.aux" 1587391740 4438 488e5f448c2e24c9329bb7bf47d5b33a "pdflatex"
+  "Writing update.aux" 1588170445 4597 6eccae30d398009e8bf260f176802804 "pdflatex"
   "Writing update.bbl" 1587391738 4153 49169a8c8dbbb4a2d763e4e281ab6e5d "biber Writing update"
-  "Writing update.out" 1587391740 946 9411ae26c85d782fddc8789250014318 "pdflatex"
-  "Writing update.tex" 1587551287 22022 2d09858c232fcbab329ba7ec1acdc0b3 ""
-  "auc-logo.png" 1583347240 46934 3a853641d1aaeb038cc26b6fd45af2c1 ""
+  "Writing update.out" 1588170445 990 f79c33b805f2d5b44472bf4810ce3c40 "pdflatex"
+  "Writing update.tex" 1588255659 22048 0878d54caf92ccdfda8595ef58dd3978 ""
   "kbordermatrix.sty" 1586703985 5523 bfa1a1f639d04118419d64fe784088b4 ""
   "preamble-2.tex" 1583332258 831 aebdf08c6abe95f01b33dbe66378b8e7 ""
   "qcircuit.sty" 1534231234 13128 2f5b62647cce836fb6ec0f94fe497fdc ""
+  "{auc-logo.png}" 0 -1 0 ""
   (generated)
-  "Writing update.log"
+  "Writing update.out"
   "Writing update.pdf"
   "Writing update.aux"
-  "Writing update.out"
+  "Writing update.log"

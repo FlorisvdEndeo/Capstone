@@ -7,13 +7,15 @@
 
 
 \input{preamble}
+\newcommand\tm[1]{\frac{#1}{\sqrt{1-E_k^2}}}
+
 \addbibresource{capstone.bib}
 %\title{Simulating the Water Molecule using the Spectrum by Quantum Walk Algorithm}
 \author{Floris van den Ende}
 
-\usepackage[braket, qm]{qcircuit} 
+%\usepackage{qcircuit}
 
-\begin{document}
+\begin{document}  
 
 \input{./Titlepage/titlepage.tex}
 
@@ -25,6 +27,13 @@
 \todo{size of matrices and computational complexity}
 \question{what is difference between adiabatic and this}
 \todo{prove V is hermitian}
+
+\[
+    \Qcircuit @C=1em @R=1em @!R {
+      & \lstick{\ket{q_0}} & \qw & \targ & \qw & \meter & \qw\\
+      & \lstick{\ket{q_1}} & \gate{H} & \ctrl{-1} & \meter & \qw & \qw
+    }
+  \]
 
 \input{./Chapters/abstract.tex}
 
@@ -38,17 +47,17 @@
 
 \input{./Chapters/implement.tex}
 
-
-\[ \Qcircuit @C=1em @R=.7em {
-   & \gate{H} & \gate{Z} & \gate{H} & \qw \\
-   & \qw & \gate{X} & \qw & \qw
-} \]
+% General notes: Normally, the phase estimation would be performed by Hamiltonian simulation. That introduces two difficulties: first, there is error introduced by the Hamiltonian simu- lation that needs to be taken into account in bounding the overall error, and second, there can be ambiguities in the phase that require simulation of the Hamiltonian over very short times to eliminate.
+% These problems can be eliminated if one were to
+% use Hamiltonian simulation via a quantum walk, as in
+% Refs. [53, 54]. There, steps of a quantum walk can be
+% performed exactly, which have eigenvalues related to the
+% eigenvalues of the Hamiltonian. Specifically, the eigen-
+% ±iarcsin(E /λ)
+% values are of the form ±e k . Instead of using
+% Hamiltonian simulation, it is possible to simply perform phase estimation on the steps of that quantum walk, and invert the function to find the eigenvalues of the Hamil- tonian. That eliminates any error due to Hamiltonian simulation. Moreover, the possible range of eigenvalues of the Hamiltonian is automatically limited, which elim- inates the problem with ambiguities. from similar method
 
 \newpage
-
-
-
-
 
 
 

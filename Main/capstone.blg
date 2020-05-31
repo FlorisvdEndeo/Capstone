@@ -1,28 +1,29 @@
 [0] Config.pm:304> INFO - This is Biber 2.14
 [0] Config.pm:307> INFO - Logfile is 'capstone.blg'
-[140] biber-darwin:322> INFO - === Wed May 27, 2020, 17:52:57
-[163] Biber.pm:415> INFO - Reading 'capstone.bcf'
-[329] Biber.pm:943> INFO - Found 15 citekeys in bib section 0
-[350] Biber.pm:4256> INFO - Processing section 0
-[351] Utils.pm:75> INFO - Globbing data source 'capstone.bib'
-[351] Utils.pm:91> INFO - Globbed data source 'capstone.bib' to capstone.bib
-[368] Biber.pm:4455> INFO - Looking for bibtex format file 'capstone.bib' for section 0
-[371] bibtex.pm:1653> INFO - LaTeX decoding ...
-[444] bibtex.pm:1471> INFO - Found BibTeX data source 'capstone.bib'
-[549] Utils.pm:304> WARN - month field 'Jul' in entry 'malley' is not an integer - this will probably not sort properly.
-[654] Utils.pm:304> WARN - month field 'Jul' in entry 'poulin' is not an integer - this will probably not sort properly.
-[680] Utils.pm:304> WARN - month field 'feb' in entry 'steane' is not an integer - this will probably not sort properly.
-[688] Utils.pm:304> WARN - Possible typo (case mismatch) between citation and datasource keys: 'mcardle' and 'McArdle' in file 'capstone.bib'
-[718] Utils.pm:304> WARN - month field 'Mar' in entry 'McArdle' is not an integer - this will probably not sort properly.
-[723] Utils.pm:304> WARN - month field 'Oct' in entry 'daskin' is not an integer - this will probably not sort properly.
-[729] Utils.pm:304> WARN - month field 'Dec' in entry 'seeley' is not an integer - this will probably not sort properly.
-[729] Utils.pm:304> WARN - Possible typo (case mismatch) between citation and datasource keys: 'Poulin' and 'poulin' in file 'capstone.bib'
-[731] Utils.pm:304> WARN - I didn't find a database entry for 'mcardle' (section 0)
-[731] Utils.pm:304> WARN - I didn't find a database entry for 'Poulin' (section 0)
-[754] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[754] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[754] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[754] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
-[773] bbl.pm:652> INFO - Writing 'capstone.bbl' with encoding 'UTF-8'
-[791] bbl.pm:755> INFO - Output to capstone.bbl
-[792] Biber.pm:128> INFO - WARNINGS: 10
+[238] biber-darwin:322> INFO - === Sun May 31, 2020, 01:39:33
+[271] Biber.pm:415> INFO - Reading 'capstone.bcf'
+[564] Biber.pm:943> INFO - Found 16 citekeys in bib section 0
+[586] Biber.pm:4256> INFO - Processing section 0
+[587] Utils.pm:75> INFO - Globbing data source 'capstone.bib'
+[587] Utils.pm:91> INFO - Globbed data source 'capstone.bib' to capstone.bib
+[615] Biber.pm:4455> INFO - Looking for bibtex format file 'capstone.bib' for section 0
+[618] bibtex.pm:1653> INFO - LaTeX decoding ...
+[690] bibtex.pm:1471> INFO - Found BibTeX data source 'capstone.bib'
+[787] Utils.pm:304> WARN - month field 'Jul' in entry 'malley' is not an integer - this will probably not sort properly.
+[822] Utils.pm:304> WARN - month field 'Jul' in entry 'poulin' is not an integer - this will probably not sort properly.
+[843] Utils.pm:304> WARN - month field 'feb' in entry 'steane' is not an integer - this will probably not sort properly.
+[849] Utils.pm:304> WARN - Possible typo (case mismatch) between citation and datasource keys: 'mcardle' and 'McArdle' in file 'capstone.bib'
+[879] Utils.pm:304> WARN - month field 'Mar' in entry 'McArdle' is not an integer - this will probably not sort properly.
+[885] Utils.pm:304> WARN - month field 'Oct' in entry 'daskin' is not an integer - this will probably not sort properly.
+[891] Utils.pm:304> WARN - month field 'Dec' in entry 'seeley' is not an integer - this will probably not sort properly.
+[891] Utils.pm:304> WARN - Possible typo (case mismatch) between citation and datasource keys: 'Poulin' and 'poulin' in file 'capstone.bib'
+[904] Utils.pm:304> WARN - month field 'Oct' in entry 'Babbush_2018' is not an integer - this will probably not sort properly.
+[906] Utils.pm:304> WARN - I didn't find a database entry for 'mcardle' (section 0)
+[906] Utils.pm:304> WARN - I didn't find a database entry for 'Poulin' (section 0)
+[930] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[930] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[930] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[931] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[950] bbl.pm:652> INFO - Writing 'capstone.bbl' with encoding 'UTF-8'
+[968] bbl.pm:755> INFO - Output to capstone.bbl
+[969] Biber.pm:128> INFO - WARNINGS: 11

@@ -19,6 +19,79 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{Babbush_2018}{article}{}
+      \name{author}{8}{}{%
+        {{hash=7bb1dcf8a93d1ecc6f9531ece93ef1fa}{%
+           family={Babbush},
+           familyi={B\bibinitperiod},
+           given={Ryan},
+           giveni={R\bibinitperiod}}}%
+        {{hash=0101a428978c8ddc038880b7a77afd98}{%
+           family={Gidney},
+           familyi={G\bibinitperiod},
+           given={Craig},
+           giveni={C\bibinitperiod}}}%
+        {{hash=e0053050bdc2ad78d707462c41ad32d3}{%
+           family={Berry},
+           familyi={B\bibinitperiod},
+           given={Dominic\bibnamedelima W.},
+           giveni={D\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=9906b78ec80183f9ac5008ae54ce7088}{%
+           family={Wiebe},
+           familyi={W\bibinitperiod},
+           given={Nathan},
+           giveni={N\bibinitperiod}}}%
+        {{hash=44d80c9bccbe7462fe524bbf9cd54a08}{%
+           family={McClean},
+           familyi={M\bibinitperiod},
+           given={Jarrod},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c0fede0521a4519da9be0a3aba53394d}{%
+           family={Paler},
+           familyi={P\bibinitperiod},
+           given={Alexandru},
+           giveni={A\bibinitperiod}}}%
+        {{hash=aa6e65cd6932f53db466e337a1cb6760}{%
+           family={Fowler},
+           familyi={F\bibinitperiod},
+           given={Austin},
+           giveni={A\bibinitperiod}}}%
+        {{hash=ddcc46c5456340da59be4077c7102a27}{%
+           family={Neven},
+           familyi={N\bibinitperiod},
+           given={Hartmut},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {American Physical Society (APS)}%
+      }
+      \strng{namehash}{3433efa9a7207e4b71e444aa847f3c80}
+      \strng{fullhash}{af44804a0bc35c6b9519885462fd2318}
+      \strng{bibnamehash}{3433efa9a7207e4b71e444aa847f3c80}
+      \strng{authorbibnamehash}{3433efa9a7207e4b71e444aa847f3c80}
+      \strng{authornamehash}{3433efa9a7207e4b71e444aa847f3c80}
+      \strng{authorfullhash}{af44804a0bc35c6b9519885462fd2318}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{2160-3308}
+      \field{journaltitle}{Physical Review X}
+      \field{month}{10}
+      \field{number}{4}
+      \field{title}{Encoding Electronic Spectra in Quantum Circuits with Linear T Complexity}
+      \field{volume}{8}
+      \field{year}{2018}
+      \verb{doi}
+      \verb 10.1103/physrevx.8.041015
+      \endverb
+      \verb{urlraw}
+      \verb http://dx.doi.org/10.1103/PhysRevX.8.041015
+      \endverb
+      \verb{url}
+      \verb http://dx.doi.org/10.1103/PhysRevX.8.041015
+      \endverb
+    \endentry
     \entry{bian}{article}{}
       \name{author}{5}{}{%
         {{hash=d15ff2bbe49256ad79e0534df2acd7a2}{%

@@ -166,9 +166,9 @@
 \subsection{Nomenclature and important identities}
 
 In this chapter, the Spectrum by Quantum Walk algorithm, proposed by \textcite{poulin}, is discussed. Before this algorithm is examined in further detail, the following small section is dedicated to remove any confusion about conventions or identities used later on. \\
-Within quantum computing, $\ket{j}$ represents a binary bit string. In present thesis, a four-qubit system is considered, so for consistency's sake all bit strings are expressed in the four-bit basis.
+Within quantum computing, $j$ represents a binary bit string. In present thesis, a four-qubit system is considered, so for consistency's sake all bit strings in the following examples are expressed in the four-bit basis.
 For example, the bit-string of eleven is represented in vector form by the following:
-$$ \ket{11} = \ket{1011} = \ket{1} \otimes \ket{0} \otimes \ket{1} \otimes \ket{1} = \colvec{2}{0}{1} \otimes \colvec{2}{1}{0} \otimes \colvec{2}{0}{1} \otimes \colvec{2}{0}{1} =   \colvec{16}{0}{0}{0}{0}{0}{0}{0}{0}{0}{0}{0}{1}{0}{0}{0}{0}.$$
+$$  \bra{1011} = \bra{1} \otimes \bra{0} \otimes \bra{1} \otimes \bra{1} = \rowvec{2}{0}{1} \otimes \rowvec{2}{1}{0} \otimes \rowvec{2}{0}{1} \otimes \rowvec{2}{0}{1} =   \rowvec{16}{0}{0}{0}{0}{0}{0}{0}{0}{0}{0}{0}{1}{0}{0}{0}{0}.$$
 
 Or generally, some state $\ket{n}$ in $\mathbb{R}^{16}$  can be represented by  \\ $\Set{e_{n+1} \given 1 \leq n + 1 \leq 16}$, where $e_{n+1}$ is a vector with a 1 inserted at the $n+1^{th}$ position, and 0's elsewhere. \\
 
@@ -339,8 +339,8 @@ Poulin et al \cite{poulin} state that the unitary property of $S$ and $V$ allow 
 \[
 \left(\begin{array}{@{}c|c@{}}
   \begin{matrix}
-  a & b \\
-  c & d
+  c_1 & c_2 \\
+  c_3 & c_4
   \end{matrix}
   & \begin{matrix}
   0 & 0 \\
@@ -352,8 +352,8 @@ Poulin et al \cite{poulin} state that the unitary property of $S$ and $V$ allow 
     0 & 0
     \end{matrix} &
   \begin{matrix}
-  a & b \\
-  c & d
+  c_5 & c_6 \\
+  c_7 & c_8
   \end{matrix}
 \end{array}\right)
 \]
