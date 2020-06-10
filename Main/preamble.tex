@@ -1,10 +1,9 @@
-\usepackage{qcircuit}
 
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{physics}
-\usepackage[backend=biber]{biblatex}
+\usepackage[backend=biber, citestyle = phys, giveninits = true]{biblatex}
 \usepackage{titling}
 \usepackage{titletoc}
 \usepackage{kbordermatrix}
@@ -12,7 +11,7 @@
 \usepackage[document]{ragged2e}
 \usepackage{fancyhdr}
 \usepackage{bbold}
-\usepackage{tikz}
+%\usepackage{tikz}
 %\usetikzlibrary{quantikz}
 %\usepackage{blochsphere}
 \usepackage{hyperref}
@@ -27,13 +26,16 @@
 %%% Todonotes commands %%%
 \newcommand{\addref}{\todo[color=red!40]{Add reference.}}
 \newcommand{\question}{\todo[color=green!40]}
-
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{decorations.text}
+\usepackage[letterspace=150]{microtype}
 
 \def\bracket#1#2{\langle #1 | #2 \rangle}
 \def\kb#1#2{| #1 \rangle\!\langle #2 |}
 \def\kbtwo#1#2#3#4{|#1 \rangle\!\langle #2 | #3 \rangle\!\langle #4 | }
 
-
+\newcommand{\rephrase}{\todo[color=blue!40]{Rephrase}}
 
 \newcommand{\Sop}{{(I - 2\dyad{\beta}{\beta}) \otimes I}}
 \newcommand{\Vop}{{\sum_{j}\kb j j  \otimes P_{j}}}
@@ -52,45 +54,15 @@
 \newcommand{\rightb}{i\frac{V-E_k}{\sqrt{1-E_k^2}}\ket{\beta}\otimes  \ket{\phi_k}}
 
 
+\allowdisplaybreaks
 
 
-
-\providecommand\given{}
-% can be useful to refer to this outside \Set
-\newcommand\SetSymbol[1][]{%
-  \nonscript\:#1\vert
-  \allowbreak
-  \nonscript\:
-  \mathopen{}}
-\DeclarePairedDelimiterX\Set[1]\{\}{%
-  \renewcommand\given{\;\SetSymbol[\delimsize]\;}
-  #1
-}
-
-\pagestyle{fancy}
-\renewcommand\chaptermark[1]{%
-  \markboth{Chapter\ $\thechapter$\ -\ #1}{}%
-}
-\renewcommand\sectionmark[1]{%
-  \markright{Section\ $\thesection$\ -\ #1}%
-}
-\fancyhead[L]{\leftmark}
-\fancyhead[R]{\rightmark}
-\renewcommand\footrulewidth{0.4pt}
-\fancyfoot[C]{}
-\fancyfoot[L]{\thetitle\ --- \theauthor}
-\fancyfoot[R]{\thepage}
-
-\fancypagestyle{plain}{%
-  \fancyhead[L,C,R]{}
-  \fancyfoot[L]{\thetitle\ --- \theauthor}
-  \fancyfoot[R]{\thepage}
-}
 
 
 \renewcommand\S{\Set*}
 
 \newcount\colveccount
+
 \newcommand*\colvec[1]{
         \global\colveccount#1
         \begin{pmatrix}

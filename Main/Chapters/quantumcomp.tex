@@ -1,33 +1,85 @@
+\chapter{Quantum Computing}
+\label{ch: qc}
+In this chapter, we will provide the necessary preliminary information needed to interpret the algorithm discussed in later chapters.
+In the first section, an introduction to quantum computing is provided. In the second section, the general framework of quantum simulation is laid out, and more specifically, applied to the electronic structure problem.
+\section{Quantummechanical foundations}
 
-
-
-\subsection{Quantummechanical foundations}
-
-Before we delve into the specifics of quantummechanics, a basic understanding of the quantummechanical principles governing qubits is needed. The state of some general quantummechanical system is described by its wavefunction, $\phi$. A time-independent wavefunction is often expressed as some linear combination of orthonormal basis states, such that.
-
-
-However, as the natural language of quantum mechanics is linear algebra, it is commonpractice to describe states in bra-ket notation (Source). States are described as vectors, and the simplest arbitratry quantummechanical system can be written:
+Before we delve into the specifics of quantum computing, a basic understanding of the quantum-mechanical principles governing qubits is introduced. The state of some general quantum-mechanical system is described by its wavefunction. The natural language of quantum mechanics is linear algebra and it is common practice to describe states by its wavefunction in bra-ket notation. States are described as vectors, and an arbitrary state of a 2-state quantum system can be written as
 $$\ket{\psi} = \alpha \ket{0} + \beta \ket{1},$$
 
-where $\psi$ has to satisfy the normalization condition, implying that $\alpha^2 + \beta^2 = 1$. This system is called the \textit{qubit}, which lives in a two-dimensional Hilbert space. The defining feature of qubits is that they are in quantum superposition. When measuring a qubit, the outcome of the measurement in the so-called computational basis will still be either $\ket{0} \text{or} \ket{1}$, but these outcomes occur with probabilities depending on the superposition of the state, namely $\abs{\alpha} \text{or} \abs{\beta}$. Applying quantum logic gates manipulates both basis states at the same time, resulting in an increased computational potential when compared to classical bits. The orthonormal basis states $\ket{0} \text{and} \ket{1}$ are generally just an abstract representation of a two-level system, but depending on the type of quantum computer, they can be represented physical properties such as spin in quantum dots as well as energy levels in trapped ions \cite{mcardle}.
+where $\ket{\psi}$ has to satisfy the normalization condition, implying that $\abs{\alpha}^2 + \abs{\beta}^2 = 1$. Such a system is called the \textit{qubit}, which lives in a two-dimensional Hilbert space. The defining computational strength of qubits is that the Hilbert space grows exponentially with the number of qubits, as they can be in superposition. When measuring a qubit, the outcome of the measurement in the so-called computational basis will still be either $\ket{0}$ or $ \ket{1}$, but these outcomes occur with probabilities depending on the superposition of the state, namely $\abs{\alpha}^2 $ or $ \abs{\beta}^2$. Applying quantum logic gates manipulates both basis states at the same time, resulting in an increased computational potential when compared to classical bits. The orthonormal basis states $\ket{0} \text{and} \ket{1}$ are generally just an abstract representation of a two-level system, but depending on the type of quantum computer, they can represent physical properties such as charge in quantum dots as well as energy levels in trapped ions \cite{McArdle}.
 
-Whenever there is a system with $n$ qubits, the joint state of that system is described by taking the tensor product of each individual state of that system. Taking a tensor product of two states is mathematically equivalent to taking the Kronecker product of the vectors of that state. For some arbitrary states $\ket{\phi} = \colvec{2}{\alpha}{\beta}$ and $\ket{\psi} = \colvec{2}{\gamma}{\delta}$, the joint state is given by
+For a system with $n$ qubits, the joint state of that system is described by taking the tensor product of each individual qubit state within that system. Taking a tensor product of two states is mathematically equivalent to taking the Kronecker product of the vectors of that state. For some arbitrary states $\ket{\phi} = \begin{pmatrix} \alpha \\ \beta \end{pmatrix}$ and $\ket{\psi} = \begin{pmatrix} \gamma \\ \delta \end{pmatrix}$ where $\alpha$, $\beta$, $\gamma$ and $\delta$ are complex numbers, the joint state is given by
 
 $$
-\ket{\phi} \otimes \ket{\psi}= \colvec{2}{\alpha}{\beta} \otimes \colvec{2}{\gamma}{\delta} = \colvec{4}{\alpha\gamma}{\alpha\delta}{\beta\gamma}{\beta\delta}
+\ket{\phi} \otimes \ket{\psi}=
+\begin{pmatrix} \alpha \\ \beta\end{pmatrix}
+  \otimes \begin{pmatrix} \gamma \\ \delta\end{pmatrix} = \begin{pmatrix} \alpha \gamma \\ \alpha \delta \\ \beta \gamma \\ \beta \delta \end{pmatrix}
 $$
 
-FOUR POSTULATES, SEE SHOR
+Analogous to classical computers, quantum computers are built from quantum circuits consisting of operations manipulating the quantum information encoded in the qubits. These operations, called \textit{quantum gates}, have to be reversible. This places the constraint on an operation $U$: $U^{\dagger}U = I$, implying that all quantum gates are unitary. Some of the fundamental gates are the Pauli matrices \begin{equation}
+X=\left(\begin{array}{ll}
+0 & 1 \\
+1 & 0
+\end{array}\right), \quad Y=\left(\begin{array}{cc}
+0 & -i \\
+i & 0
+\end{array}\right), \quad Z=\left(\begin{array}{cc}
+1 & 0 \\
+0 & -1
+\end{array}\right),
+\end{equation}
+the single qubit rotation gates
+\begin{equation}
+R_{x}(\theta)=\exp{\frac{-i \theta X}{2}}, \quad
+R_{y}(\theta)=\exp{\frac{-i \theta Y}{2}}, \quad
+R_{z}(\theta)=\exp{\frac{-i \theta Z}{2}}
+\end{equation}
+and the Hadamard and T gates \cite{nielsen}
+\begin{equation}
+\mathrm{H}=\frac{1}{\sqrt{2}}\left(\begin{array}{cc}
+1 & 1 \\
+1 & -1
+\end{array}\right), \quad \mathrm{T}=\left(\begin{array}{cc}
+1 & 0 \\
+0 & e^{i \pi / 4}
+\end{array}\right).
+\end{equation}
 
-%\subsection{qauntum circuits}
+While the above gates are all single-qubit operations, multi-qubit gates are paramount as well,  as the controlled-NOT operations are used to create entangled states. Entangled states are states that can not be written as a tensor product between two other states, such as a Bell state $\ket{\beta} = \frac{\ket{00}+ \ket{11}}{\sqrt{2}} = \text{CNOT}_{1,2}(H \otimes I) \ket{00}$. Quantum gates are in essence rotations around the Hilbert space (which is the Bloch sphere for single qubits) and any unitary matrix may be decomposed as a series of rotations, which can be approximated to an arbitrary accuracy with just single-qubit gates and CNOT gates \cite{McArdle}. \\
 
-\subsection{Simulation}
+\subsection{Identities}
 
-The core objective of simulation is solving the set of differential equations that describe the physical evolution in time of that system. In the case of quantum simulation, the dynamical behaviour of the system is described by the Schrödinger equation,
+Now we will briefly discuss some nomenclature and important algebraic identities that will be used later on. Within quantum computing, indexes such as $j$ often represent a binary bit string. For example, the bit-string of 5 is represented in vector form by the following:
+$$ \ket{5} = \ket{0101} = \ket{0} \otimes \ket{1} \otimes \ket{0} \otimes \ket{1} = \begin{pmatrix} 1 \\ 0 \end{pmatrix} \otimes \begin{pmatrix} 0 \\ 1 \end{pmatrix} \otimes \begin{pmatrix} 1 \\ 0 \end{pmatrix} \otimes \begin{pmatrix} 0 \\ 1 \end{pmatrix} =   \begin{pmatrix} 0 \\ 0 \\ 0 \\0 \\ 0 \\ 1 \\ 0 \\ 0 \end{pmatrix}.$$
 
-$$ i \hbar \frac{d}{dt} \ket{\psi} = H \ket{\psi}.$$
+Or generally, for some $n$ in $\mathbb{N}$, the corresponding bit string state $\ket{n}$ in can be written as (while counting from zero) $\Set{e_{n}}$, where $e_{n}$ is a vector with a 1 inserted at the $n^{th}$ position, and zeroes elsewhere. \\
 
-Quantum simulation is ``DIFFICULT'' as the number of differential equation grows exponentially with the number of qubits that are evolving, as one qubit requires two differential equations to b solved.
+All bit string states are orthogonal, implying \begin{equation}
+\bracket i j = \delta_{i,j} = \begin{cases}
+1& \text{if } i = j\\
+    0              & \text{otherwise}
+\end{cases}.
+\end{equation}
 
+When summing bit string projectors over the $n$-dimensional space, each basis vector in $\mathbb{N}^{n}$ has a contribution of 1,
+resulting in an $n$ by $n$ matrix with only entries of 1 on the diagonal, which is the identity matrix:
 
-Quantum simulation can be divided into two different sets of problems, the dynamic problem and the static problem. The static problem consists of preparing the (correct) initial state and the dynamical problem consists of reproducing how the time-evolution unitary operator, $U= \exp{-iHt}$ affects the state of the system.
+\begin{equation}
+   \sum_{j}^{n} \kb jj = I_n.
+\end{equation}
+
+The expectation value of some observable $A$ measured in some basis $\{\varphi, \phi\}$ is:
+\begin{equation}
+\bra{\varphi} A \ket{\phi} = \bra{\varphi} \ket{A\phi} = \langle A^{\dagger}\varphi|\phi \rangle
+\end{equation}
+
+However, if $c$ is some scalar, then:
+\begin{equation}
+\bra{\varphi} c \ket{\phi} = \braket{\varphi}{c \phi} = c \braket{\varphi}{\phi}.
+\end{equation}
+
+An important tensor product identity is the following:
+\begin{equation}
+(U \otimes V)(|\psi\rangle \otimes|\phi\rangle)=(U|\psi\rangle) \otimes(V|\phi\rangle).
+\end{equation}

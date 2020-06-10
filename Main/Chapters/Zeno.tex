@@ -1,89 +1,103 @@
-The initial idea that motivated the entire field of quantum simulation, is that the storage needed to describe the wavefunction of a system of $N$ particles grows with $\mathcal{O}(exp(N))$ on a classical computer, while this relation is $\mathcal{O}(N)$ for qubits \cite{cao}. However, one cannot simply retrieve obtain a useful description of the wavefunction stored in qubits, as a classical representation of the wavefunction requires repeated measurements which, due to the collapse of the state during measurements, is a futile process. Instead, alternative processes, such as finding expectation values of observables, have to be utilized. Another important condition that has been satisfied, is that evolving the wavefunction in time is efficiently possible for Hamiltonians that are to a large extent physically realizable \cite{cao}. That is to say that the number of gates needed to simulate a system grows polynomially, rather than exponentially with parameters such as system size and time.\\
+\section{Quantum Simulation}
 
- Furthermore, it is important to note that essentially all algorithms within quantum chemistry assume error-free quantum computations. At this point in time, fully coherent quantum computation has not yet been realized, as in the physical realizations of quantum computers today are still too error prone. The process of minimizing decoherence in quantum computers is highly instrumental to quantum computing and is an entire own subfield of quantum computing (Quantum Error Correction), which is out of scope for present research. We refer interested readers to the book Quantum Computation and Quantum Information by \textcite{nielsen} for more information.\todo{is this out of place?} The fact that quantum chemistry algorithms don't account for errors mean that none of these algorithms are executable in a non-trivial way yet i.e. deliver results that classical computers couldn't have obtained. This doesn't mean that these algorithms cannot be implemented, as we will see a rudimentary implementation of a specific quantum simulation algorithm later.\\
+The core objective of simulation is solving the set of differential equations that describe the physical evolution in time of that system. In the case of quantum simulation, the dynamical behaviour of the system is described by the Schrödinger equation,
+
+$$ i \hbar \frac{d}{dt} \ket{\psi} = H \ket{\psi}.$$
 
 
+The initial observation that motivated the entire field of quantum simulation is that the storage needed to describe the wavefunction of a system of $N$ particles grows with $\mathcal{O}(\exp{N})$ on a classical computer, while this relation is $\mathcal{O}(N)$ for qubits \cite{cao}. It has been shown that evolving the wavefunction in time is efficiently possible for Hamiltonians that are, to a large extent, physically realizable \cite{cao}. That is to say that the number of quantum gates needed to simulate a system grows polynomially, rather than exponentially with parameters such as system size and time.
+
+\vspace{5mm}
 
 
-Hamiltonian simulation roughly correlates to the time-dependent part of simulation as outlined before \todo{make nice transition}
-Different models of systems place different constraints on the manifestation of the form of the Hamiltonian. For most physical systems of $n$ particles the Hamiltonian can be written as
-$H = \sum_k^L H_k$ where each $H_k$ acts on a specific subsystem. Often these terms are two-body interaction terms such as $X_i X_j$ or even one-body Hamiltonians $X_i$. More specifically, the spin Ising model $
+ Furthermore, it is important to note that essentially all algorithms within quantum chemistry assume error-free quantum computations. Currently, fully coherent quantum computation has not yet been realized, as the physical realizations of quantum computers are still too error prone. The process of minimizing decoherence in quantum computers is instrumental to quantum computing and is an entire own subfield of quantum computing (Quantum Error Correction), which is out of scope for this thesis. More information on this can be found in the book Quantum Computation and Quantum Information by \textcite{nielsen}. The fact that quantum chemistry algorithms do not account for errors mean that none of these algorithms are executable in a non-trivial way yet, i.e. deliver results that classical computers could not have obtained. This does not mean that these algorithms cannot be implemented as we will show a rudimentary implementation of a specific quantum simulation algorithm later.
+
+\vspace{5mm}
+
+Quantum simulation can be divided into two different sets of problems, the dynamic problem and the static problem. The static problem consists of preparing the (correct) initial state and the dynamical problem consists of reproducing how the time-evolution unitary operator, $U= \exp{-iHt}$ affects the state of the system. Different models of systems place different constraints on the manifestation of the form of the Hamiltonian. For most physical systems of $N$ particles, the Hamiltonian can be written as
+$H = \sum_k^L H_k$, where each $H_k$ acts on a specific subsystem. Often these terms are two-body interaction terms such as $X_i X_j$ or even one-body Hamiltonians $X_i$. More specifically, the spin Ising model $
 H_{\mathrm{Ising}}=g \sum_{j} X_{j}+J \sum_{\langle i, j\rangle} Z_{i} Z_j
-$ consists entirely of a linear combination of such interaction terms. The conventional method for simulating Hamiltonians of such form is to approximate the time-evolution operator such that  $$U(t) \approx\left(e^{-i H_{1} t / n} \ldots e^{-i H_{\ell} t / n}\right)^{n}$$. The method for approximating $U$ as such is called \textit{Trotter decomposition}, and as the gatecount grows polynomially with the number of qubits and time, this method is efficient for
+$ consists entirely of a linear combination of such interaction terms. The conventional method for simulating Hamiltonians of this form is to approximate the time-evolution operator $U(t)$ such that  $$U(t) \approx\left(e^{-i H_{1} t / n} \ldots e^{-i H_{\ell} t / n}\right)^{n}.$$ The method for approximating $U$ as such is called \textit{Trotter decomposition}, and, since the gatecount grows polynomially with the number of qubits and with time, this method is efficient for
 local-interaction Hamiltonians \cite{cao}. \\
-
-However, not all Hamiltonians satisfy the local-interaction condition of the Trotter decomposition, such as the electronic structure problem. The Hamiltonian of the electronic structure problem of $K$ nuclei and $N$ electrons is the following \cite{McArdle}:
+However, not all Hamiltonians satisfy the local-interaction condition of the Trotter decomposition, such as the electronic structure problem. The Hamiltonian of a molecule of $K$ nuclei and $N$ electrons is the following \cite{McArdle}:
 
 $$
 \begin{aligned}
 H=&-\sum_{i} \frac{\hbar^{2}}{2 m_{e}} \nabla_{i}^{2}-\sum_{I} \frac{\hbar^{2}}{2 M_{I}} \nabla_{I}^{2}-\sum_{i, I} \frac{e^{2}}{4 \pi \epsilon_{0}} \frac{Z_{I}}{\left|\mathbf{r}_{i}-\mathbf{R}_{I}\right|} \\
-&+\frac{1}{2} \sum_{i \neq j} \frac{e^{2}}{4 \pi \epsilon_{0}} \frac{1}{\left|\mathbf{r}_{i}-\mathbf{r}_{j}\right|}+\frac{1}{2} \sum_{I \neq J} \frac{e^{2}}{4 \pi \epsilon_{0}} \frac{Z_{I} Z_{J}}{\left|\mathbf{R}_{I}-\mathbf{R}_{J}\right|}
-\end{aligned}.
+&+\frac{1}{2} \sum_{i \neq j} \frac{e^{2}}{4 \pi \epsilon_{0}} \frac{1}{\left|\mathbf{r}_{i}-\mathbf{r}_{j}\right|}+\frac{1}{2} \sum_{I \neq J} \frac{e^{2}}{4 \pi \epsilon_{0}} \frac{Z_{I} Z_{J}}{\left|\mathbf{R}_{I}-\mathbf{R}_{J}\right|}.
+\end{aligned}
 $$
 
-Here, $M_I , \mathbf{R}_{I} ,$  and $Z_I$ repreent respectively the mass, the position, and the atomic number of the Ith nucleus. $\mathbf{r}_{i}$ represents the positon of the $i$-th electron. Since a nuclei is many times heavier than an electron we can utilise the Born-Oppenheimer approximation,  neglecting the electron's position and treating the nuclei as classical point charges \cite{McArdle}. The approximated Hamiltonian becomes:
+Here, $M_I$, $\mathbf{R}_{I}$  and $Z_I$ represent respectively the mass, the position, and the atomic number of the $I$-th nucleus. Additionally, $\mathbf{r}_{i}$ represents the positon of the $i$-th electron. Since a nucleus is many times heavier than an electron, we can utilise the Born-Oppenheimer approximation, treating the nuclei as classical point charges \cite{McArdle}. Also dropping the natural constants, the approximated Hamiltonian then becomes:
 
 $$
-H_{e}=-\sum_{i} \frac{\nabla_{i}^{2}}{2}-\sum_{i, I} \frac{Z_{I}}{\left|\mathbf{r}_{i}-\mathbf{R}_{I}\right|}+\frac{1}{2} \sum_{i \neq j} \frac{1}{\left|\mathbf{r}_{i}-\mathbf{r}_{j}\right|}
+H_{e}=-\sum_{i} \frac{\nabla_{i}^{2}}{2}-\sum_{i, I} \frac{Z_{I}}{\left|\mathbf{r}_{i}-\mathbf{R}_{I}\right|}+\frac{1}{2} \sum_{i \neq j} \frac{1}{\left|\mathbf{r}_{i}-\mathbf{r}_{j}\right|}.
 $$
 
-This Hamiltonian however is in it's current form still to little use from a quantum computing perspective, as we cannot translate this to qubits. Therefore we now write this Hamiltonian in the second quantization formalism of Quantum Field Theory. An in-depth explanation of the quantisation formalism is out of scope for this research, but the rough idea of second quantisation is that \textit{fields} are being quantised rather than variables. The second quantised form of the electronic Hamiltonian corresponds to the following.
+Now we can write this Hamiltonian in the second quantization notation. An in-depth explanation of the quantisation formalism is out of scope for this research, but the rough idea of second quantisation is that \textit{fields} are being quantised rather than variables. The second quantised form of the electronic Hamiltonian corresponds to
 
-\[
-H=\sum_{p, q} h_{p q} a_{p}^{\dagger} a_{q}+\frac{1}{2} \sum_{p, q, r, s} h_{p q r s} a_{p}^{\dagger} a_{q}^{\dagger} a_{r} a_{s}
-\]
+\begin{equation}\label{quant}
+H=\sum_{p, q} h_{p q} a_{p}^{\dagger} a_{q}+\frac{1}{2} \sum_{p, q, r, s} h_{p q r s} a_{p}^{\dagger} a_{q}^{\dagger} a_{r} a_{s},
+\end{equation}
 where
 \[
 \begin{aligned}
-h_{p q} &=\int \mathrm{d} \mathbf{x} \phi_{p}^{*}(\mathbf{x})\left(-\frac{\nabla^{2}}{2}-\sum_{I} \frac{Z_{I}}{\left|\mathbf{r}-\mathbf{R}_{I}\right|}\right) \phi_{q}(\mathbf{x}) \\
-h_{p q r s} &=\int \mathrm{d} \mathbf{x}_{1} \mathrm{d} \mathbf{x}_{2} \frac{\phi_{p}^{*}\left(\mathbf{x}_{1}\right) \phi_{q}^{*}\left(\mathbf{x}_{2}\right) \phi_{r}\left(\mathbf{x}_{2}\right) \phi_{s}\left(\mathbf{x}_{1}\right)}{\left|\mathbf{r}_{1}-\mathbf{r}_{2}\right|.}
+h_{p q} &=\int \mathrm{d} \mathbf{x} \phi_{p}^{*}(\mathbf{x})\left(-\frac{\nabla^{2}}{2}-\sum_{I} \frac{Z_{I}}{\left|\mathbf{r}-\mathbf{R}_{I}\right|}\right) \phi_{q}(\mathbf{x}), \\
+h_{p q r s} &=\int \mathrm{d} \mathbf{x}_{1} \mathrm{d} \mathbf{x}_{2} \frac{\phi_{p}^{*}\left(\mathbf{x}_{1}\right) \phi_{q}^{*}\left(\mathbf{x}_{2}\right) \phi_{r}\left(\mathbf{x}_{2}\right) \phi_{s}\left(\mathbf{x}_{1}\right)}{\left|\mathbf{r}_{1}-\mathbf{r}_{2}\right|}.
 \end{aligned}
 \]
 
-$a_{p}^{\dagger}$ and $ a_{q}$ are respectively the fermionic creation and annihalation operators. These operators excite or de-excite electrons into spin-orbitals, and obey the following anti-commutation relations
+and $a_{p}^{\dagger}$ and $ a_{q}$ are respectively the fermionic creation and annihilation operators. These operators excite or de-excite electrons into spin-orbitals, and obey the  anti-commutation relations
 $$
 \begin{array}{l}
-\left\{a_{p}, a_{q}^{\dagger}\right\}=a_{p} a_{q}^{\dagger}+a_{q}^{\dagger} a_{p}=\delta_{p q} \\
-\left\{a_{p}, a_{q}\right\}=\left\{a_{p}^{\dagger}, a_{q}^{\dagger}\right\}=0
-\end{array}.
+\left\{a_{p}, a_{q}^{\dagger}\right\}=a_{p} a_{q}^{\dagger}+a_{q}^{\dagger} a_{p}=\delta_{p q},$$
+
+\\
+
+
+$$
+\left\{a_{p}, a_{q}\right\}=\left\{a_{p}^{\dagger}, a_{q}^{\dagger}\right\}=0.
+\end{array}
 $$
 
-To simulate the electronic structure problem in its second quantized form, a map from operators acting on indistinguishable fermions to operators acting on distinguishable qubits is needed \cite{McArdle}. There are several methods of implementing this map, such as the Jordan Wigner transformation and the Bravyi-Kitaev encoding.
+To simulate the electronic structure problem in its second quantized form, a map from operators acting on indistinguishable fermions to operators acting on distinguishable qubits is needed \cite{McArdle}. There are several methods of implementing this map, such as the Jordan-Wigner transformation and the Bravyi-Kitaev encoding.
 \\
 
 The Jordan-Wigner transformation writes the annihalation and creation operators in terms of Pauli matrices, such that \cite{daskin}
 
 $$
-a_{j} \rightarrow I^{\otimes n-j-1} \otimes \sigma_{+} \otimes \sigma_{z}^{\otimes j}, \text { and } a_{j}^{\dagger} \rightarrow I^{\otimes n-j-1} \otimes \sigma_{-} \otimes \sigma_{z}^{\otimes j}
+a_{j} \rightarrow I^{\otimes n-j-1} \otimes \sigma_{+} \otimes \sigma_{z}^{\otimes j} \text {  and  } a_{j}^{\dagger} \rightarrow I^{\otimes n-j-1} \otimes \sigma_{-} \otimes \sigma_{z}^{\otimes j}
+$$
+where
+$$
+\sigma_+ = \begin{pmatrix} 0&0\\1&0 \end{pmatrix}, \
+\sigma_- = \begin{pmatrix} 0&1\\0&0 \end{pmatrix}.
 $$
 
-$$
-\sigma_+ = \begin{pmatrix} 0&0\\1&0 \end{pmatrix} \
-\sigma_- = \begin{pmatrix} 0&1\\0&0 \end{pmatrix}
-$$
 
-
-The Bravyi-Kitaev expression for the operators in terms of Pauli matrices is significantly more involved than the respective Jordan-Wigner expression, and can be found in \cite{seeley}. Applying any of these two encodings to the second quantised Hamiltonian of the $H_2$ molecule will result in the following representation:
-$$
+The Bravyi-Kitaev expression for the operators in terms of Pauli matrices is significantly more involved than the respective Jordan-Wigner expression, and can be found in \cite{seeley}. Applying the Jordan-Wigner encoding to the second quantised Hamiltonian of the hydrogen molecule will result in the following representation \cite{seeley}:
+\begin{equation} \label{ham}
 \begin{aligned}
 \hat{H}_{B K}=&-0.81261 I+0.171201 \sigma_{0}^{z}+0.16862325 \sigma_{1}^{z}-0.2227965 \sigma_{2}^{z}+0.171201 \sigma_{1}^{z} \sigma_{0}^{z} \\
 &+0.12054625 \sigma_{2}^{z} \sigma_{0}^{z}+0.17434925 \sigma_{3}^{z} \sigma_{1}^{z}+0.04532175 \sigma_{2}^{x} \sigma_{1}^{z} \sigma_{0}^{x}+0.04532175 \sigma_{2}^{y} \sigma_{1}^{z} \sigma_{0}^{y} \\
 &+0.165868 \sigma_{2}^{z} \sigma_{1}^{z} \sigma_{0}^{z}+0.12054625 \sigma_{3}^{z} \sigma_{2}^{z} \sigma_{0}^{z}-0.2227965 \sigma_{3}^{z} \sigma_{2}^{z} \sigma_{1}^{z} \\
-&+0.04532175 \sigma_{3}^{z} \sigma_{2}^{x} \sigma_{1}^{z} \sigma_{0}^{x}+0.04532175 \sigma_{3}^{z} \sigma_{2}^{y} \sigma_{1}^{z} \sigma_{0}^{y}+0.165868 \sigma_{3}^{z} \sigma_{2}^{z} \sigma_{1}^{z} \sigma_{0}^{z}
+&+0.04532175 \sigma_{3}^{z} \sigma_{2}^{x} \sigma_{1}^{z} \sigma_{0}^{x}+0.04532175 \sigma_{3}^{z} \sigma_{2}^{y} \sigma_{1}^{z} \sigma_{0}^{y}+0.165868 \sigma_{3}^{z} \sigma_{2}^{z} \sigma_{1}^{z} \sigma_{0}^{z}.
 \end{aligned}
-$$
+\end{equation}
 
-This Hamiltonian is well suited to quantum computers as it will amount to one $8 \times 8$ matrix acting on a four-qubit state.
+This Hamiltonian is well suited to quantum computers as it can be encoded in one $8 \times 8$ matrix acting on a four-qubit state.
 
 \subsection{State preparation and the quantum Zeno effect}
+\label{subsec: zeno}
 
+Any quantum algorithm for ground state energy estimation, such as the one discussed in this thesis, requires (eigen)state preparation, as $H_k \ket{\psi} = E_k \ket{\psi}$ only holds when $H$ is acting on an eigenstate. In the spectrum by quantum walk algorithm, phase estimation, the process of retrieving the phase of a unitary operator ( discussed in greater detail in section \ref{sec:pea}) performed as a projective energy measurement \cite{poulin}. Then, it follows that for some approximation of the eigenstate $\tilde{\ket{\phi}}$, the state of the system collapses to the actual ground state $\ket{\phi}$ with probability $\abs{\bracket \tilde{\phi} \phi }^2$. Depending on the form of the Hamiltonian, obtaining $\tilde{\ket{\phi}}$
+ can be a difficult task. \textcite{poulin} offer a method for obtaining this approximation, which is almost equivalent to adiabatic state preparation, but has the advantage that only the time-independent Hamiltonian is evolved in time, opposed to the time-dependent implementation of adiabatic state preparation.
 
-Any quantum algorithm for ground state energy estimation, such as the one discussed in this research, requires (eigen)state preparation, as $H_k \ket{\psi} = E_k \ket{\psi}$ only when $H$ is acting on an eigenstate. In the Spectrum by Quantum Walk algorithm, phase estimation performed as a projective energy measurement \cite{Poulin}. Then it follows that for some approximation of the eigenstate $\ket{\tilde{\phi}}$, the state of the system collapses to the actual ground state $\ket{\phi}$ with probability $\abs{\braket{\tilde{\phi}}{\phi}}^2$. Depending on the form of the Hamiltonian, obtaining $\ket{\tilde{\phi}}$ can be a difficult task. \textcite{poulin} offer a method for obtaining this approximation, which is rather similar to the adiabatic state preparation.
-
-The state preparation sequence of \texcite{poulin} goes as follows. We define the Hamiltonian to be a composite sum of a simpler Hamiltonian $H_0$ and some other interaction term $V$. This simpler Hamiltonian $H_0$ is one we know the ground state of. When considering the electronic structure problem of $H_2$, an example for $H_0$ could be the transverse field Ising model. We can then rewrite the Hamiltonian as a function of some parameter $g$, where $V$ is liinearly related to $g$:
+In this state preparation sequence, we first define the Hamiltonian to be a composite sum of a simpler Hamiltonian, $H_0$, and some other interaction term $V$. This simpler Hamiltonian $H_0$ is one of which the ground state is known. We can then rewrite the Hamiltonian as a function of some parameter $g$, where $V$ is linearly related to $g$:
 
 $$
 H= H_0 + gV
 $$
 
-We are now able to prepare the physical register of our quantum computer in the simpler ground state $ H = \ket{\phi(g=0)}$.  Then we perform a sequence of energy measurements where we increase $g$ slightly for each measurement. Ultimately, if the increments of $g$ are sufficiently small, performing the energy measurement of $H(g=1)$ will result in the wave function collapsing to $ \ket{\phi(g=1)}$, which is the actual ground state of the system we are simulating. \todo{finish section}
+We prepare the physical register of our quantum computer in the simpler ground state of $H_0$, which in our notation equals the Hamiltonian for $g = 0$. Then we perform a sequence of energy measurements. In each iteration, the starting state is $\ket{\phi(g)}$. Then, the algorithm, described in later sections, is applied for the Hamiltonian with a $g$ value of $g + dg$. The resulting state of this measurement is $\ket{\phi(g+dg)}$.   The reason this method is useful, is that for a small enough $\text{d}g$, the probability $\abs{\bra{\phi(g)}\ket{\phi(g+dg)}}^2$ that measuring the energy  for the Hamiltonian $H(g + dg)$ on the state $\ket{\phi(g)}$ results in the ground energy is close to 1 \cite{poulin}. This relation is governed by the quantum Zeno effect, in which frequent measurements blocks time evolution of the system and freeze the state to an eigenstate depending on the measurement basis \cite{zeno}. Thus, given an initialized register in the ground state of
+$H_0$, the measurement sequence described in the following sections will result in the desired ground state of the true Hamiltonian.
